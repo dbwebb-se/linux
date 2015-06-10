@@ -2,6 +2,8 @@ If, elif, else
 ==============================
 Examples in Bash
 
+```sh
+
 #!/bin/bash
 
 #Do something if a variable has a certain value.
@@ -50,7 +52,7 @@ else
     echo "The number is NOT 5, 10 or 15!"
 fi
 
-
+```
 
 Reference and read more
 ------------------------------
