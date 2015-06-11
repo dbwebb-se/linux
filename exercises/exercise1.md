@@ -17,7 +17,7 @@ Instruction to exercise 1
 1. Read part 4 - chapter 24 in the course literature
 2. Create your own script, called **genie.sh**
     * `touch genie.sh`
-    * `chmod u+x genie.sh` (if needed)
+    * `chmod u+x genie.sh` (if needed, course literature chapter 9)
     * If you don't want to start the script by typing "./genie.sh", add it to the PATH
         * In the terminal, type: `export PATH="$PATH:~/path-to-your-script-folder"`
         * If you just want to type "genie", add an alias: alias genie="genie.sh" (course literature chapter 11)
