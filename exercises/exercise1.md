@@ -2,14 +2,13 @@ Instruction to exercise 1
 ==============================
 
 1. Read the chapters 1-4 in the course literature
-2. Grab the website used for this exercise from Github, [click here](#)
-3. Make your way into the downloaded folder called **mySite**
-4. Here you have an unstructured website. Try out the commands you learned from step 1 to structure the website folder, shown in step 5. You do not have to alter any files, just move and rename them.
-5. This should be the result:
+2. Locate the folder called **mySite**. It should reside in the course repository
+3. The folder **mySite** contains an unstructured website. Try out the commands you learned from step 1 to structure the website folder, shown in step 4. You do not have to alter the content of the files.
+5. The result should look like this:
     * mySite/index.html
     * mySite/js/main.js
     * mySite/style/style.css
-6. Upload the structured site to your server **TODO - havent solved this one yet** 
+6. Upload the structured site to your server? **TODO - havent solved this one yet** 
 
 Reference and read more
 ------------------------------
