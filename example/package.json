@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Node-examples",
   "scripts": {
-    "test": "mocha --compilers js:mocha-traceur $(find . -not -path './node_modules/*' | grep '.test.js')"
+    "jscs": "jscs $(find . -not -path './node_modules/*' | grep '.test.js')",
+    "unit-test": "mocha --compilers js:mocha-traceur $(find . -not -path './node_modules/*' | grep '.test.js')",
+    "test": "npm run jscs && npm run unit-test"
   },
   "author": "Olund",
   "license": "MIT",
