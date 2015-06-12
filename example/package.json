@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Node-examples",
   "scripts": {
-    "test": "mocha --compilers js:mocha-traceur *.test.js"
+    "test": "mocha --compilers js:mocha-traceur $(find . -not -path './node_modules/*' | grep '.test.js')"
   },
   "author": "Olund",
   "license": "MIT",
