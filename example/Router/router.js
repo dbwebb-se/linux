@@ -1,7 +1,24 @@
-var url = require('url');
+/**
+ * Router
+ */
 
-//var METHODS = ['get', 'post'];
-//var HTTP_METHODS = ['GET', 'POST'];
+/* Example usage..
+
+    var http = require('http');
+    var router = new Router();
+
+    // Write a simple route..
+    router.get('/', function(req, res) {
+        res.end('hello');
+    });
+
+    http.createServer(function (req, res) {
+        router.route(req, res);
+    }).listen(1337);
+*/
+
+
+var url = require('url');
 
 
 class Router {
@@ -35,7 +52,7 @@ class Router {
     /**
      * Shorthand POST route
      */
-    post(post, handler) {
+    post(path, handler) {
         this.add('POST', path, handler);
     }
 
@@ -99,17 +116,5 @@ http.createServer(function (req, res) {
     router.route(req, res);
 }).listen(1337);
 
-/* Example usage..
-
-    var http = require('http');
-    var router = new Router();
-
-    // Write a simple route..
-    router.get('/', function(req, res) {
-        res.end('hello');
-    });
-
-    http.createServer(router).listen(8080);
-*/
 
 export default Router;
