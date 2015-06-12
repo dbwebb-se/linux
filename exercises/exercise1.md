@@ -30,9 +30,9 @@ Instruction to exercise 1
 Reference and read more
 ------------------------------
 
-[?](#) **TODO - Fix a reference to the book**
-[shebang, PATH](http://stackoverflow.com/questions/8779951/how-do-i-run-a-shell-script-without-using-sh-or-bash-commands)
-[How to create a script](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)
+[?](#) **TODO - Fix a reference to the book**  
+[shebang, PATH](http://stackoverflow.com/questions/8779951/how-do-i-run-a-shell-script-without-using-sh-or-bash-commands)  
+[How to create a script](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)  
 
 
 Revision history
