@@ -47,8 +47,7 @@ router.get('/', (req, res) => {
 	maps.filter((map) => map.includes('.json'));
 	
 	var json = JSON.stringify(maps);
-	json.msg = 'Avalible maps';
-	json.hint = 'Call /:nameOfMap';
+	
 	sendRes(res, json);
 });
 
