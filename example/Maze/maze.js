@@ -11,14 +11,14 @@ var http = require('http');
 
 var maps = [];
 var currentMap = null;
-var lastRoom;
+var lastRoom = null;
 
 
 /**
  * Wrapper function for sending a response
  * 
  */
-function sendRes(resObj, content, code, typ) {
+function sendResponse(resObj, content, code, typ) {
 	code = code || 200;
 	var contentType;
 	switch (typ) {		
@@ -43,13 +43,13 @@ function sendRes(resObj, content, code, typ) {
  */
 router.get('/', (req, res) => {
 	maps = fs.readdirSync(__dirname + '/maps');
+	currentMap = null;
+	lastRoom = null;
 
 	// Filter away all !.json
-	maps = maps.filter((map) =>  map.includes('.json'));
-	
-	var json = JSON.stringify(maps);
-	
-	sendRes(res, json);
+	maps = maps.filter((map) => map.includes('.json'));
+
+	sendResponse(res, maps);
 });
 
 /**
@@ -59,14 +59,14 @@ router.get('/:map', (req, res) => {
 	currentMap = req.params.map;
 	
 	if (maps.indexOf(currentMap + '.json') === -1)  {
-		sendRes(res, 'Map not found', 404, 'plain');
+		sendResponse(res, 'Map not found', 404, 'plain');
 		currentMap = null;
 		return;
 	}
 	
 	// Reads the new map json
 	currentMap = require(__dirname + '/maps/' + currentMap + '.json');
-	sendRes(res, {'text': 'New map selected.'});
+	sendResponse(res, {'text': 'New map selected.'});
 });
 
 /**
@@ -74,7 +74,7 @@ router.get('/:map', (req, res) => {
  */
 router.get('/maze/', (req, res) => {
 	if (currentMap === null) {
-		sendRes(res, {
+		sendResponse(res, {
 			'text': 'Map not selected.',
 			'hint': 'Call /:nameOfMap first'
 		});
@@ -83,7 +83,7 @@ router.get('/maze/', (req, res) => {
 		
 	lastRoom = currentMap[0];
 	
-	sendRes(res, lastRoom);
+	sendResponse(res, lastRoom);
 });
 
 /**
@@ -93,7 +93,7 @@ router.get('/maze/:id/:str', (req, res) => {
 	var id = req.params.id;
 	var dir = req.params.str;
 	if (currentMap === null) {
-		sendRes(res, 'Content not loaded', 404, 'plain');
+		sendResponse(res, 'Content not loaded', 404, 'plain');
 		return;
 	}
 	var current = currentMap[id];
@@ -101,7 +101,7 @@ router.get('/maze/:id/:str', (req, res) => {
 	// Check if its not a valid path choosen
 	if (current.dirs[dir] === undefined) {
 		current.error = 'Direction not allowed';
-		sendRes(res, current, 404);
+		sendResponse(res, current, 404);
 		return;
 	}
 	
@@ -112,11 +112,11 @@ router.get('/maze/:id/:str', (req, res) => {
 	if (lastRoom === undefined) {
 		lastRoom = temp;
 		current.error = 'Path dont exist';
-		sendRes(res, current, 404);
+		sendResponse(res, current, 404);
 		return;
 	}
 	
-	sendRes(res, lastRoom);	
+	sendResponse(res, lastRoom);	
 });
 
 /**
@@ -124,7 +124,7 @@ router.get('/maze/:id/:str', (req, res) => {
  */
 router.get('/maze/:id', (req, res) => {
 	if (currentMap === null) {
-		sendRes(res, 'Content not loaded', 404, 'plain');
+		sendResponse(res, 'Content not loaded', 404, 'plain');
 		return;
 	}
 	var id = req.params.id;
@@ -132,11 +132,11 @@ router.get('/maze/:id', (req, res) => {
 	var current = currentMap[id];
 	
 	if (current === undefined) {
-		sendRes(res, 'Room not found', 404, 'plain');
+		sendResponse(res, 'Room not found', 404, 'plain');
 		return;
 	}
 	
-	sendRes(res, current);
+	sendResponse(res, current);
 });
 
 http.createServer((req, res) => {
