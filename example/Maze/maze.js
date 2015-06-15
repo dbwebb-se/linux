@@ -43,8 +43,9 @@ function sendRes(resObj, content, code, typ) {
  */
 router.get('/', (req, res) => {
 	maps = fs.readdirSync(__dirname + '/maps');
+
 	// Filter away all !.json
-	maps.filter((map) => map.includes('.json'));
+	maps = maps.filter((map) =>  map.includes('.json'));
 	
 	var json = JSON.stringify(maps);
 	
@@ -96,8 +97,7 @@ router.get('/maze/:id/:str', (req, res) => {
 		return;
 	}
 	var current = currentMap[id];
-	
-	console.log(current.dirs[dir]);
+
 	// Check if its not a valid path choosen
 	if (current.dirs[dir] === undefined) {
 		current.error = 'Direction not allowed';
