@@ -75,7 +75,7 @@ class Router {
         var method = req.method;
 
         // If path end with /, remove it
-        if (path.indexOf('/', path.length - '/'.length) !== -1) {
+        if (path.length > 1 && path.indexOf('/', path.length - '/'.length) !== -1) {
             path = path.substr(0, path.length - 1);
         }
 
