@@ -63,4 +63,48 @@ describe('Router', () => {
             .post('/hello')
             .expect(200, done);
     });
+
+    it('Multiple get requests', (done) => {
+        router.get('/a', (req, res) => {
+            req.end('a');
+        });
+
+        router.get('/b', (req, res) => {
+            req.end('b');
+        });
+
+        request(setupServer())
+            .get('/a')
+            .expect(200, 'a');
+
+        var nrOfRoutes = router.nrOfRoutes();
+
+        assert.equal(2, nrOfRoutes);
+        done();
+    });
+
+    it('GET with params', (done) => {
+        router.get('/animal/:name', (req, res) => {
+            var name = req.params.name;
+            console.log(req.params);
+            res.end('Animal ' + name);
+        });
+
+        request(setupServer())
+            .get('/animal/dog')
+            .expect(200, 'Animal dog', done);
+    });
+
+    it('GET with multiple params', (done) => {
+        router.get('/animal/:id/:name', (req, res) => {
+            var id = req.params.id;
+            var name = req.params.name;
+
+            res.end('ok');
+        });
+
+        request(setupServer())
+            .get('/animal/1/kalle')
+            .expect(200, 'ok', done);
+    });
 });
