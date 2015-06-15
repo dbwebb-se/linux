@@ -2,7 +2,9 @@
  * 
  */
 
-import router from '../Router/router';
+import Router from '../Router/router';
+
+var router = new Router();
 
 var fs = require('fs');
 var http = require('http');
@@ -40,9 +42,9 @@ function sendRes(resObj, content, code, typ) {
  * Get all maps avalible
  */
 router.get('/', (req, res) => {
-	maps = fs.readdirSync('./maps/');
+	maps = fs.readdirSync(__dirname + '/maps');
 	// Filter away all !.json
-	maps.filter((map) => map.substr(map.contains('.'), map.length) === 'json');
+	maps.filter((map) => map.includes('.json'));
 	
 	var json = JSON.stringify(maps);
 	json.msg = 'Avalible maps';
@@ -56,13 +58,14 @@ router.get('/', (req, res) => {
 router.get('/:map', (req, res) => {
 	currentMap = req.params.map;
 	
-	if (maps.indexof(currentMap) === -1)  {
+	if (maps.indexOf(currentMap + '.json') === -1)  {
 		sendRes(res, 'Map not found', 404, 'plain');
 		currentMap = null;
 		return;
 	}
+	
 	// Reads the new map json
-	currentMap = require('./maps/' + currentMap + '.json');
+	currentMap = require(__dirname + '/maps/' + currentMap + '.json');
 	sendRes(res, {'text': 'New map selected.'});
 });
 
@@ -75,6 +78,7 @@ router.get('/maze/', (req, res) => {
 			'text': 'Map not selected.',
 			'hint': 'Call /:nameOfMap first'
 		});
+		return;
 	}
 		
 	lastRoom = currentMap[0];
@@ -88,10 +92,15 @@ router.get('/maze/', (req, res) => {
 router.get('/maze/:id/:str', (req, res) => {
 	var id = req.params.id;
 	var dir = req.params.str;
-	
+	if (currentMap === null) {
+		sendRes(res, 'Content not loaded', 404, 'plain');
+		return;
+	}
 	var current = currentMap[id];
+	
+	console.log(current.dirs[dir]);
 	// Check if its not a valid path choosen
-	if (current.dirs[dir].indexof[dir] === -1) {
+	if (current.dirs[dir] === undefined) {
 		current.error = 'Direction not allowed';
 		sendRes(res, current, 404);
 		return;
@@ -114,7 +123,11 @@ router.get('/maze/:id/:str', (req, res) => {
 /**
  * Gets information about the room id
  */
-router.get('/maze/:id/', (req, res) => {
+router.get('/maze/:id', (req, res) => {
+	if (currentMap === null) {
+		sendRes(res, 'Content not loaded', 404, 'plain');
+		return;
+	}
 	var id = req.params.id;
 	
 	var current = currentMap[id];
