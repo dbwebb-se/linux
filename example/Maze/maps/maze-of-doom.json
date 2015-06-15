@@ -25,7 +25,8 @@
         "desc": "Room 3",
         "dirs": {
             "north":0,
-            "east":4
+            "east":4,
+            "south":6
         }
     },
     "4": {
@@ -45,8 +46,8 @@
     "6": {
         "desc": "Room 6",
         "dirs": {
-            "east": 7,
-            "south":  9
+            "north": 3,
+            "east": 7
         }
     },
     "7": {
