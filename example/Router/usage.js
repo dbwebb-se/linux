@@ -42,14 +42,16 @@ router.get('/animal', (req, res) => {
 });
 
 router.get('/animal/:id', (req, res) => {
-    console.log('PARAMS: ', req.params);
+    //console.log('PARAMS: ', req.params);
     var id = req.params.id;
     res.end('Animal: ' + id);
 });
 
 router.get('/animal/:id/:name', (req, res) => {
-    console.log('PARAMS', req.params);
-    res.end('ok');
+    //console.log('PARAMS', req.params);
+    var id = req.params.id;
+    var name = req.params.name;
+    res.end('Animal: ' + id + ' ' + name);
 });
 
 

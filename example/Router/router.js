@@ -70,7 +70,7 @@ class Router {
     route(req, res) {
 
 
-
+        req.params = {};
         // Get the path and the method.
         var path = url.parse(req.url).pathname;
         var method = req.method;
@@ -83,12 +83,12 @@ class Router {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
 
+            var params = r.path.split('/');
             // Get params.
-            var currentParams = r.path.split('/');
-
-            currentParams = currentParams.filter(function (p) {
+            var currentParams = params.filter(function (p) {
                 return p.includes(':');
             });
+
             /*
                 /animal/:name
                 /animal/dog
@@ -97,31 +97,27 @@ class Router {
                 /animal/dog/1
              */
 
-
             if (currentParams.length > 0) {
-                console.log('-------------------------');
-                console.log('Urlen är special, R', r);
-                console.log('Current params: ', currentParams);
-                var begin = r.path.indexOf(currentParams[0]);
-                console.log('BEGIN', begin);
-                console.log('PATH: ', path);
-                console.log('-------------------------');
+                var found = [];
 
-                /*var found = [];
-                for (var i = 0; i < urlParams.length; i ++) {
-
-                    if (urlParams[i].search(/[a-zA-Z]+/)) {
-
-                    }
-                }*/
-
-                if (r.path.substr(begin, r.path.length).search(/[a-zA-Z]+/)) {
-                    req.params = { id: urlParams[2] };
-                    return true;
+                if (params.length !== urlParams.length) {
+                    return false;
                 }
 
+                for (var i = 0; i < urlParams.length; i ++) {
+                    if (params[i].includes(':')) {
+                        found.push(urlParams[i]);
+                    }
+                }
+
+                if (found.length > 0) {
+                    currentParams.forEach((el, i) => {
+                        console.log(el, found[i]);
+                        req.params[el.substr(1, el.length)] = found[i];
+                    });
+                    return true;
+                }
                 return false;
-                //return method === r.method &&
              }
 
             // Without regex.

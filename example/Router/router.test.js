@@ -107,4 +107,19 @@ describe('Router', () => {
             .get('/animal/1/kalle')
             .expect(200, 'ok', done);
     });
+
+    it('GET with many params', (done) => {
+        var b,c,d;
+        router.get('/a/:b/:c/:d', (req, res) => {
+                b = req.params.b,
+                c = req.params.c,
+                d = req.params.d;
+
+            res.end(b + c + d);
+        });
+
+        request(setupServer())
+            .get('/a/b/c/d')
+            .expect(200, 'bcd', done);
+    });
 });
