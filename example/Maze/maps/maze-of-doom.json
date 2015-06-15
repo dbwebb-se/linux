@@ -17,7 +17,7 @@
     "2": {
 	    "desc": "Room 2",
 	    "dirs": {
-            "north":1,
+            "west":1,
             "south":  5
         }
 	},
