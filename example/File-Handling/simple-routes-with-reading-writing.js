@@ -66,7 +66,7 @@ var server = http.createServer((req, res) => {
 					res.writeHead(200, {'Content-Type': 'application/json'});
 				
 					// Reads the myData.json file and saves it in data  
-					var data = fs.readFileSync('data.json', 'utf8');
+					var data = fs.readFileSync('myData.json', 'utf8');
 					
 					// Note that we don't have to stringify it since the file is a string already and NOT an object
 					res.end(data);	
