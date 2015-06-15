@@ -148,9 +148,6 @@ class Router {
         return this.routes.length;
     }
 
-    params() {
-        return { name: 'dog' };
-    }
 }
 
 export default Router;
