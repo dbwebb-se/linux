@@ -2,7 +2,7 @@
  * Router tests
  */
 
-import Router from '../Router/router';
+import * as server from '../Server-Uptime/server-uptime';
 var http = require('http');
 
 // Dependencies needed for tests.

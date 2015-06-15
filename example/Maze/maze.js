@@ -125,6 +125,7 @@ router.get('/maze/:id/:str', (req, res) => {
 router.get('/maze/:id', (req, res) => {
 	if (currentMap === null) {
 		sendResponse(res, 'Content not loaded', 404, 'plain');
+		console.log('fucking shit')
 		return;
 	}
 	var id = req.params.id;
@@ -132,6 +133,7 @@ router.get('/maze/:id', (req, res) => {
 	var current = currentMap[id];
 	
 	if (current === undefined) {
+		console.log('current == undef')
 		sendResponse(res, 'Room not found', 404, 'plain');
 		return;
 	}
@@ -139,6 +141,9 @@ router.get('/maze/:id', (req, res) => {
 	sendResponse(res, current);
 });
 
-http.createServer((req, res) => {
-	router.route(req, res);
+
+var server = http.createServer((req, res) => {
+		router.route(req, res);
 }).listen(1337);
+
+export default server;
