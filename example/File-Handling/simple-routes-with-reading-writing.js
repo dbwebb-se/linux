@@ -1,22 +1,28 @@
 /**
- * 
+ * Here we extend the simple-routing with reading the file on a GET-request 
+ * and create a file with a POST-request.
  */
 
-// Require node File System
+/*
+ * To able to talk with the file system we require the fs-modul
+ */
 var fs = require('fs');
 
-
-// We want to create a webservice so we need the http-modul
-var http = require('http');
-var url = require('url');
+/*/
+ * We want to create a webservice so we need the http, url, querystring
+ * and url - modul. 
+ */
 var queryString = require('querystring');
-var util = require('util');
+var http 		= require('http');
+var url 		= require('url');
+var util 		= require('util');
 
 var server = http.createServer((req, res) => {
-	res.writeHead(200, {'Content-Type': 'text/plain'});
+	// Get the path
 	var path = url.parse(req.url).pathname;
 	
 	console.log('[' + req.method + '] ' + path);
+	
 	switch (path) {
 		/**
 		 * Base route. 
@@ -65,7 +71,6 @@ var server = http.createServer((req, res) => {
 					// Note that we don't have to stringify it since the file is a string already and NOT an object
 					res.end(data);	
 				} catch (e) {
-					console.log(e.code);
 					// Filed didn't exist yet. Let's tell the client
 					if (e.code === 'ENOENT') {
 						res.writeHead(404, {'Content-Type': 'plain/text'});
@@ -77,7 +82,7 @@ var server = http.createServer((req, res) => {
 						throw e;
 					}
 				}
-			}			
+			}
 			break;
 		
 		/**
