@@ -48,6 +48,12 @@ describe('Router', () => {
             .expect(200, 'Home page', done);
     });
 
+    it ('404 not found GET /404', (done) => {
+        request(setupServer())
+            .get('/404')
+            .expect(404, done);
+    });
+
     it('POST /hello', (done) => {
         router.post('/hello', (req, res) => {
             res.end('POST');
