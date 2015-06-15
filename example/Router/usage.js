@@ -37,21 +37,21 @@ router.add('POST', '/hello', function (req, res) {
 });
 */
 router.get('/animal', (req, res) => {
-    console.log('Params: ', req.params);
-    res.end('Animal');
+
+    res.end('Animal - NO PARAMS');
 });
 
 router.get('/animal/:id', (req, res) => {
     //console.log('PARAMS: ', req.params);
     var id = req.params.id;
-    res.end('Animal: ' + id);
+    res.end('Animal: ' + id + ' - 1 param');
 });
 
 router.get('/animal/:id/:name', (req, res) => {
     //console.log('PARAMS', req.params);
     var id = req.params.id;
     var name = req.params.name;
-    res.end('Animal: ' + id + ' ' + name);
+    res.end('Animal: ' + id + ' ' + name + " - 2 params");
 });
 
 
