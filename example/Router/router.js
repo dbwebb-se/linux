@@ -85,36 +85,10 @@ class Router {
 
         // Handle the request.
         routesToProcess.forEach(function (route, i) {
+            // Calling the function.
             route.handler(req, res);
         });
     }
 }
-
-var http = require('http');
-var router = new Router();
-
-function hello(req, res) {
-    res.end('Hello');
-}
-router.add('GET', '/hello', hello);
-router.add('GET', '/foo', function (req, res) {
-    res.end('FOO');
-});
-router.add('GET', '/helloworld', function (req, res) {
-    res.end('Hello WORLD');
-});
-
-router.get('/blabla', (req, res) => {
-    res.end('blabla');
-});
-
-router.add('POST', '/hello', function (req, res) {
-    res.end('POST REQUEST');
-});
-
-http.createServer(function (req, res) {
-    router.route(req, res);
-}).listen(1337);
-
 
 export default Router;
