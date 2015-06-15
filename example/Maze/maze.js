@@ -7,6 +7,15 @@ import router from './router';
 var fs = require('fs');
 var http = require('http');
 
+var maps = [];
+var currentMap = null;
+var lastRoom;
+
+
+/**
+ * Wrapper function for sending an response
+ * 
+ */
 function sendRes(resObj, content, code, typ) {
 	code = code || 200;
 	var contentType;
@@ -27,10 +36,19 @@ function sendRes(resObj, content, code, typ) {
 	resObj.end(content);
 }
 
-var maps = fs.readdirSync('./maps/');
-var currentMap = null;
-var currentRoomPos = 0;
-var lastRoom;
+/**
+ * Get all maps avalible
+ */
+router.get('/', (req, res) => {
+	maps = fs.readdirSync('./maps/');
+	// Filter away all !.json
+	maps.filter((map) => map.substr(map.contains('.'), map.length) === 'json');
+	
+	var json = JSON.stringify(maps);
+	json.msg = 'Avalible maps';
+	json.hint = 'Call /:nameOfMap';
+	sendRes(res, json);
+});
 
 /**
  * Chooses the map
