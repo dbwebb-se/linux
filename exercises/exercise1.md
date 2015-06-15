@@ -25,7 +25,7 @@ Instruction to exercise 1
     * add `#!/bin/bash` at the top of the file, it is called "shebang"
     * On the next line, type `echo "this is my first bash script"`
     * Save and exit the editor
-    * Try typing `genie` in the terminal. It should print out "this is my first bash script"
+    * Try typing `genie` in the terminal (or 'genie.sh' if you haven't created an alias for it). It should print out "this is my first bash script"
 
 Reference and read more
 ------------------------------
