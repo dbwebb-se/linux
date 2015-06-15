@@ -63,20 +63,21 @@ class Router {
      * @return {[type]}     [description]
      */
     route(req, res) {
-        // Get the path and the method. ('/foo' and 'GET')
+        // Get the path and the method.
         var path = url.parse(req.url).pathname;
         var method = req.method;
-        console.log('Path:', path, 'Method:', method);
+        //console.log('Path:', path, 'Method:', method);
 
         // Filter out the routes to process..
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
             return method === r.method && path === r.path;
         });
 
-        console.log('Routes to process: ', routesToProcess);
+        //console.log('Routes to process: ', routesToProcess);
 
-        // If we have no routes
-        if (!routesToProcess || routesToProcess.length == 0) {
+        // If we have no routes, write 404.
+        if (!routesToProcess || routesToProcess.length === 0) {
             console.log(404);
             res.writeHead(404);
             res.end('404 Not Found');
