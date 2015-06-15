@@ -2,7 +2,7 @@
  * 
  */
 
-import router from './router';
+import router from '../Router/router';
 
 var fs = require('fs');
 var http = require('http');
@@ -13,7 +13,7 @@ var lastRoom;
 
 
 /**
- * Wrapper function for sending an response
+ * Wrapper function for sending a response
  * 
  */
 function sendRes(resObj, content, code, typ) {
@@ -127,8 +127,6 @@ router.get('/maze/:id/', (req, res) => {
 	sendRes(res, current);
 });
 
-var app = http.createServer((req, res) => {
+http.createServer((req, res) => {
 	router.route(req, res);
-});
-
-app.listen(1337);
+}).listen(1337);
