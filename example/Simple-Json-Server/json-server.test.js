@@ -10,7 +10,7 @@ var assert = require('assert');
 var sinon = require('sinon');
 var request = require('supertest')('http://localhost:1337/');
 
-describe('Simple Json Server', () => {    
+describe('Simple Json Server', () => {
     it('should respond with application/json', (done) => {
         request
             .get('/')
@@ -23,5 +23,5 @@ describe('Simple Json Server', () => {
             .get('/')
             .expect(200, '{"text":"Hello World"}', done);
 	});
-	
+
 });
