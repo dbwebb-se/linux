@@ -82,7 +82,7 @@ describe('Maze', () => {
         .expect(200)
         .end(() => {
             req
-                .get('/maze-of-doom')
+                .get('/map/maze-of-doom')
                 .expect(200, '{"text":"New map selected."}')
                 .end(() => {
                     req
@@ -126,4 +126,3 @@ describe('Maze', () => {
     });
 
 });
-

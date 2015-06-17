@@ -53,24 +53,6 @@ router.get('/', (req, res) => {
 });
 
 /**
- * Chooses the map
- */
-router.get('/:map', (req, res) => {
-    currentMap = req.params.map;
-    if (maps.indexOf(currentMap + '.json') === -1)  {
-        sendResponse(res, 'Map not found', 404, 'plain');
-        currentMap = null;
-        return;
-    }
-
-    // Reads the new map json
-    currentMap = require(__dirname + '/maps/' + currentMap + '.json');
-    sendResponse(res, {
-        'text': 'New map selected.'
-    });
-});
-
-/**
  * initilize the "game".
  */
 router.get('/maze/', (req, res) => {
@@ -85,6 +67,24 @@ router.get('/maze/', (req, res) => {
     lastRoom = currentMap[0];
 
     sendResponse(res, lastRoom);
+});
+
+/**
+ * Chooses the map
+ */
+router.get('/map/:map', (req, res) => {
+    currentMap = req.params.map;
+    if (maps.indexOf(currentMap + '.json') === -1)  {
+        sendResponse(res, 'Map not found', 404, 'plain');
+        currentMap = null;
+        return;
+    }
+
+    // Reads the new map json
+    currentMap = require(__dirname + '/maps/' + currentMap + '.json');
+    sendResponse(res, {
+        'text': 'New map selected.'
+    });
 });
 
 /**
