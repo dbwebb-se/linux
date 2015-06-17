@@ -6,7 +6,7 @@ import Router from '../Router/router';
 var http = require('http');
 var router = new Router();
 
-function hello(req, res) {
+/*function hello(req, res) {
     res.end('Hello');
 }
 
@@ -35,6 +35,25 @@ router.get('/blabla', (req, res) => {
 router.add('POST', '/hello', function (req, res) {
     res.end('POST REQUEST');
 });
+*/
+router.get('/animal', (req, res) => {
+
+    res.end('Animal - NO PARAMS');
+});
+
+router.get('/animal/:id', (req, res) => {
+    //console.log('PARAMS: ', req.params);
+    var id = req.params.id;
+    res.end('Animal: ' + id + ' - 1 param');
+});
+
+router.get('/animal/:id/:name', (req, res) => {
+    //console.log('PARAMS', req.params);
+    var id = req.params.id;
+    var name = req.params.name;
+    res.end('Animal: ' + id + ' ' + name + " - 2 params");
+});
+
 
 
 // Create the server using the router.
