@@ -57,7 +57,6 @@ router.get('/', (req, res) => {
  */
 router.get('/:map', (req, res) => {
     currentMap = req.params.map;
-
     if (maps.indexOf(currentMap + '.json') === -1)  {
         sendResponse(res, 'Map not found', 404, 'plain');
         currentMap = null;
@@ -66,7 +65,9 @@ router.get('/:map', (req, res) => {
 
     // Reads the new map json
     currentMap = require(__dirname + '/maps/' + currentMap + '.json');
-    sendResponse(res, {'text': 'New map selected.'});
+    sendResponse(res, {
+        'text': 'New map selected.'
+    });
 });
 
 /**
