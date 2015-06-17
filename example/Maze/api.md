@@ -63,7 +63,9 @@ Walks into next room from given roomId and gives the next rooms info.
 {
     "desc":"room 1",
     "dirs": {
-        "west":0,"east":2,"south":4
+        "west":0,
+        "east":2,
+        "south":4
     }
 }
 ```
