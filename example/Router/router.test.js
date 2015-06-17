@@ -222,4 +222,25 @@ describe('Router', () => {
             .expect(200, 'animal1', done);
     });
 
+    it('Query parameters empty', (done) => {
+       router.get('/animal', (req, res) => {
+
+            if (req.query instanceof Object && Object.keys(req.query).length === 0) {
+                res.end('empty')
+            } else {
+                res.end('not');
+            }
+        });
+
+        var req = request(setupServer());
+        req
+            .get('/animal') // Without a query param -> empty
+            .expect(200, 'empty')
+            .end(() => {
+                req
+                    .get('/animal?q=5') // WITH query params -> not
+                    .expect(200, 'not', done);
+            });
+    })
+
 });
