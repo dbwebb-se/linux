@@ -28,6 +28,42 @@ describe('Router', () => {
         });
     }
 
+    it('Using add method with get, post, put, delete', (done) => {
+        router.add('GET', '/', (req, res) => {
+            res.end('get');
+        });
+        router.add('POST', '/', (req, res) => {
+            res.end('post');
+        });
+        router.add('PUT', '/', (req, res) => {
+            res.end('put');
+        });
+        router.add('DELETE', '/', (req, res) => {
+            res.end('delete');
+        });
+
+        var req = request(setupServer());
+
+        req
+            .get('/')
+            .expect(200, 'get')
+            .end(() => {
+                req
+                    .post('/')
+                    .expect(200, 'post')
+                    .end(() => {
+                        req
+                            .put('/')
+                            .expect(200, 'put')
+                            .end(() => {
+                                req
+                                    .delete('/')
+                                    .expect(200, 'delete', done);
+                            })
+                    })
+            });
+    });
+
     it('GET /hello', (done) => {
         router.get('/hello', (req, res) => {
             res.end('hello');
@@ -48,7 +84,7 @@ describe('Router', () => {
             .expect(200, 'Home page', done);
     });
 
-    it ('404 not found GET /404', (done) => {
+    it ('404 not found', (done) => {
         request(setupServer())
             .get('/404')
             .expect(404, done);
@@ -86,7 +122,6 @@ describe('Router', () => {
     it('GET with params', (done) => {
         router.get('/animal/:name', (req, res) => {
             var name = req.params.name;
-            console.log(req.params);
             res.end('Animal ' + name);
         });
 
@@ -167,7 +202,6 @@ describe('Router', () => {
                     .get('/animal/')
                     .expect(200, 'animal', done);
             });
-
     });
 
     it('Should not route to non-existent routes', (done) => {
@@ -175,5 +209,37 @@ describe('Router', () => {
             .get('/i-do-not-exist')
             .expect(404, done);
     });
+
+    it('Should be able to use request params', (done) => {
+        router.get('/animal', (req, res) => {
+            var query = req.query.id;
+            res.end('animal' + query);
+        });
+
+        request(setupServer())
+            .get('/animal?id=1')
+            .expect(200, 'animal1', done);
+    });
+
+    it('Query parameters empty', (done) => {
+       router.get('/animal', (req, res) => {
+
+            if (req.query instanceof Object && Object.keys(req.query).length === 0) {
+                res.end('empty')
+            } else {
+                res.end('not');
+            }
+        });
+
+        var req = request(setupServer());
+        req
+            .get('/animal') // Without a query param -> empty
+            .expect(200, 'empty')
+            .end(() => {
+                req
+                    .get('/animal?q=5') // WITH query params -> not
+                    .expect(200, 'not', done);
+            });
+    })
 
 });

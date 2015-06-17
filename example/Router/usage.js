@@ -36,19 +36,41 @@ router.add('POST', '/hello', function (req, res) {
     res.end('POST REQUEST');
 });
 */
-router.get('/animal', (req, res) => {
 
-    res.end('Animal - NO PARAMS');
+/*router.get('/animal', (req, res) => {
+    res.end('Animal');
+});
+*/
+
+router.get('/animal/', (req, res) => {
+    /*console.log(req);
+    console.log('-----------------');
+    console.log(res);*/
+    res.end('Animal with a slash');
 });
 
-router.get('/animal/:id', (req, res) => {
+router.get('/map/:map', (req, res) => {
+    console.log('PARAMS', req.params);
+    console.log('/map/:map')
+    res.end('map:map');
+})
+router.get('/maze/:map', (req, res) => {
+    console.log('PARAMS', req.params);
+    console.log('/maze/:map');
+    res.end('MAZE:map');
+});
+
+
+router.get('/animal/id', (req, res) => {
     //console.log('PARAMS: ', req.params);
     var id = req.params.id;
+    console.log('/animal/:id');
     res.end('Animal: ' + id + ' - 1 param');
 });
 
+
 router.get('/animal/:id/:name', (req, res) => {
-    //console.log('PARAMS', req.params);
+    console.log('PARAMS', req.params);
     var id = req.params.id;
     var name = req.params.name;
     res.end('Animal: ' + id + ' ' + name + " - 2 params");

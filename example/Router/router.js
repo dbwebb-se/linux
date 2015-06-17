@@ -23,7 +23,7 @@ var url = require('url');
 
 class Router {
 
-    constructor() {
+    constructor(req, res) {
         this.routes = [];
         this.methods = {
             'GET': 'get',
@@ -40,6 +40,11 @@ class Router {
      * @param Function  handler The function for the route.
      */
     add(method, path, handler) {
+
+        if (typeof handler !== 'function') {
+            throw 'No handler function was passed';
+        }
+
         // Push to the routes array.
         this.routes.push({
             method: method,
@@ -75,13 +80,13 @@ class Router {
     route(req, res) {
 
         req.params = {};
+        // Set the request query to the request object.
+        req.query = url.parse(req.url, true).query;
+
         // Get the path and the method.
-        var path = url.parse(req.url).pathname;
+        var path = trimSlashes(url.parse(req.url).pathname);
         var method = req.method;
-        // Remove trailing slashes from the path.
-        if (path.length > 1 && path.indexOf('/', path.length - '/'.length) !== -1) {
-            path = path.substr(0, path.length - 1);
-        }
+
         // Split the path to get the parameters.
         var urlParams = path.split('/');
 
@@ -89,9 +94,7 @@ class Router {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
             // remove trailing slash from the current path, if they exist.
-            if (r.path.length > 1 && r.path.indexOf('/', r.path.length - '/'.length) !== -1) {
-                r.path = r.path.substr(0, r.path.length - 1);
-            }
+            r.path = trimSlashes(r.path);
 
             // Split the current params.
             var params = r.path.split('/');
@@ -109,7 +112,7 @@ class Router {
             var found = [];
 
             // Get all "special" params. :
-            for (var i = 0; i < params.length; i ++) {
+            for (var i = 0; i < params.length; i++) {
                 if (params[i].includes(':')) {
                     found.push(urlParams[i]);
                 }
@@ -118,19 +121,19 @@ class Router {
             // if we have special params.
             if (found.length > 0) {
                 // Add the params to req.params.
-                currentParams.forEach((el, i) => {
-                    req.params[el.substr(1, el.length)] = found[i];
+                currentParams.forEach((el, index) => {
+                    req.params[el.substr(1, el.length)] = found[index];
                 });
             }
-            var counter = 0;
 
-            for (var i = 0; i < urlParams.length; i++) {
-                //console.log('I: '+i, urlParams[i] === params[i], urlParams[i], params[i]);
-                if (urlParams[i] === params[i] || params[i].includes(':')) {
+            var counter = 0;
+            for (var x = 0; x < urlParams.length; x++) {
+                // Do the actual check if the route matches.
+                if (urlParams[x] === params[x] || params[x].includes(':')) {
                     counter++;
                 }
             }
-
+            // If the counters match and the method is the same -> valid route.
             return counter === urlParams.length && method === r.method;
         });
 
@@ -162,6 +165,15 @@ class Router {
         return this.routes.length;
     }
 
+}
+
+function trimSlashes(str) {
+
+    if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
+        str = str.substr(0, str.length - 1);
+    }
+
+    return str;
 }
 
 export default Router;
