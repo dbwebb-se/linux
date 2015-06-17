@@ -164,7 +164,7 @@ router.get('/maze/:roomId/:direction', (req, res) => {
     var current = currentMap[id];
 
     // Check if its not a valid path choosen
-    if (current.dirs[dir] === undefined) {
+    if (current.directions[dir] === undefined) {
         current.error = 'Direction not allowed';
         sendResponse(res, current, 404);
         return;
@@ -172,7 +172,7 @@ router.get('/maze/:roomId/:direction', (req, res) => {
 
     var temp = lastRoom;
     // Gets the room next room
-    lastRoom = currentMap[current.dirs[dir]];
+    lastRoom = currentMap[current.directions[dir]];
 
     if (lastRoom === undefined) {
         lastRoom = temp;

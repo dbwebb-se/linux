@@ -11,10 +11,17 @@ describe('Maze', () => {
     var app = maze;
 
     it('init a new game', (done) => {
-         request(app)
-            .get('/')
-            .expect(200, '["maze-of-doom.json"]', done);
+        request(app)
+        .get('/')
+        .expect(200, done);
     });
+
+    it('Return a list of avaliable map', (done) => {
+         request(app)
+            .get('/map')
+            .expect(200, done);
+    });
+
 
     it('Load map and it exist', (done) => {
         request(app)
@@ -26,6 +33,31 @@ describe('Maze', () => {
         request(app)
             .get('/map/i-do-not-exist')
             .expect(404, 'Map not found', done);
+    });
+
+    it('Map should not be selected', (done) => {
+        var req = request(app);
+        req
+            .get('/')
+            .expect(200)
+            .end(() => {
+                req
+                    .get('/maze')
+                    .expect(500, '{"text":"Map not selected.","hint":"Call /map/:map first"}', done)
+            });
+    });
+
+    it('Content should not be loaded', (done) => {
+        var req = request(app);
+        req
+            .get('/')
+            .expect(200)
+            .end(() => {
+                req
+                    .get('/maze/1')
+                    .expect(404, done);
+            });
+
     });
 
     it('Enter maze', (done) => {
@@ -45,11 +77,30 @@ describe('Maze', () => {
             });
     });
 
-    function bull(re, id, whereTo) {
-        re.get('/maze')
+    it('Check normal path and it should be ok', (done) => {
+        var req = request(app);
+        req.get('/')
             .expect(200)
-            .end()
-    }
+            .end(() => {
+                req.get('/map/')
+                   .end(() => {
+                       req.get('/map/maze-of-doom.json')
+                          .expect(200)
+                          .end(() => {
+                              req.get('/map/maze-of-doom.json')
+                                  .expect(200)
+                                  .end(() => {
+                                      req.get('/maze/')
+                                         .end(200)
+                                         .end(() => {
+                                             req.get('/maze/0/east')
+                                                .expect(200, done);
+                                         });
+                                  });
+                          });
+                   });
+            });
+    });
 
     it('Test perfect round', (done) => {
         var perfectPath = [
@@ -110,7 +161,7 @@ describe('Maze', () => {
                                                                 .end(() => {
                                                                     req
                                                                         .get('/maze/' + perfectPath[6].id + '/' + perfectPath[6].dir)
-                                                                        .expect(200, '{"desc":"You found the exit","dirs":{}}', done); // END 6
+                                                                        .expect(200, '{"roomid":9,"description":"You found the exit","directions":{}}', done); // END 6
                                                                 }); // END 5
                                                         }); // END 4
                                                 }); // END 3
