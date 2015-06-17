@@ -169,4 +169,11 @@ describe('Router', () => {
             });
 
     });
+
+    it('Should not route to non-existent routes', (done) => {
+        request(setupServer())
+            .get('/i-do-not-exist')
+            .expect(404, done);
+    });
+
 });
