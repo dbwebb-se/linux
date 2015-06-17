@@ -31,13 +31,14 @@ class Router {
             'PUT': 'put',
             'DELETE': 'delete'
         };
-
-        this.validRegex = {
-            ':id': /[0-9]/,
-            ':name': /[a-zA-Z]+/,
-        };
     }
 
+    /**
+     * Add a route
+     * @param String    method  The method e.g GET/POST/PUT/DELETE
+     * @param String    path    The path to the route
+     * @param Function  handler The function for the route.
+     */
     add(method, path, handler) {
         // Push to the routes array.
         this.routes.push({
@@ -47,8 +48,11 @@ class Router {
         });
     }
 
+
     /**
      * Shorthand GET route
+     * @param  String   path    The path to the route
+     * @param  Function handler The function for the route.
      */
     get(path, handler) {
         this.add('GET', path, handler);
@@ -56,6 +60,8 @@ class Router {
 
     /**
      * Shorthand POST route
+     * @param  String   path    The path to the route
+     * @param  Function handler The function for the route.
      */
     post(path, handler) {
         this.add('POST', path, handler);
@@ -63,9 +69,8 @@ class Router {
 
     /**
      * Route
-     * @param  {[type]} req [description]
-     * @param  {[type]} res [description]
-     * @return {[type]}     [description]
+     * @param  Object req HTTP request object
+     * @param  {[type]} res HTTP response object
      */
     route(req, res) {
 
@@ -77,17 +82,18 @@ class Router {
         if (path.length > 1 && path.indexOf('/', path.length - '/'.length) !== -1) {
             path = path.substr(0, path.length - 1);
         }
+        // Split the path to get the parameters.
         var urlParams = path.split('/');
 
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
-            // remove trailing slash if they exist.
+            // remove trailing slash from the current path, if they exist.
             if (r.path.length > 1 && r.path.indexOf('/', r.path.length - '/'.length) !== -1) {
                 r.path = r.path.substr(0, r.path.length - 1);
             }
 
-            // Split the params.
+            // Split the current params.
             var params = r.path.split('/');
 
             // If the parameters lenght is not the same, it's not the route we are looking for.
@@ -148,7 +154,10 @@ class Router {
         });
 
     }
-
+    /**
+     * Returns the number of routes added.
+     * @return Integer
+     */
     nrOfRoutes() {
         return this.routes.length;
     }
