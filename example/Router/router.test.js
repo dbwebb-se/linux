@@ -84,7 +84,7 @@ describe('Router', () => {
             .expect(200, 'Home page', done);
     });
 
-    it ('404 not found GET /404', (done) => {
+    it ('404 not found', (done) => {
         request(setupServer())
             .get('/404')
             .expect(404, done);
@@ -122,7 +122,6 @@ describe('Router', () => {
     it('GET with params', (done) => {
         router.get('/animal/:name', (req, res) => {
             var name = req.params.name;
-            console.log(req.params);
             res.end('Animal ' + name);
         });
 
