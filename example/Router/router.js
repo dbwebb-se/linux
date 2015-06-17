@@ -73,19 +73,21 @@ class Router {
         // Get the path and the method.
         var path = url.parse(req.url).pathname;
         var method = req.method;
-        console.log('THE FUCKING PATH WE WANT: ', path);
-        // If path end with /, remove it
+        // Remove trailing slashes from the path.
         if (path.length > 1 && path.indexOf('/', path.length - '/'.length) !== -1) {
             path = path.substr(0, path.length - 1);
         }
-
         var urlParams = path.split('/');
-        console.log('URL params:', urlParams, urlParams.length);
 
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
+            // remove trailing slash if they exist.
+            if (r.path.length > 1 && r.path.indexOf('/', r.path.length - '/'.length) !== -1) {
+                r.path = r.path.substr(0, r.path.length - 1);
+            }
 
+            // Split the params.
             var params = r.path.split('/');
 
             // If the parameters lenght is not the same, it's not the route we are looking for.
@@ -133,9 +135,10 @@ class Router {
             res.end('404 Not Found');
             return;
         }
-        console.log('--------------');
+
+        /*console.log('--------------');
         console.log('Routes to process: ', routesToProcess);
-        console.log('--------------');
+        console.log('--------------');*/
 
 
         // Handle the request.
