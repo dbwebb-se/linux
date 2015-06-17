@@ -1,47 +1,30 @@
 # Maze API reference
 
 
-
-Quick reference
----------------
-
-| Method | Path | Description | More |
-|-|-|-|
-| GET | / | Return all available maps and resets the maze | [Link](#return-all-available-maps-and-resets-the-maze) |
-| GET | /map/:map | Loads the map to the maze | [Link](#loads-the-map-to-the-maze) |
-| GET | /maze/ | Walks in to the first room  | [Link](#walks-in-to-the-first-room) |
-| GET | /maze/:roomId | Gets info about room | [Link](#gets-info-about-room) |
-| GET | /maze/:roomId/:direction | Walks to an other room | [Link](#walks-to-an-other-room) |
-
-
-
-[](#return-all-available-maps-and-resets-the-maze)
 ## GET /
-Returns all available maps and resets the maze internally.
+Returns a list of all available maps and resets the maze internally.
 
-Response
+*JSON response.*
 ```json
 [
     "maze-of-doom.json"
 ]
 ```
 
-[](#loads-the-map-to-the-maze)
 ## GET /map/:map
 Loads the map to the maze
 
-Response
+*JSON response*
 ```json
 {
     "text":"New map selected."
 }
 ```
 
-[](#walks-in-to-the-first-room)
 ## GET /:maze
 Gets content of first room. (Walks in to the first room)
 
-Response
+*JSON response.*
 ```json
 {
     "desc": "You are in a dark room, you feel 2 doors in the dark dark room",
@@ -52,11 +35,10 @@ Response
 }
 ```
 
-[](#gets-info-about-room)
-## GEt /maze/:roomId
+## GET /maze/:roomId
 Gets info about the room
 
-Response
+*JSON response*
 ```json
 {
     "desc": "Room 5",
@@ -67,12 +49,11 @@ Response
 }
 ```
 
-[](#walks-to-an-other-room)
 ## GET /maze/:roomId/:direction
 Walks into next room from given roomId and gives the next rooms info.
 
 
-Response
+*JSON response.*
 ```json
 {
     "desc":"room 1",
