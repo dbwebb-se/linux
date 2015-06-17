@@ -6,7 +6,6 @@ var http = require('http');
 var assert = require('assert');
 var request = require('supertest');
 
-console.log(maze);
 describe('Maze', () => {
 
     var app = maze;
@@ -19,13 +18,13 @@ describe('Maze', () => {
 
     it('Load map and it exist', (done) => {
         request(app)
-            .get('/maze-of-doom')
+            .get('/map/maze-of-doom')
             .expect(200, '{"text":"New map selected."}', done);
     });
 
     it('Load map and it DON\'T exist', (done) => {
         request(app)
-            .get('/i-do-not-exist')
+            .get('/map/i-do-not-exist')
             .expect(404, 'Map not found', done);
     });
 
@@ -36,7 +35,7 @@ describe('Maze', () => {
             .expect(200)
             .end(() => {
                 req
-                    .get('/maze-of-doom')
+                    .get('/map/maze-of-doom')
                     .expect(200, '{"text":"New map selected."}')
                     .end(() => {
                         req
