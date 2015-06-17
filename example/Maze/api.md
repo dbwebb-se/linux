@@ -14,6 +14,8 @@ Returns a list of all available maps and resets the maze internally.
 ## GET /map/:map
 Loads the map to the maze
 
+*Example* `/map/maze-of-doom`
+
 *JSON response*
 ```json
 {
@@ -21,7 +23,7 @@ Loads the map to the maze
 }
 ```
 
-## GET /:maze
+## GET /maze
 Gets content of first room. (Walks in to the first room)
 
 *JSON response.*
@@ -38,6 +40,8 @@ Gets content of first room. (Walks in to the first room)
 ## GET /maze/:roomId
 Gets info about the room
 
+*Example* `/maze/0`
+
 *JSON response*
 ```json
 {
@@ -52,6 +56,7 @@ Gets info about the room
 ## GET /maze/:roomId/:direction
 Walks into next room from given roomId and gives the next rooms info.
 
+*Example* `/maze/0/north`
 
 *JSON response.*
 ```json
