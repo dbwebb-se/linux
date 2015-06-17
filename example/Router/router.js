@@ -75,6 +75,9 @@ class Router {
     route(req, res) {
 
         req.params = {};
+        // Set the request query to the request object.
+        req.query = url.parse(req.url, true).query;
+
         // Get the path and the method.
         var path = url.parse(req.url).pathname;
         var method = req.method;
