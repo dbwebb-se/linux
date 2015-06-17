@@ -39,7 +39,7 @@ function sendResponse(resObj, content, code, typ) {
 }
 
 /**
- * Get all maps avalible
+ * Get all maps available
  */
 router.get('/', (req, res) => {
     maps = fs.readdirSync(__dirname + '/maps');
@@ -89,9 +89,9 @@ router.get('/maze/', (req, res) => {
 /**
  * Goes to the next room given the params
  */
-router.get('/maze/:id/:str', (req, res) => {
-    var id = req.params.id;
-    var dir = req.params.str;
+router.get('/maze/:roomId/:direction', (req, res) => {
+    var id = req.params.roomId;
+    var dir = req.params.direction;
     if (currentMap === null) {
         sendResponse(res, 'Content not loaded', 404, 'plain');
         return;
@@ -122,12 +122,12 @@ router.get('/maze/:id/:str', (req, res) => {
 /**
  * Gets information about the room id
  */
-router.get('/maze/:id', (req, res) => {
+router.get('/maze/:roomId', (req, res) => {
     if (currentMap === null) {
         sendResponse(res, 'Content not loaded', 404, 'plain');
         return;
     }
-    var id = req.params.id;
+    var id = req.params.roomId;
 
     var current = currentMap[id];
 
