@@ -40,7 +40,7 @@ Gets content of first room. (Walks in to the first room)
 ## GET /maze/:roomId
 Gets info about the room
 
-*Example* `/maze/0`
+*Example* `/maze/5`
 
 *JSON response*
 ```json
