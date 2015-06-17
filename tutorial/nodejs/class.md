@@ -1,4 +1,6 @@
-#A class in ES6.
+Class in ecmascript 6
+=============================
+Example
 
 
 ```javascript
@@ -6,7 +8,7 @@
 class Person {
     constructor(name, email) {
         this.name = name;
-        this.email = email;       
+        this.email = email;
     }
 
     toString() {
@@ -14,4 +16,24 @@ class Person {
     }
 }
 
+
+var p = new Person('John', 'doe@doe.se');
+console.log(p.toString());
+
 ```
+
+
+
+
+
+Reference and read more
+------------------------------
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+
+
+Revision history
+------------------------------
+
+2015-06-17 (Olund) First try.
