@@ -124,12 +124,15 @@ describe('Router', () => {
     });
 
     it('Many get request with params', (done) => {
-
         router.get('/map/:map', (req, res) => {
             res.end('map:map');
         })
         router.get('/maze/:map', (req, res) => {
             res.end('MAZE:map');
+        });
+
+        router.get('/maze', (req, res) => {
+            res.end('maze');
         });
 
         var req = request(setupServer());
@@ -140,7 +143,30 @@ describe('Router', () => {
             .end(function () {
                 req
                     .get('/maze/1')
-                    .expect(200, 'MAZE:map', done);
+                    .expect(200, 'MAZE:map')
+                    .end(function () {
+                        req
+                            .get('/maze')
+                            .expect(200, 'maze', done);
+                    })
             })
+    });
+
+    it('Should remove trailing slashes from path', (done) => {
+        router.get('/animal/', (req, res) => {
+            res.end('animal');
+        });
+
+        var req = request(setupServer());
+
+        req
+            .get('/animal')
+            .expect(200, 'animal')
+            .end(() => {
+                req
+                    .get('/animal/')
+                    .expect(200, 'animal', done);
+            });
+
     });
 });
