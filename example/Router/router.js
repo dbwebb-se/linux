@@ -73,56 +73,57 @@ class Router {
         // Get the path and the method.
         var path = url.parse(req.url).pathname;
         var method = req.method;
-
+        console.log('THE FUCKING PATH WE WANT: ', path);
         // If path end with /, remove it
         if (path.length > 1 && path.indexOf('/', path.length - '/'.length) !== -1) {
             path = path.substr(0, path.length - 1);
         }
 
         var urlParams = path.split('/');
+        console.log('URL params:', urlParams, urlParams.length);
 
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
         var routesToProcess = this.routes.filter(function (r) {
 
             var params = r.path.split('/');
+
+            // If the parameters lenght is not the same, it's not the route we are looking for.
+            if (params.length !== urlParams.length) {
+                return false;
+            }
+
             // Get params.
             var currentParams = params.filter(function (p) {
                 return p.includes(':');
             });
 
-            /*
-                /animal/:name
-                /animal/dog
+            var found = [];
 
-                /animal/:name/:id
-                /animal/dog/1
-            */
-
-            if (params.length !== urlParams.length) {
-                return false;
+            // Get all "special" params. :
+            for (var i = 0; i < params.length; i ++) {
+                if (params[i].includes(':')) {
+                    found.push(urlParams[i]);
+                }
             }
 
-            if (currentParams.length > 0) {
-                var found = [];
+            // if we have special params.
+            if (found.length > 0) {
+                // Add the params to req.params.
+                currentParams.forEach((el, i) => {
+                    req.params[el.substr(1, el.length)] = found[i];
+                });
+            }
+            var counter = 0;
 
-                for (var i = 0; i < urlParams.length; i ++) {
-                    if (params[i].includes(':')) {
-                        found.push(urlParams[i]);
-                    }
+            for (var i = 0; i < urlParams.length; i++) {
+                //console.log('I: '+i, urlParams[i] === params[i], urlParams[i], params[i]);
+                if (urlParams[i] === params[i] || params[i].includes(':')) {
+                    counter++;
                 }
+            }
 
-                if (found.length > 0) {
-                    currentParams.forEach((el, i) => {
-                        req.params[el.substr(1, el.length)] = found[i];
-                    });
-                    return true;
-                }
-                return false;
-             }
-
-            // Without regex.
-            return method === r.method && path === r.path;
+            return counter === urlParams.length && method === r.method;
         });
 
         // If we have no routes, write 404.
@@ -142,6 +143,7 @@ class Router {
             // Calling the function.
             route.handler(req, res);
         });
+
     }
 
     nrOfRoutes() {

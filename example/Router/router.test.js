@@ -2,7 +2,7 @@
  * Router tests
  */
 
-import * as server from '../Server-Uptime/server-uptime';
+import Router from '../Router/router';
 var http = require('http');
 
 // Dependencies needed for tests.
@@ -121,5 +121,26 @@ describe('Router', () => {
         request(setupServer())
             .get('/a/b/c/d')
             .expect(200, 'bcd', done);
+    });
+
+    it('Many get request with params', (done) => {
+
+        router.get('/map/:map', (req, res) => {
+            res.end('map:map');
+        })
+        router.get('/maze/:map', (req, res) => {
+            res.end('MAZE:map');
+        });
+
+        var req = request(setupServer());
+
+        req
+            .get('/map/1')
+            .expect(200, 'map:map')
+            .end(function () {
+                req
+                    .get('/maze/1')
+                    .expect(200, 'MAZE:map', done);
+            })
     });
 });
