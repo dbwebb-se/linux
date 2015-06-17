@@ -2,7 +2,22 @@
 
 
 ## GET /
-Returns a list of all available maps and resets the maze internally.
+Initialize the maze and generates a new gameid
+
+Example `/`
+
+*JSON response.*
+```
+{
+    "text":"New game initialized",
+    "gameid":"42580"
+}
+```
+
+## GET /map
+Returns a list of all available maps
+
+*Example* `/map`
 
 *JSON response.*
 ```json
@@ -12,9 +27,9 @@ Returns a list of all available maps and resets the maze internally.
 ```
 
 ## GET /map/:map
-Loads the map to the maze
+Loads the map as the current maze
 
-*Example* `/map/maze-of-doom`
+*Example* `/map/maze-of-doom.json`
 
 *JSON response*
 ```json
@@ -26,11 +41,14 @@ Loads the map to the maze
 ## GET /maze
 Gets content of first room. (Walks in to the first room)
 
+*Example* `/maze`
+
 *JSON response.*
 ```json
 {
-    "desc": "You are in a dark room, you feel 2 doors in the dark dark room",
-    "dirs": {
+    "roomid": 0,
+    "description": "You are in a dark room, you feel 2 doors in the dark dark room",
+    "directions": {
         "east":1,
         "south":3
     }
@@ -45,8 +63,9 @@ Gets info about the room
 *JSON response*
 ```json
 {
-    "desc": "Room 5",
-    "dirs": {
+    "roomid": 5,
+    "description": "Room 5",
+    "directions": {
         "north": 2,
         "south": 8
     }
@@ -61,8 +80,9 @@ Walks into next room from given roomId and gives the next rooms info.
 *JSON response.*
 ```json
 {
-    "desc":"room 1",
-    "dirs": {
+    "roomid": 1,
+    "description":"room 1",
+    "directions": {
         "west":0,
         "east":2,
         "south":4

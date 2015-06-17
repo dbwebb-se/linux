@@ -1,87 +1,99 @@
 {
     "0": {
-        "desc": "You are in a dark room, you feel 2 doors in the dark dark room",
-        "dirs": {
-            "east":1,
-            "south":3
+        "roomid": 0,
+        "description": "You are in a dark room, you feel 2 doors in the dark dark room",
+        "directions": {
+            "east": 1,
+            "south": 3
         }
     },
     "1": {
-        "desc": "room 1",
-        "dirs": {
-            "west":0,
-            "east":2,
+        "roomid": 1,
+        "description": "Room 1",
+        "directions": {
+            "west": 0,
+            "east": 2,
             "south": 4
         }
     },
     "2": {
-	    "desc": "Room 2",
-	    "dirs": {
-            "west":1,
+        "roomid": 2,
+	    "description": "Room 2",
+	    "directions": {
+            "west": 1,
             "south":  5
         }
 	},
     "3": {
-        "desc": "Room 3",
-        "dirs": {
-            "north":0,
-            "east":4,
-            "south":6
+        "roomid": 3,
+        "description": "Room 3",
+        "directions": {
+            "north": 0,
+            "east": 4,
+            "south": 6
         }
     },
     "4": {
-        "desc": "Room 4",
-        "dirs": {
-            "north":1,
-            "west":3
+        "roomid": 4,
+        "description": "Room 4",
+        "directions": {
+            "north": 1,
+            "west": 3
         }
     },
     "5": {
-        "desc": "Room 5",
-        "dirs": {
+        "roomid": 5,
+        "description": "Room 5",
+        "directions": {
             "north": 2,
             "south": 8
         }
     },
     "6": {
-        "desc": "Room 6",
-        "dirs": {
+        "roomid": 6,
+        "description": "Room 6",
+        "directions": {
             "north": 3,
             "east": 7
         }
     },
     "7": {
-        "desc": "Room 7",
-        "dirs": {
+        "roomid": 7,
+        "description": "Room 7",
+        "directions": {
             "west": 6,
             "east": 8
         }
     },
     "8": {
-        "desc": "Room 8",
-        "dirs":{
-            "north":5,
+        "roomid": 8,
+        "description": "Room 8",
+        "directions":{
             "west": 7,
+            "north": 5,
             "south": 11
         }
     },
     "9": {
-        "desc": "You found the exit",
-        "dirs": {
+        "roomid": 9,
+        "description": "You found the exit",
+        "directions": {
         }
     },
     "10": {
-        "desc": "Room 10",
-        "dirs": {
-            "west":9,
-            "east":11
+        "roomid": 10,
+        "description": "Room 10",
+        "directions": {
+            "west": 9,
+            "east": 11
         }
     },
     "11": {
-        "desc": "Room 11",
-        "dirs": {
+        "roomid": 11,
+        "description": "Room 11",
+        "directions": {
             "west": 10,
-            "north":8 
+            "north": 8
         }
     }
 }
