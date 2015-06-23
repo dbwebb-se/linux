@@ -2,15 +2,13 @@ Crontab
 ==============================
 Examples in Bash
 
-1. `crontab -e` lets you edit the crontab file
-2. At the bottom, add a line like this:  
-`1 2 3 4 5 /path/to/command arg1 arg2  
+* `crontab -e` lets you edit the crontab file
+* At the bottom, add a line like this:  
+`1 2 3 4 5 /path/to/command arg1 arg2`  
 
 OR  
 
-1 2 3 4 5 /root/backup.sh  `
-
-
+`1 2 3 4 5 /root/backup.sh`
 
 1: Minute (0-59)  
 2: Hours (0-23)  
