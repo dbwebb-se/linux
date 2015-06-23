@@ -4,6 +4,7 @@ Examples in Bash
 
 * `crontab -e` lets you edit the crontab file
 * At the bottom, add a line like this:  
+
 `1 2 3 4 5 /path/to/command arg1 arg2`  
 
 OR  
@@ -17,7 +18,7 @@ OR
 5: Day of the week (0-7, 7 or 0 == Sunday)  
 /path/to/command - script or command to schedule  
 
-Ex: * * * * * /path/to/script.sh (only stars will execute every minute)
+Ex: `* * * * * /path/to/script.sh` (only stars will execute every minute)
 
 Example of script.sh
 ```sh
