@@ -8,20 +8,21 @@ Examples in Bash
 
 Explenation of \*:  
 
-\* * * * *  command to execute  
+\*  *  *  *  *  command to execute  
 │ │ │ │ │  
 │ │ │ │ │  
 │ │ │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)  
 │ │ │ └────────── month (1 - 12)  
 │ │ └─────────────── day of month (1 - 31)  
-│ └──────────────────── hour (0 - 23)
+│ └──────────────────── hour (0 - 23)  
 └───────────────────────── min (0 - 59)  
 
+Example of script.sh
 ```sh
 
 #!/bin/bash
 
-
+echo "Testing" >> "cron_test.txt"  # appending "Testing" to the file "cron_test.txt" located in ~/
 
 
 ```
