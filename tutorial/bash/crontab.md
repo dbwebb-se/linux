@@ -4,18 +4,22 @@ Examples in Bash
 
 1. `crontab -e` lets you edit the crontab file
 2. At the bottom, add a line like this:  
-`* * * * * /path/to/script.sh`  
+`1 2 3 4 5 /path/to/command arg1 arg2  
 
-Explenation of \*:  
+OR  
 
-\*  *  *  *  *  command to execute  
-│ │ │ │ │  
-│ │ │ │ │  
-│ │ │ │ └───── day of week (0 - 6) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)  
-│ │ │ └────────── month (1 - 12)  
-│ │ └─────────────── day of month (1 - 31)  
-│ └──────────────────── hour (0 - 23)  
-└───────────────────────── min (0 - 59)  
+1 2 3 4 5 /root/backup.sh  `
+
+
+
+1: Minute (0-59)  
+2: Hours (0-23)  
+3: Day (0-31)  
+4: Month (0-12, 12 == December)  
+5: Day of the week (0-7, 7 or 0 == Sunday)  
+/path/to/command - script or command to schedule  
+
+Ex: * * * * * /path/to/script.sh (only stars will execute every minute)
 
 Example of script.sh
 ```sh
@@ -30,7 +34,7 @@ echo "Testing" >> "cron_test.txt"  # appending "Testing" to the file "cron_test.
 Reference and read more
 ------------------------------
 
-[crontab](#)
+[crontab](http://www.computerhope.com/unix/ucrontab.htm)
 
 
 
