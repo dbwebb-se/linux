@@ -59,8 +59,8 @@ describe('Router', () => {
                                 req
                                     .delete('/')
                                     .expect(200, 'delete', done);
-                            })
-                    })
+                            });
+                    });
             });
     });
 
@@ -161,7 +161,7 @@ describe('Router', () => {
     it('Many get request with params', (done) => {
         router.get('/map/:map', (req, res) => {
             res.end('map:map');
-        })
+        });
         router.get('/maze/:map', (req, res) => {
             res.end('MAZE:map');
         });
@@ -183,8 +183,8 @@ describe('Router', () => {
                         req
                             .get('/maze')
                             .expect(200, 'maze', done);
-                    })
-            })
+                    });
+            });
     });
 
     it('Should remove trailing slashes from path', (done) => {
@@ -225,7 +225,7 @@ describe('Router', () => {
        router.get('/animal', (req, res) => {
 
             if (req.query instanceof Object && Object.keys(req.query).length === 0) {
-                res.end('empty')
+                res.end('empty');
             } else {
                 res.end('not');
             }
@@ -240,6 +240,6 @@ describe('Router', () => {
                     .get('/animal?q=5') // WITH query params -> not
                     .expect(200, 'not', done);
             });
-    })
+    });
 
 });

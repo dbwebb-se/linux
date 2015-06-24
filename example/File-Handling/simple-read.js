@@ -1,14 +1,14 @@
 /**
- * 
+ *
  */
- 
+
 var fs = require('fs');
 
 // Reads the current directory
 var files = fs.readdirSync(__dirname);
 
 // Loops through the array of filename and prints them
-for (var i = 0; i < files.length; i++) {
+for (var i = 0; i < files.length; i += 1) {
 	console.log(files[i]);
 }
 
@@ -20,5 +20,3 @@ var fileContent = fs.readFileSync('./data.txt', 'utf8');
 
 // Print the content to console
 console.log(fileContent);
-
-

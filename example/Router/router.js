@@ -112,7 +112,7 @@ class Router {
             var found = [];
 
             // Get all "special" params. :
-            for (var i = 0; i < params.length; i++) {
+            for (var i = 0; i < params.length; i += 1) {
                 if (params[i].includes(':')) {
                     found.push(urlParams[i]);
                 }
@@ -127,10 +127,10 @@ class Router {
             }
 
             var counter = 0;
-            for (var x = 0; x < urlParams.length; x++) {
+            for (var x = 0; x < urlParams.length; x += 1)  {
                 // Do the actual check if the route matches.
                 if (urlParams[x] === params[x] || params[x].includes(':')) {
-                    counter++;
+                    counter += 1;
                 }
             }
             // If the counters match and the method is the same -> valid route.
@@ -151,7 +151,7 @@ class Router {
 
 
         // Handle the request.
-        routesToProcess.forEach(function (route, i) {
+        routesToProcess.forEach(function (route) {
             // Calling the function.
             route.handler(req, res);
         });

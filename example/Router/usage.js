@@ -51,15 +51,15 @@ router.get('/animal/', (req, res) => {
 
 router.get('/map/:map', (req, res) => {
     console.log('PARAMS', req.params);
-    console.log('/map/:map')
+    console.log('/map/:map');
     res.end('map:map');
-})
+});
+
 router.get('/maze/:map', (req, res) => {
     console.log('PARAMS', req.params);
     console.log('/maze/:map');
     res.end('MAZE:map');
 });
-
 
 router.get('/animal/id', (req, res) => {
     //console.log('PARAMS: ', req.params);
@@ -68,15 +68,12 @@ router.get('/animal/id', (req, res) => {
     res.end('Animal: ' + id + ' - 1 param');
 });
 
-
 router.get('/animal/:id/:name', (req, res) => {
     console.log('PARAMS', req.params);
     var id = req.params.id;
     var name = req.params.name;
     res.end('Animal: ' + id + ' ' + name + " - 2 params");
 });
-
-
 
 // Create the server using the router.
 http.createServer(function (req, res) {
