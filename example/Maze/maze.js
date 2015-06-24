@@ -10,9 +10,18 @@ var fs = require('fs');
 var http = require('http');
 
 var maps = [];
-var currentMap = null;
-var lastRoom = null;
-var gameid = null;
+var games = [];
+
+
+function checkGameId(res, gameid) {
+    if (games[gameid] === undefined) {
+        sendResponse(res, {
+            'text': 'A game with that gameid don\'t exist'
+        }, 500, 'json');
+        return;
+    }
+    return true;
+}
 
 /**
  * Wrapper function for sending a response
@@ -21,7 +30,7 @@ var gameid = null;
  * @param  Integer       code    HTTP status code
  * @param  String        type    Content-Type of the response
  */
-function sendResponse(resObj, content, code = 200, type) {
+function sendResponse(resObj, content, code = 200, type = 'json') {
     var contentType;
     switch (type) {
         default:
@@ -58,13 +67,17 @@ function sendResponse(resObj, content, code = 200, type) {
  * @param Object res The response
  */
 router.get('/', (req, res) => {
-    currentMap = null;
-    lastRoom = null;
-    gameid = ((String)(Math.random() * 100)).replace('.', '').substr(0, 5);
+    var gameid = ((String)(Math.random() * 100)).replace('.', '').substr(0, 5);
     var content = {
         text: 'New game initialized',
         gameid: gameid
     };
+
+    games[gameid] = {
+        currentMap: null,
+        lastRoom: null
+    };
+
     sendResponse(res, content);
 });
 
@@ -87,8 +100,9 @@ router.get('/map', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/map/:map', (req, res) => {
+router.get('/:gameid/map/:map', (req, res) => {
     var map = req.params.map;
+    var gameid = req.params.gameid;
 
     if (!map.includes('.json')) {
         map += '.json';
@@ -96,13 +110,17 @@ router.get('/map/:map', (req, res) => {
 
     if (maps.indexOf(map) === -1)  {
         sendResponse(res, 'Map not found', 404, 'plain');
-        currentMap = null;
+        games[gameid].currentMap = null;
         return;
     }
+
     var path = __dirname + '/maps/' + map;
+    // creates a unique game
+    games[gameid] = {};
 
     // Reads the new map json
-    currentMap = require(path);
+    games[gameid].currentMap = require(path);
+    //console.log(games[gameid]);
     sendResponse(res, {
         'text': 'New map selected.'
     });
@@ -113,8 +131,18 @@ router.get('/map/:map', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/maze', (req, res) => {
-    if (currentMap === null) {
+router.get('/:gameid/maze', (req, res) => {
+    var gameid = req.params.gameid;
+
+    if (games[gameid] === undefined) {
+        sendResponse(res, {
+            'text': 'A game with that gameid don\'t exist'
+        }, 500, 'json');
+        return;
+    }
+
+    if (games[gameid].currentMap === null) {
+
         sendResponse(res, {
             'text': 'Map not selected.',
             'hint': 'Call /map/:map first'
@@ -122,9 +150,9 @@ router.get('/maze', (req, res) => {
         return;
     }
 
-    lastRoom = currentMap[0];
+    games[gameid].lastRoom = games[gameid].currentMap[0];
 
-    sendResponse(res, lastRoom);
+    sendResponse(res, games[gameid].lastRoom);
 });
 
 /**
@@ -132,21 +160,30 @@ router.get('/maze', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/maze/:roomId', (req, res) => {
-    if (currentMap === null) {
+router.get('/:gameid/maze/:roomId', (req, res) => {
+    var gameid = req.params.gameid;
+
+    if (games[gameid] === undefined) {
+        sendResponse(res, {
+            'text': 'A game with that gameid don\'t exist'
+        }, 500, 'json');
+        return;
+    }
+
+    if (games[gameid].currentMap === null) {
         sendResponse(res, 'Content not loaded', 404, 'plain');
         return;
     }
     var id = req.params.roomId;
 
-    var current = currentMap[id];
+    games[gameid].current = games[gameid].currentMap[id];
 
-    if (current === undefined) {
+    if (games[gameid].current === undefined) {
         sendResponse(res, 'Room not found', 404, 'plain');
         return;
     }
 
-    sendResponse(res, current);
+    sendResponse(res, games[gameid].current);
 });
 
 /**
@@ -154,14 +191,24 @@ router.get('/maze/:roomId', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/maze/:roomId/:direction', (req, res) => {
+router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
+    var gameid = req.params.gameid;
     var id = req.params.roomId;
     var dir = req.params.direction;
-    if (currentMap === null) {
+
+    if (games[gameid] === undefined) {
+        sendResponse(res, {
+            'text': 'A game with that gameid don\'t exist'
+        }, 500, 'json');
+        return;
+    }
+
+    if (games[gameid].currentMap === null) {
         sendResponse(res, 'Content not loaded', 404, 'plain');
         return;
     }
-    var current = currentMap[id];
+
+    var current = games[gameid].currentMap[id];
 
     // Check if its not a valid path choosen
     if (current.directions[dir] === undefined) {
@@ -170,9 +217,9 @@ router.get('/maze/:roomId/:direction', (req, res) => {
         return;
     }
 
-    var temp = lastRoom;
+    var temp = games[gameid].lastRoom;
     // Gets the room next room
-    lastRoom = currentMap[current.directions[dir]];
+    var lastRoom = games[gameid].currentMap[current.directions[dir]];
 
     if (lastRoom === undefined) {
         lastRoom = temp;
@@ -181,6 +228,7 @@ router.get('/maze/:roomId/:direction', (req, res) => {
         return;
     }
 
+    games[gameid].lastRoom = lastRoom;
     sendResponse(res, lastRoom);
 });
 
