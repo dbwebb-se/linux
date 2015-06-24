@@ -1,14 +1,24 @@
 /**
  * Simple server tests....
  */
+process.env.NODE_ENV = 'test';
 
 // Import the server "module" as "server"
-import * as server from '../Simple-Json-Server/json-server';
+import server from '../Simple-Json-Server/json-server';
+
 
 // Dependencies needed for tests.
-var request = require('supertest')('http://localhost:1337/');
+var request = require('supertest')(server);
 
 describe('Simple Json Server', () => {
+    before(() => {
+        server.listen(1337);
+    });
+
+    after(() => {
+        server.close();
+    });
+
     it('should respond with application/json', (done) => {
         request
             .get('/')

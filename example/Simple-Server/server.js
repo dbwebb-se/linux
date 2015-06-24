@@ -11,8 +11,7 @@ var server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     // End the response with Hello World.
     res.end('Hello World');
-
-}).listen(1337); // Listen to the server on port 1337.
+});
 
 console.log('Server running at localhost:1337');
 

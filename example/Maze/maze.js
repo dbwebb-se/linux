@@ -223,6 +223,6 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
 
 var server = http.createServer((req, res) => {
         router.route(req, res);
-}).listen(1337);
+});
 
 export default server;
