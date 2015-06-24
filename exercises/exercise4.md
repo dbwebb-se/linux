@@ -29,5 +29,5 @@ Reference and read more
 
 Revision history
 ------------------------------
-2015-06-24 (foikila) Write first draft    
+2015-06-24 (foikila) Wrote first draft    
 2015-06-15 (lew) PA1 First try. 
