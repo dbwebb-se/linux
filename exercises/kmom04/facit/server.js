@@ -11,7 +11,7 @@ var PORT = 1337;
  * @param  Integer       code    HTTP status code
  * @param  String        type    Content-Type of the response
  */
-function sendResponse(resObj, content, code = 200, type) {
+function sendResponse(resObj, content, code = 200, type = 'json') {
     var contentType;
     switch (type) {
         default:
@@ -33,7 +33,7 @@ function sendResponse(resObj, content, code = 200, type) {
             break;
         case 'zip':
             contentType = {
-                'Content-Type': 'application/octet-stream'
+                'Content-Type': 'application/zip'
             };
             break;
     }
