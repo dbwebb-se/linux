@@ -7,16 +7,16 @@ Examples in Bash
 #!/bin/bash
 
 # Example of a simple curl. It will not save the result, just print it in the console.
-`curl dbwebb.se`
+curl dbwebb.se
 
 
 # Example where the output is saved to myFile.html
 
-`curl -o myFile.html dbwebb.se`
+curl -o myFile.html dbwebb.se
 
 # Example where the page's <title> is saved to myFile.txt
 
-`curl dbwebb.se | grep "<title>" > myFile.txt`
+curl dbwebb.se | grep "<title>" > myFile.txt
 
 # Example where the response is JSON
 
