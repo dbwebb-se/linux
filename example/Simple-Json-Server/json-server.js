@@ -19,7 +19,7 @@ var server = http.createServer((req, res) => {
     // End the respons with the new string
     res.end(jsonObj);
 
-}).listen(1337);
+});
 
 
 // Export the server.. (not needed)

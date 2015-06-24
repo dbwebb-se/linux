@@ -1,14 +1,23 @@
 /**
  * Simple server tests....
  */
+process.env.NODE_ENV = 'test';
 
 // Import the server "module" as "server"
-import * as server from '../Simple-Server/server';
+import server from '../Simple-Server/server';
 
 // Dependencies needed for tests.
-var request = require('supertest')('http://localhost:1337');
+var request = require('supertest')(server);
 
 describe('Simple Server', () => {
+
+    before(() => {
+        server.listen(1337);
+    });
+
+    after(() => {
+        server.close();
+    });
 
     it('should respond with plain text', (done) => {
         request

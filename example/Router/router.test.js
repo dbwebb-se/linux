@@ -1,15 +1,13 @@
 /**
  * Router tests
  */
-
+process.env.NODE_ENV = 'test';
 import Router from '../Router/router';
 var http = require('http');
 
 // Dependencies needed for tests.
 var assert = require('assert');
 var request = require('supertest');
-
-
 describe('Router', () => {
     var router;
 

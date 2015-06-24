@@ -19,7 +19,7 @@ var server = http.createServer(function (req, res) {
         res.end(stdout);
     });
 
-}).listen(1337);
+});
 
 
 export default server;

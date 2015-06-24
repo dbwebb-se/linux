@@ -1,10 +1,10 @@
+process.env.NODE_ENV = 'test';
 import maze from '../Maze/maze';
 
 // Dependencies needed for tests.
 var request = require('supertest');
 
 describe('Maze', () => {
-
     var app = maze;
 
     it('init a new game', (done) => {
