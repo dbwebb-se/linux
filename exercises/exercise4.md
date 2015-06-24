@@ -21,8 +21,8 @@ Write a bash-client that communicate with the server you wrote.
 Reference and read more
 ------------------------------
 
-[Examples](https://github.com/mosbth/linux/examples)
-[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)
+[Examples](https://github.com/mosbth/linux/tree/master/example)    
+[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)    
 [?](#) **TODO - Fix a reference to the book**
 
 
