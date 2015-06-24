@@ -1,12 +1,9 @@
 Functions
 ==============================
 Examples in Bash
-
+#### Example of a simple function
 ```sh
-
 #!/bin/bash
-
-# Example of simple function
 
 function speak() {
     echo "Hi!"
@@ -15,12 +12,9 @@ function speak() {
 speak
 ```
 The above will result in ```"Hi!"```  
-
+#### Example of multiple functions
 ```sh
-
 #!/bin/bash
-
-# Example of function calls
 
 function speak() {
     echo "Hi!"
@@ -38,6 +32,7 @@ The above will result in:
 "Hi!"
 "How are you?"
 ```
+#### Example of functions with parameters
 ```sh
 #!/bin/bash
 
