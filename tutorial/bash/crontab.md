@@ -2,14 +2,14 @@ Crontab
 ==============================
 Examples in Bash
 
-* `crontab -e` lets you edit the crontab file
+* `crontab -e` creates a new cron job
 * At the bottom, add a line like this:  
 
 `1 2 3 4 5 /path/to/command arg1 arg2`  
 
 OR  
 
-`1 2 3 4 5 /root/backup.sh`
+`1 2 3 4 5 /path/to/script.sh`
 
 1: Minute (0-59)  
 2: Hours (0-23)  
@@ -19,6 +19,9 @@ OR
 /path/to/command - script or command to schedule  
 
 Ex: `* * * * * /path/to/script.sh` (only stars will execute every minute)
+
+By default, a cron job will send email to the user account. Disable it by entering the following code at the end of the line: `>/dev/null 2>&1`  
+
 
 Example of script.sh
 ```sh
