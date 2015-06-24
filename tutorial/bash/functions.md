@@ -1,6 +1,5 @@
 Functions
 ==============================
-Examples in Bash
 #### Example of a simple function
 ```sh
 #!/bin/bash
@@ -36,8 +35,6 @@ The above will result in:
 ```sh
 #!/bin/bash
 
-# Example of functions with parameters
-
 function sayName() {
     echo "Hello $1!"
 }
@@ -46,6 +43,16 @@ sayName "Griswold"
 ```
 The above will result in ```"Hello Griswold!"```
 
+```sh
+#!/bin/bash
+
+function sayName() {
+    echo "$1 $2!"
+}
+
+sayName "Goodbye" "Griswold"
+```
+The above will result in ```"Goodbye Griswold!"```
 
 Reference and read more
 ------------------------------
