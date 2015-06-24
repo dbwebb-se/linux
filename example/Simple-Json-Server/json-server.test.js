@@ -6,8 +6,6 @@
 import * as server from '../Simple-Json-Server/json-server';
 
 // Dependencies needed for tests.
-var assert = require('assert');
-var sinon = require('sinon');
 var request = require('supertest')('http://localhost:1337/');
 
 describe('Simple Json Server', () => {

@@ -1,9 +1,6 @@
 import maze from '../Maze/maze';
 
-var http = require('http');
-
 // Dependencies needed for tests.
-var assert = require('assert');
 var request = require('supertest');
 
 describe('Maze', () => {
@@ -24,7 +21,7 @@ describe('Maze', () => {
 
 
     it('Load map and it exist', (done) => {
-        var req = request(app)
+        var req = request(app);
         req.get('/')
             .expect(200)
             .end((err, result) => {
@@ -58,7 +55,7 @@ describe('Maze', () => {
 
                 req
                     .get('/' + gameid + '/maze')
-                    .expect(500, '{"text":"Map not selected.","hint":"Call /map/:map first"}', done)
+                    .expect(500, '{"text":"Map not selected.","hint":"Call /map/:map first"}', done);
             });
     });
 

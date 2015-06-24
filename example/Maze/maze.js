@@ -12,17 +12,6 @@ var http = require('http');
 var maps = [];
 var games = [];
 
-
-function checkGameId(res, gameid) {
-    if (games[gameid] === undefined) {
-        sendResponse(res, {
-            'text': 'A game with that gameid don\'t exist'
-        }, 500, 'json');
-        return;
-    }
-    return true;
-}
-
 /**
  * Wrapper function for sending a response
  * @param  Object        resObj  The response

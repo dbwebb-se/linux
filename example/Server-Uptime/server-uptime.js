@@ -11,7 +11,7 @@ var server = http.createServer(function (req, res) {
     child.exec('uptime', function (error, stdout, stderr) {
         if (error || stderr) {
             // Do something with the error(s)
-            console.log('Something went wrong...', error, stderr)
+            console.log('Something went wrong...', error, stderr);
         }
 
         // Write the result of standard output as plain text.

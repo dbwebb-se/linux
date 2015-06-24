@@ -10,10 +10,9 @@ var data = {
     'text':'Hello World'
 };
 
-
 var server = http.createServer((req, res) => {
     // Write to the header with application/json as content type and 200 HTTP status code.
-    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.writeHead(200, { 'Content-Type': 'application/json' });
 
     // Converts the Javascript-object to a string to be sent to the client
     var jsonObj = JSON.stringify(data);

@@ -2,7 +2,7 @@
   "esnext":true,
   "undef": true,
   "unused": true,
-  "predef": ["console", "window", "document"],
+  "predef": ["console", "window", "document", "require", "__dirname"],
   "laxbreak": true,
   "loopfunc": true
 }

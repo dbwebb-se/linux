@@ -16,8 +16,8 @@ fs.appendFileSync('myNiceNewFile.txt', '\n\nThis data is now appended');
 // If you like to create directories you can use the mkdir-function
 fs.mkdirSync('newDir');
 
-var data = {'text':'Its also possible to write objects to the file using JSON.stringify.'}
-	
+var data = { 'text':'Its also possible to write objects to the file using JSON.stringify.' };
+
 var dataToBeWritten = JSON.stringify(data);
 
 // We also want to create a file inside the new directory

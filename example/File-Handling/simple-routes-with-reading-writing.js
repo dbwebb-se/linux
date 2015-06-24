@@ -15,9 +15,8 @@ var fs = require('fs');
 var queryString = require('querystring');
 var http        = require('http');
 var url         = require('url');
-var util        = require('util');
 
-var server = http.createServer((req, res) => {
+http.createServer((req, res) => {
     // Get the path
     var path = url.parse(req.url).pathname;
 
@@ -43,7 +42,7 @@ var server = http.createServer((req, res) => {
 
                 // This is called when the data is finished reading
                 req.on('end', () => {
-                    res.writeHead(200, {'Content-Type': 'text/html'});
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
                     // Parses the rawBody
                     var deCodededBody = queryString.parse(rawBody);
 
@@ -54,16 +53,16 @@ var server = http.createServer((req, res) => {
                     fs.writeFileSync('data.json', jsonToSave);
 
                     // Writes a "nice" html response to the user
-                    res.write('<html><head><title>File saved</title></head><body>')
+                    res.write('<html><head><title>File saved</title></head><body>');
                     res.write('<h1>Data saved!</h1>');
                     res.write('<p>To view the saved data open "data.json"</p>');
-                    res.write('<p>Or just click <a href="/">here</a> (This sends a GET-request to the browser and gives you the file that you just saved!)</p> ')
+                    res.write('<p>Or just click <a href="/">here</a> (This sends a GET-request to the browser and gives you the file that you just saved!)</p> ');
                     res.write('</body></html>');
                     res.end();
                 });
             } else { // it's a get request and the client request the content
                 try {
-                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
 
                     // Reads the myData.json file and saves it in data
                     var data = fs.readFileSync('myData.json', 'utf8');
@@ -73,11 +72,11 @@ var server = http.createServer((req, res) => {
                 } catch (e) {
                     // Filed didn't exist yet. Let's tell the client
                     if (e.code === 'ENOENT') {
-                        res.writeHead(404, {'Content-Type': 'plain/text'});
+                        res.writeHead(404, { 'Content-Type': 'plain/text' });
                         res.end('File not found. Hint; Do a POST-request on this route first');
                     } else {
                         // Some other error. Best to tell client and throw the error
-                        res.writeHead(500, {'Content-Type': 'plain/text'});
+                        res.writeHead(500, { 'Content-Type': 'plain/text' });
                         res.end('500 Internal Server Error');
                         throw e;
                     }
@@ -93,13 +92,13 @@ var server = http.createServer((req, res) => {
                 // If readFile got an error we throw it
                 if (err) {
                     // Sends to the client that the server failed
-                    res.writeHead(500, {'Content-Type': 'text/plain'});
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
                     res.end('Internal server error');
                     // throws the error
                     throw err;
                 }
                 // Sends the data to the client
-                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(data);
             });
             break;
