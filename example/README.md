@@ -17,6 +17,6 @@ $ nodemon --exec babel-node --stage 0 -- path/to/file.js
 ```
    
    
- # Info about packages in packages.json
+# Info about packages in packages.json
  
  TODO
