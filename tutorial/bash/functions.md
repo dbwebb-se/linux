@@ -14,13 +14,17 @@ function speak() {
 
 speak
 ```
-This echoes "Hi!"  
+The above will result in ```"Hi!"```  
 
 ```sh
 
 #!/bin/bash
 
 # Example of function calls
+
+function speak() {
+    echo "Hi!"
+}
 
 function speakAgain() {
     echo "How are you?"
@@ -29,12 +33,23 @@ function speakAgain() {
 speak
 speakAgain
 ```
-This will echoe:  
-```sh
-
+The above will result in:  
+```
 "Hi!"
 "How are you?"
 ```
+```sh
+#!/bin/bash
+
+# Example of functions with parameters
+
+function sayName() {
+    echo "Hello $1!"
+}
+
+sayName "Griswold"
+```
+The above will result in ```"Hello Griswold!"```
 
 
 Reference and read more
