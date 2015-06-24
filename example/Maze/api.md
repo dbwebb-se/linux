@@ -26,10 +26,10 @@ Returns a list of all available maps
 ]
 ```
 
-## GET /map/:map
+## GET /gameid/map/:map
 Loads the map as the current maze
 
-*Example* `/map/maze-of-doom.json`
+*Example* `/42580/map/maze-of-doom.json`
 
 *JSON response*
 ```json
@@ -38,10 +38,10 @@ Loads the map as the current maze
 }
 ```
 
-## GET /maze
+## GET /gameid/maze
 Gets content of first room. (Walks in to the first room)
 
-*Example* `/maze`
+*Example* `/42580/maze`
 
 *JSON response.*
 ```json
@@ -55,10 +55,10 @@ Gets content of first room. (Walks in to the first room)
 }
 ```
 
-## GET /maze/:roomId
+## GET /gameid/maze/:roomId
 Gets info about the room
 
-*Example* `/maze/5`
+*Example* `/42580/maze/5`
 
 *JSON response*
 ```json
@@ -72,10 +72,10 @@ Gets info about the room
 }
 ```
 
-## GET /maze/:roomId/:direction
+## GET /gameid/maze/:roomId/:direction
 Walks into next room from given roomId and gives the next rooms info.
 
-*Example* `/maze/0/north`
+*Example* `/42580/maze/0/north`
 
 *JSON response.*
 ```json
@@ -93,4 +93,5 @@ Walks into next room from given roomId and gives the next rooms info.
 Revision history
 ------------------------------
 
+2015-06-24 (foikila) Added gameid
 2015-06-17 (foikila) First draft crafted
