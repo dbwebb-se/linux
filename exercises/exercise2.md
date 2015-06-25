@@ -3,7 +3,8 @@ Instruction to exercise 2
 
 ### Part 1
 
-1. Read the chapters 6-? in the course literature
+1. Read the chapters 6dbwebb linux literature
+ in the course literature
 2. Locate the folder called **bigFileWithManyLines** in the course repository
 3. Use the commands you have learned from the book to solve the questions listed below. You need at least 5 points, and you may choose which ones to solve.
     * question1 (easy, 1p)
@@ -33,7 +34,7 @@ Called upon with: `genie getLines`.
 Reference and read more
 ------------------------------
 
-[?](#) **TODO - Fix a reference to the book**
+[Functions, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/functions.md)  
 
 
 
