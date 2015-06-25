@@ -25,8 +25,8 @@ Write a bash-client that communicate with the server you wrote. (localhost:1337/
 Reference and read more
 ------------------------------
 
-[Examples](https://github.com/mosbth/linux/tree/master/example)
-[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)
+[Examples](https://github.com/mosbth/linux/tree/master/example)  
+[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)  
 [Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)  
 [Crontab](http://www.computerhope.com/unix/ucrontab.htm)  
 [Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)  
