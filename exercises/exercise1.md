@@ -17,10 +17,10 @@ Instruction to exercise 1
 1. Read part 4 - chapter 24 in the course literature
 2. Create your own script, called **genie.sh**
     * `touch genie.sh`
-    * `chmod u+x genie.sh` (if needed, course literature chapter 9)
+    * `chmod u+x genie.sh` (set it to be executable by user, course literature chapter 9)
     * If you don't want to start the script by typing "./genie.sh", add it to the PATH
-        * In the terminal, type: `export PATH="$PATH:~/path-to-your-script-folder"`
         * If you just want to type "genie", add an alias: alias genie="genie.sh" (course literature chapter 11)
+        * To permanently use an alias, edit the file ~/.bashrc and put the above line in there
     * open genie.sh in an editor
     * add `#!/bin/bash` at the top of the file, it is called "shebang"
     * On the next line, type `echo "this is my first bash script"`
@@ -30,7 +30,6 @@ Instruction to exercise 1
 Reference and read more
 ------------------------------
 
-[?](#) **TODO - Fix a reference to the book**  
 [shebang, PATH](http://stackoverflow.com/questions/8779951/how-do-i-run-a-shell-script-without-using-sh-or-bash-commands)  
 [How to create a script](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)  
 
