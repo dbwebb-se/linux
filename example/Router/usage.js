@@ -75,7 +75,12 @@ router.get('/animal/:id/:name', (req, res) => {
     res.end('Animal: ' + id + ' ' + name + " - 2 params");
 });
 
+router.get('/', (req, res) => {
+    var queryParam = req.query.q;
+    res.end(queryParam);
+});
+
 // Create the server using the router.
-http.createServer(function (req, res) {
+http.createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
