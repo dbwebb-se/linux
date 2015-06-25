@@ -4,13 +4,21 @@ Instruction to exercise 3
 ## Part 1
 Write a server that response with different kind of content-types and data on different routes.
 
+### Before you start 
+Copy the example server from **INPUT REAL PATH** and place it on **INPUT REAL PATH**.
+
+You run the server by executing this command:
+```bash
+$ nodemon --exec babel-node --stage 0 -- server.js
+```
+
 ### Requirements
-1. The script should be named server.js
-2. The server should respond on `/` and give `Hello world` in plain text. The content-type should be `text/plain`.
-3. The server should respond on `/html.html` with reading the file `html.html` and serve it as a html-response. The content-type should be `text/html`.
-4. The server should respond on `/status` with giving a JSON-response with info about the server and the current time. The content-type should be `application/json`.
-5. The server should respond on `/zip` with reading a zip-file and serve it as `application/zip`. The content-type must be `application/zip`.
-6. If a route is not found the server should respond with a 404 and a message in plain text. The content-type should be `text/plain`.
+1. The script should be named "server.js"
+2. The server should respond on `/` and give `Hello world` in plain text. The content-type must be `text/plain`.
+3. The server should respond on `/index.html` with reading the file `html.html` and serve it as a html-response. The content-type must be `text/html`.
+4. The server should respond on `/status` with giving a JSON-response with info about the server and the current time. The content-type must be `application/json`.   
+5. The server should respond on `/sum` with reading the query parameters and summarize them and respond with giving the answer in JSON. The content-type must be `application/json`. 
+6. The server should respond on `/filter` with reading the query parameters and removing any parameter that is larger than 42 and respond with the filterd values. The content-type must be `application/json`. 
 
 ## Part 2
 Write a bash-client that communicate with the server you wrote in part 1. 
@@ -26,6 +34,7 @@ Reference and read more
 ------------------------------
 
 [Examples](https://github.com/mosbth/linux/tree/master/example)  
+[Arrow-functions](https://github.com/mosbth/linux/blob/master/tutorial/nodejs/arrow-functions.md)    
 [List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)  
 [Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)  
 [Crontab](http://www.computerhope.com/unix/ucrontab.htm)  
