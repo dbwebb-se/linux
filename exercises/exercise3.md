@@ -5,7 +5,7 @@ Instruction to exercise 3
 Write a server that response with different kind of content-types and data on different routes.
 
 ### Requirements
-1. The server should be named server.js
+1. The script should be named server.js
 2. The server should respond on `/` and give `Hello world` in plain text. The content-type should be `text/plain`.
 3. The server should respond on `/html.html` with reading the file `html.html` and serve it as a html-response. The content-type should be `text/html`.
 4. The server should respond on `/status` with giving a JSON-response with info about the server and the current time. The content-type should be `application/json`.
@@ -13,7 +13,7 @@ Write a server that response with different kind of content-types and data on di
 6. If a route is not found the server should respond with a 404 and a message in plain text. The content-type should be `text/plain`.
 
 ## Part 2
-Write a bash-client that communicate with the server you wrote. (localhost:1337/???)
+Write a bash-client that communicate with the server you wrote in part 1. 
 
 1. Create a script called "myServer.sh" and follow up with instructions from exercise 1.
 2. "myServer.sh" should be able to print out "Hello world" with `myServer hello`.
