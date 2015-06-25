@@ -18,8 +18,7 @@ Instruction to exercise 1
 2. Create your own script, called **genie.sh**
     * `touch genie.sh`
     * `chmod u+x genie.sh` (set it to be executable by user, course literature chapter 9)
-    * If you don't want to start the script by typing "./genie.sh", add it to the PATH
-        * If you just want to type "genie", add an alias: alias genie="genie.sh" (course literature chapter 11)
+    * If you just want to type "genie", add an alias: alias genie="genie.sh" (course literature chapter 11)
         * To permanently use an alias, edit the file ~/.bashrc and put the above line in there
     * open genie.sh in an editor
     * add `#!/bin/bash` at the top of the file, it is called "shebang"
