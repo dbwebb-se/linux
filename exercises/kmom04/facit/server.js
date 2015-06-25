@@ -13,6 +13,7 @@ var fs   = require('fs');
 
 var PORT = 1337;
 var code = 200;
+
 /**
  * Wrapper function for sending a response
  * @param  Object        resObj  The response object
@@ -57,7 +58,7 @@ function getStatus() {
 }
 
 /**
- * Get file content of filename
+ * Get file content of a file
  * @param  String filename
  * @param  String directory The directory where to find the file
  * @return Object           The content of the file
@@ -73,6 +74,7 @@ function readFile(filename, directory = 'public/') {
 
     return content;
 }
+
 // Creates the server object
 var server = http.createServer((request, response) => {
     // Gets the request url
@@ -83,7 +85,7 @@ var server = http.createServer((request, response) => {
     // Switches on given path
     switch (path) {
         /**
-         * Responds to the server with a plain word
+         * Respond to the server with a plain word
          */
         case '/':
             // Student defined logic
@@ -107,7 +109,7 @@ var server = http.createServer((request, response) => {
             break;
 
         /**
-         * Responds with an html-page
+         * Respond with an html-page
          */
         case '/index.html':
             // Student defined logic
@@ -133,7 +135,7 @@ var server = http.createServer((request, response) => {
             break;
 
         /**
-         *
+         * Summarize the query paramters and return the sum
          */
         case '/sum':
             // Student defined logic
