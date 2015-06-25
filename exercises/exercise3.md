@@ -15,7 +15,7 @@ Write a server that response with different kind of content-types and data on di
 ## Part 2
 Write a bash-client that communicate with the server you wrote in part 1. 
 
-1. Create a script called "myServer.sh" and follow up with instructions from exercise 1.
+1. Create a script called "myServer.sh" and follow up with instructions from exercise 1, regarding script creation.
 2. "myServer.sh" should be able to print out "Hello world" with `myServer hello`.
 3. "myServer.sh" should be able to print out the html.html file with `myServer html`.
 4. "myServer.sh" should be able to print out the JSON status with `myServer status`.
@@ -25,8 +25,8 @@ Write a bash-client that communicate with the server you wrote in part 1.
 Reference and read more
 ------------------------------
 
-[Examples](https://github.com/mosbth/linux/tree/master/example)
-[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)
+[Examples](https://github.com/mosbth/linux/tree/master/example)  
+[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)  
 [Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)  
 [Crontab](http://www.computerhope.com/unix/ucrontab.htm)  
 [Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)  
