@@ -5,10 +5,10 @@
 var http = require('http');
 var child = require('child_process');
 
-var server = http.createServer(function (req, res) {
+var server = http.createServer((req, res) => {
 
     // Execute a child process, in this case 'uptime'.
-    child.exec('uptime', function (error, stdout, stderr) {
+    child.exec('uptime', (error, stdout, stderr) => {
         if (error || stderr) {
             // Do something with the error(s)
             console.log('Something went wrong...', error, stderr);
@@ -18,7 +18,6 @@ var server = http.createServer(function (req, res) {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(stdout);
     });
-
 });
 
 
