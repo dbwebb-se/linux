@@ -87,7 +87,8 @@ class Router {
         var path = trimSlashes(url.parse(req.url).pathname);
         var method = req.method;
 
-        // Split the path to get the parameters.
+        // Split the path
+             to get the parameters.
         var urlParams = path.split('/');
 
         // Filter out the routes to process..
@@ -139,7 +140,6 @@ class Router {
 
         // If we have no routes, write 404.
         if (!routesToProcess || routesToProcess.length === 0) {
-            console.log(404);
             res.writeHead(404);
             res.end('404 Not Found');
             return;
