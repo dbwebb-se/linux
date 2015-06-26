@@ -87,7 +87,7 @@ $ curl http://localhost:1337/
 
 This is how it could look like.
 
-[![asciicast](https://asciinema.org/a/22552.png)](https://asciinema.org/a/22552)
+[![asciicast](https://asciinema.org/a/22554.png)](https://asciinema.org/a/22554)
 
 
 
