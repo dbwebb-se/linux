@@ -31,7 +31,8 @@ Write a bash-client that communicate with the server you wrote in part 1.
 6. Create a crontab that checks the servers status once/hour and puts the result in a file called "myServerStatus.txt".
 
 ## Extra assignment
-1. "myServer.sh" should be able to print out the filtered values from the request `/filter`. The amount of query parameters should not matter.
+1. "myServer.sh" should be able to print out the filtered values from the request `/filter`. The amount of query parameters should not matter.  
+
 Reference and read more
 ------------------------------
 
