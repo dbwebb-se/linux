@@ -1,45 +1,49 @@
 /**
- * Server with routes..
+ * Server with routes.
+ * URLS:
+ *  localhost:1337/     - home.
+ *  localhost:1337about - about page.
+ *  localhost:1337/*    - 404 page.
  */
-
-/*
-    URLS:
-    localhost:1337/ - home.
-    localhost:1337about - about page.
-    localhost:1337/* - 404 page.
- */
-
 
 var url = require('url');
 var http = require('http');
 
 
-// Create the server.
-http.createServer(function (req, res) {
+var server = http.createServer((req, res) => {
 
-    // Get the path from the requested URL.
-    var path = url.parse(req.url).pathname;
+    var ipAddress,
+        path;
+        
+    // Get the path for the requested URL.
+    path = url.parse(req.url).pathname;
 
-    // Switch on the path.
+    // Log incoming requests
+    ipAddress = req.connection.remoteAddress;
+    console.log("Incoming request from ip " + ipAddress + " for " + path);
+    
+    // Switch (route) on the path.
     switch (path) {
         // Home page route.
         case '/':
             res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end('Home page');
+            res.end('Home page\n');
         break;
 
         // About page route.
         case '/about':
             res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end('About');
+            res.end('About\n');
         break;
 
         // Not found route.
         default:
             res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('No route matching...');
+            res.end('404. No route matching.\n');
         break;
 
     }
+});
 
-}).listen(1337);
+// Export the server as a module.
+export default server;
