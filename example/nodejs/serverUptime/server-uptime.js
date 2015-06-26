@@ -7,6 +7,12 @@ var child = require('child_process');
 
 var server = http.createServer((req, res) => {
 
+    var ipAddress;
+    
+    // Log incoming requests
+    ipAddress = req.connection.remoteAddress;
+    console.log("Incoming request from ip " + ipAddress);
+    
     // Execute a child process, in this case 'uptime'.
     child.exec('uptime', (error, stdout, stderr) => {
         if (error || stderr) {
@@ -19,6 +25,5 @@ var server = http.createServer((req, res) => {
         res.end(stdout);
     });
 });
-
 
 export default server;

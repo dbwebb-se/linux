@@ -11,6 +11,13 @@ var data = {
 };
 
 var server = http.createServer((req, res) => {
+
+    var ipAddress;
+    
+    // Log incoming requests
+    ipAddress = req.connection.remoteAddress;
+    console.log("Incoming request from ip " + ipAddress);
+    
     // Write to the header with application/json as content type and 200 HTTP status code.
     res.writeHead(200, { 'Content-Type': 'application/json' });
 
