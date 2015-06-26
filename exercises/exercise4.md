@@ -17,15 +17,15 @@ $ babel-node Maze/server.js
 
 ## Part 2
 **TODO** add part about saving maze-info, since it is stateless, in some faction. Ex saving the current-room and gameid on file. 
-1. Use the [API](https://github.com/mosbth/linux/blob/master/example/Maze/api.md) for the maze to extend the `mazerunner`  with these functionalities 
-    * `mazerunner init` should save down the game id and print the message.
-    * `mazerunner maps` should return the available maps.
-    * `mazerunner select <map>` should select the given map.
-    * `mazerunner info` should giv information about the current room.
-    * `mazerunner go north` should navigate to the north
-    * `mazerunner go south` should navigate to the south
-    * `mazerunner go east` should navigate to the east
-    * `mazerunner go west` should navigate to the west
+1. Use the [API](https://github.com/mosbth/linux/blob/master/example/Maze/api.md) for the maze to extend the `mazerunner`  with these functionalities  
+   * `mazerunner init` should save down the game id and print the message.
+   * `mazerunner maps` should return the available maps.
+   * `mazerunner select <map>` should select the given map.
+   * `mazerunner info` should giv information about the current room.
+   * `mazerunner go north` should navigate to the north
+   * `mazerunner go south` should navigate to the south
+   * `mazerunner go east` should navigate to the east
+   * `mazerunner go west` should navigate to the west
 
 ## Part 3
 1. Extend the `mazerunner` even further    
