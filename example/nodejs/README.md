@@ -85,6 +85,10 @@ Use curl, or you web browser, to try out the server.
 $ curl http://localhost:1337/
 ```
 
+This is how it could look like.
+
+[![asciicast](https://asciinema.org/a/22552.png)](https://asciinema.org/a/22552)
+
 
 
 Other useful utilities
