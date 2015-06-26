@@ -16,11 +16,11 @@ var server = http.createServer((req, res) => {
 
     // Converts the Javascript-object to a string to be sent to the client
     var jsonObj = JSON.stringify(data);
+    
     // End the respons with the new string
     res.end(jsonObj);
-
 });
 
 
-// Export the server.. (not needed)
+// Export the server.
 export default server;
