@@ -18,6 +18,9 @@ class Core {
             mark =  forcePlayerMark;
         }
 
+        if (x > this.size || x < 0 || y > this.size || y < 0) {
+            throw '[' + x + '][' + y + '] is outside the map-area, try again ' + mark;
+        }
         if (this.map[x][y] !== undefined) {
             throw '[' + x + '][' + y + '] already taken by ' + this.map[x][y] + ', try again ' + mark;
         }

@@ -68,6 +68,29 @@ describe('Five in row core', () => {
         assert.equal('Player 2', core.getCurrentPlayer());
     });
 
+    it('Place marker outside the "box" should not be allowed', () => {
+        try {
+            core.place(10, 11, 'X');
+        } catch (e) {
+            assert.equal(e, '[10][11] is outside the map-area, try again X');
+        }
+        try {
+            core.place(11, 10, 'X');
+        } catch (e) {
+            assert.equal(e, '[11][10] is outside the map-area, try again X');
+        }
+        try {
+            core.place(-1, 1, 'X');
+        } catch (e) {
+            assert.equal(e, '[-1][1] is outside the map-area, try again X');
+        }
+        try {
+            core.place(1, -1, 'X');
+        } catch (e) {
+            assert.equal(e, '[1][-1] is outside the map-area, try again X');
+        }
+    });
+
 /*    it('Winner X-led 5 in row', () => {
         core.place(0, 0, 'X');
         core.place(1, 0, 'X');
@@ -80,16 +103,3 @@ describe('Five in row core', () => {
     });*/
 
 });
-/*
-[ [ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' ],
-  [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ],
-  [ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' ],
-  [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ],
-  [ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' ],
-  [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ],
-  [ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' ],
-  [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ],
-  [ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' ],
-  [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ] ]
-
- */
