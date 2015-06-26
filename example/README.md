@@ -8,6 +8,8 @@ In this folder you will find examples written to make the day easier for you. Th
 Install Node.js and npm packetmanager
 ------------------------------------------------
 
+This is this way to install `nodejs` and `npm` and verify that it works.
+
 ```bash
 $ sudo apt-get install nodejs npm
 $ nodejs --version
@@ -43,7 +45,7 @@ Babel thinks that the executable is named `node`, but on Debian its named `nodej
 Open up the script in your favorite editor.
 
 ```bash
-$ vim $( which babel-node )
+$ sudo vim $( which babel-node )
 ```
 
 Edit the first row to look like this:
@@ -56,6 +58,31 @@ Save the file and try again. You should now see the version number of `babel-nod
 
 ```bash
 $ babel-node --version
+```
+
+
+
+Start you first example program
+------------------------------------------------
+
+Lets start a webserver-like server. You find it in the example [`simpleServer`](simpleServer).
+
+| File              | Description |
+|-------------------|-------------|
+| `server.js`       | Module creating a server. |
+| `server.test.js`  | Unit testing for the module `server.js`. |
+| `index.js`        | Main program that starts up the server. |
+
+Start the server by running the main-program.
+
+```bash
+$ babel-node index.js
+```
+
+Use curl, or you web browser, to try out the server.
+
+```bash
+$ curl http://localhost:1337/
 ```
 
 
@@ -74,6 +101,7 @@ The command [nodemon](http://nodemon.io/) keeps track on changes in your sourcec
 ```bash
 $ sudo npm install -g nodemon
 $ nodemon --version
+$ nodemon
 ```
 
 Run `nodemon` toghether with `babel-node`.

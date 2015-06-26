@@ -2,16 +2,18 @@
  * Simple HTTP server returning Hello World as plain text.
  */
 
-// Require the node HTTP.
+// Require the module
 var http = require('http');
 
-// Use the createServer function to create the simple server..
+// Use the createServer function to create the simple server
 var server = http.createServer((req, res) => {
-    // Write to the header with text/plain as content type and 200 HTTP status code.
+
+    // Write header with text/plain as content type and 200 HTTP status code
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    // End the response with Hello World.
-    res.end('Hello World');
+
+    // Reply with a string
+    res.end('Hello World\n');
 });
 
-// Export the server.. (not needed)
+// Export the server as a module.
 export default server;
