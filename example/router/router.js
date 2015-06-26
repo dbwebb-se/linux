@@ -87,8 +87,7 @@ class Router {
         var path = trimSlashes(url.parse(req.url).pathname);
         var method = req.method;
 
-        // Split the path
-             to get the parameters.
+        // Split the path to get the parameters.
         var urlParams = path.split('/');
 
         // Filter out the routes to process..

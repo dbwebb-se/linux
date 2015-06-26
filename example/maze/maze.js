@@ -2,7 +2,7 @@
  *
  */
 
-import Router from '../Router/router';
+import Router from '../router/router';
 
 var router = new Router();
 

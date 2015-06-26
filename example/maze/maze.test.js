@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test';
-import maze from '../Maze/maze';
+import maze from '../maze/maze';
 
 // Dependencies needed for tests.
 var request = require('supertest');

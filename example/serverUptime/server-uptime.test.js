@@ -3,7 +3,7 @@
  */
 process.env.NODE_ENV = 'test';
 // Import the server "module" as "server"
-import server from '../Server-Uptime/server-uptime';
+import server from '../serverUptime/server-uptime';
 
 // Dependencies needed for tests.
 var assert = require('assert');

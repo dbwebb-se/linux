@@ -13,7 +13,5 @@ var server = http.createServer((req, res) => {
     res.end('Hello World');
 });
 
-console.log('Server running at localhost:1337');
-
 // Export the server.. (not needed)
 export default server;

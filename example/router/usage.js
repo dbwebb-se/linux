@@ -2,7 +2,7 @@
  * EXAMPLE HOW TO USE THE ROUTER
  */
 
-import Router from '../Router/router';
+import Router from '../router/router';
 var http = require('http');
 var router = new Router();
 

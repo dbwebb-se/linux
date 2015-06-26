@@ -4,7 +4,7 @@
 Below you find examples on how to use the route module.
 
 ```js
-import Router from '../Router/router';
+import Router from '../router/router';
 
 var router = new Router();
 

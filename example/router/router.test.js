@@ -2,7 +2,7 @@
  * Router tests
  */
 process.env.NODE_ENV = 'test';
-import Router from '../Router/router';
+import Router from '../router/router';
 var http = require('http');
 
 // Dependencies needed for tests.

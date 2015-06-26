@@ -4,13 +4,13 @@
 process.env.NODE_ENV = 'test';
 
 // Import the server "module" as "server"
-import server from '../Simple-Json-Server/json-server';
-
+import server from '../simpleServer/server';
 
 // Dependencies needed for tests.
 var request = require('supertest')(server);
 
-describe('Simple Json Server', () => {
+describe('Simple Server', () => {
+
     before(() => {
         server.listen(1337);
     });
@@ -19,17 +19,17 @@ describe('Simple Json Server', () => {
         server.close();
     });
 
-    it('should respond with application/json', (done) => {
+    it('should respond with plain text', (done) => {
         request
             .get('/')
-            .expect('Content-Type', 'application/json')
+            .expect('Content-Type', 'text/plain')
             .expect(200, done);
     });
 
     it('should respond with Hello World', (done) => {
         request
             .get('/')
-            .expect(200, '{"text":"Hello World"}', done);
-	});
+            .expect(200, 'Hello World', done);
+    });
 
 });

@@ -1,4 +1,4 @@
-import maze from '../Maze/maze';
+import maze from '../maze/maze';
 
 var PORT = 1337;
 
