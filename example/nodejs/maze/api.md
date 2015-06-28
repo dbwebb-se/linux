@@ -93,5 +93,5 @@ Walks into next room from given roomId and gives the next rooms info.
 Revision history
 ------------------------------
 
-2015-06-24 (foikila) Added gameid
+2015-06-24 (foikila) Added gameid      
 2015-06-17 (foikila) First draft crafted
