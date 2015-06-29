@@ -14,6 +14,8 @@ Instruction to exercise 2
     * question5 (medium, 2p)
     * question6 (hard, 3p)
     * question7 (hard, 3p)
+    * med: 5 Find the lines that were inserted at 19pm, from the forum regarding the python-course.
+    * ?: 6 Find out how many lines **not** entered by Bobbzorzen. 
 4. **TODO - make some use of the answers**
 
 ### Part 2
