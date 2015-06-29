@@ -1,0 +1,48 @@
+body {
+    font-family: Arial;
+}
+
+#container {
+    width: 960px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+#top {
+    text-align: center;
+    background-color: #eee;
+    padding: 10px;
+}
+
+#middle {
+    margin-top: 15px;
+    height: 600px;
+    background-color: #eee;
+    padding: 10px;
+}
+
+#middleSpan {
+    margin-top: 20px;
+}
+
+#bottom {
+    text-align: center;
+    background-color: #eee;
+}
+
+#marvin {
+    float: right;
+}
+
+#marvinLeft {
+    float: left;
+}
+
+#flipMe {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
