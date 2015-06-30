@@ -77,20 +77,25 @@ describe('Maze', () => {
     it('Enter maze', (done) => {
         var req = request(app);
         var gameid = 0;
+
         req
             .get('/')
             .expect(200)
             .end((err, result) => {
                 gameid = JSON.parse(result.res.text).gameid;
+
                 req
                     .get('/' + gameid + '/map/maze-of-doom')
                     .expect(200, '{"text":"New map selected."}')
                     .end(() => {
+
                         req
                             .get('/' + gameid + '/maze/0/')
-                            .expect(200, done);
+                            .expect(200);
                     });
             });
+
+        done();
     });
 
     it('Check normal path and it should be ok', (done) => {
@@ -106,7 +111,7 @@ describe('Maze', () => {
                           .expect(200)
                           .end(() => {
                               req.get('/' + gameid + '/maze/')
-                                 .end(200)
+                                 .expect(200)
                                  .end(() => {
                                      req.get('/' + gameid + '/maze/0/east')
                                         .expect(200, done);
@@ -214,7 +219,6 @@ describe('Maze', () => {
         .expect(200)
         .end((err, result) => {
             var gameid = JSON.parse(result.res.text).gameid;
-            console.log(gameid);
             req.get('/' + gameid + '/map/small-maze')
             .expect(200)
             .end(() => {
@@ -234,7 +238,6 @@ describe('Maze', () => {
         .expect(200)
         .end((err, result) => {
             var gameid = JSON.parse(result.res.text).gameid;
-            console.log(gameid);
             req.get('/' + gameid + '/map/small-maze')
             .expect(200)
             .end(() => {
