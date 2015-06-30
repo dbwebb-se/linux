@@ -3,19 +3,16 @@ Instruction to exercise 2
 
 ### Part 1
 
-1. Read the chapters 6dbwebb linux literature
- in the course literature
-2. Locate the folder called **bigFileWithManyLines** in the course repository
+1. Read chapter 6 in the course literature.
+2. Locate the folder called **irc_log** in the course repository. It should contain a file called "ircLog.txt" you will use in this exercise.
 3. Use the commands you have learned from the book to solve the questions listed below. You need at least 5 points, and you may choose which ones to solve.
-    * question1 (easy, 1p)
-    * question2 (easy, 1p)
-    * question3 (easy, 1p)
-    * question4 (medium, 2p)
-    * question5 (medium, 2p)
-    * question6 (hard, 3p)
+    * Find the last 4 lines in the file (easy, 1p)
+    * What is the 3rd thing Wasa says in the chat? (easy, 1p)
+    * How many lines are there when the time is 11:15? (easy, 1p)
+    * Find the first 10 lines from April 19th 2015. (medium, 2p)
+    * Find the lines inserted at 19pm, from the forum regarding the Python course. (medium, 2p)
+    * How many lines have "Bobbzorzen" NOT been the author of? (hard, 3p)
     * question7 (hard, 3p)
-    * med: 5 Find the lines that were inserted at 19pm, from the forum regarding the python-course.
-    * ?: 6 Find out how many lines **not** entered by Bobbzorzen. 
 4. **TODO - make some use of the answers**
 
 ### Part 2
