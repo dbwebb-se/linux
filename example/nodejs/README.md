@@ -116,7 +116,37 @@ $ nodemon --exec babel-node --stage 0 -- path/to/file.js
 
 
 
-Info about packages in packages.json
+Info about packages in package.json
 ------------------------------------------------
+There are two kinds of dependencies to a Node.js project: dependencies and devDependencies
 
- TODO
+###Summary of important behavior differences:
+
+* dependencies are installed on both:
+  * npm install from a directory that contains package.json
+  * npm install $package on any other directory
+* devDependencies are:
+ * also installed on npm install on a directory that contains package.json
+ * not installed on npm install "$package" on any other directory, unless you give it the --dev option.
+
+
+As you can see in our `package.json` file we only have devDependencies,
+these packages are only used for testing. They are **not** required for running the examples.
+ ```json
+ "devDependencies": {
+  "mocha": "2.0.1",
+  "mocha-traceur": "2.1.0",
+  "supertest": "1.0.1"
+}
+```
+
+* [mocha](https://www.npmjs.com/package/mocha): simple, flexible test framework
+* [mocha-traceur](https://www.npmjs.com/package/mocha-traceur): A "compiler" plugin for Mocha (for compiling es6).
+* [supertest](https://www.npmjs.com/package/supertest): Super-agent driven library for testing HTTP servers
+
+
+If we had "standard" dependencies you would need to run `npm install` to be able to run the program. But in this case as stated before, it is not required.
+
+
+
+For further reading regarding package.js: [npm docs](https://docs.npmjs.com/files/package.json)
