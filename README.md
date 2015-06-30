@@ -1,7 +1,8 @@
 Linux - linux
 ===================
+[![Build Status](https://travis-ci.org/mosbth/linux.svg?branch=master)](https://travis-ci.org/mosbth/linux)
 
-Course material for linux-course, aimed at a swedish target audience as an introduction to web programming for computer science students at University level. 
+Course material for linux-course, aimed at a swedish target audience as an introduction to web programming for computer science students at University level.
 
 Relased as part of a University course presented at:
 
@@ -16,7 +17,7 @@ The usage of this repo is also documented here (in swedish):
 Acknowledgement
 -------------------
 
-This is a co-effort of several people using freely available documentation and tools from the open source community. 
+This is a co-effort of several people using freely available documentation and tools from the open source community.
 
 For contributors, see the commit history and the issues.
 
@@ -27,7 +28,7 @@ Feel free to help builing up the repository with more content suited for trainin
 For teachers
 -------------------
 
-To get the solutions, one need extra privileges. 
+To get the solutions, one need extra privileges.
 
 Useful aliases.
 
@@ -49,7 +50,7 @@ v1.0.x (latest)
 
 
 
-```                                                            
- .                                                             
-..:  Copyright (c) 2015 Mikael Roos, me@mikaelroos.se   
-```                                                            
+```
+ .
+..:  Copyright (c) 2015 Mikael Roos, me@mikaelroos.se
+```

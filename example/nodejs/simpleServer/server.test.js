@@ -29,7 +29,7 @@ describe('Simple Server', () => {
     it('should respond with Hello World', (done) => {
         request
             .get('/')
-            .expect(200, 'Hello World', done);
+            .expect(200, 'Hello World\n', done);
     });
 
 });
