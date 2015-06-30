@@ -4,7 +4,15 @@ node_js:
   - "0.11"
   - "0.10"
 
-sudo: false
+
+env:
+  - TEST_DIR=example/nodejs/
+#  - TEST_DIR=tilt-server
+
+script: cd $TEST_DIR && npm install && npm test
+
+
+#sudo: false
 
 #cache:
 #    directories:
