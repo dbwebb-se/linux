@@ -13,7 +13,7 @@ $ babel-node maze/index.js
 ```
 
 ### Requirements
-1. The script should be named "server.js"
+1. The script should be named "index.js"
 2. The server should respond on `/` and give `Hello world` in plain text. The content-type must be `text/plain`.
 3. The server should respond on `/index.html` with reading the file `html.html` and serve it as a html-response. The content-type must be `text/html`.
 4. The server should respond on `/status` with giving a JSON-response with info about the server and the current time. The content-type must be `application/json`.
