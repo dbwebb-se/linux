@@ -24,6 +24,22 @@ Feel free to help builing up the repository with more content suited for trainin
 
 
 
+For teachers
+-------------------
+
+To get the solutions, one need extra privileges. 
+
+Useful aliases.
+
+```bash
+# Once cloned, get the submodule.
+alias gsu='git submodule update --init --recursive'
+```
+
+When updating the submodule, commit in its directory first, then commit the linux-repo.
+
+
+
 History
 -------------------
 
