@@ -5,11 +5,11 @@ Instruction to exercise 3
 Write a server that response with different kind of content-types and data on different routes.
 
 ### Before you start
-Copy the example server from **INPUT REAL PATH** and place it on **INPUT REAL PATH**.
+Copy the example server from `example/nodejs/maze/` and place it in **INPUT PATH**.
 
 You run the server by executing this command:
 ```bash
-$ nodemon --exec babel-node --stage 0 -- server.js
+$ babel-node maze/index.js
 ```
 
 ### Requirements
@@ -37,10 +37,10 @@ Reference and read more
 ------------------------------
 
 [Examples](https://github.com/mosbth/linux/tree/master/example)  
-[Arrow-functions](https://github.com/mosbth/linux/blob/master/tutorial/nodejs/arrow-functions.md)
+[Arrow-functions](https://github.com/mosbth/linux/blob/master/tutorial/nodejs/arrow-functions.md)     
 [List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)  
 [Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)  
-[Crontab](http://www.computerhope.com/unix/ucrontab.htm)  
+[crontab](http://www.computerhope.com/unix/ucrontab.htm)  
 [Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)  
 
 Revision history
