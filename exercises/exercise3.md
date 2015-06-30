@@ -5,11 +5,11 @@ Instruction to exercise 3
 Write a server that response with different kind of content-types and data on different routes.
 
 ### Before you start
-Copy the example server from `example/nodejs/maze/` and place it in **INPUT PATH**.
+Copy the example server from `example/kmom04/` and place it in **INPUT me-PATH**.
 
 You run the server by executing this command:
 ```bash
-$ babel-node maze/index.js
+$ babel-node kmom04/index.js
 ```
 
 ### Requirements
@@ -36,12 +36,12 @@ Write a bash-client that communicate with the server you wrote in part 1.
 Reference and read more
 ------------------------------
 
-[Examples](https://github.com/mosbth/linux/tree/master/example)  
+[Examples](https://github.com/mosbth/linux/tree/master/example)   
 [Arrow-functions](https://github.com/mosbth/linux/blob/master/tutorial/nodejs/arrow-functions.md)     
-[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)  
-[Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)  
-[crontab](http://www.computerhope.com/unix/ucrontab.htm)  
-[Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)  
+[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)   
+[Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)    
+[crontab](http://www.computerhope.com/unix/ucrontab.htm)   
+[Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)    
 
 Revision history
 ------------------------------
