@@ -1,11 +1,11 @@
-#!/usr/bin/env nodejs
-
 /**
  * Execute this project by:
  * $ babel-node index.js
  */
 
-var usage = 'Read passed parameters to the script.\n ';
+var usage = 'Read passed parameters to the script.\n' +
+            'Just simply add arguments to the script' +
+            'like this: $ babel-node index.js kalle anka ...';
 
 console.log(usage);
 
