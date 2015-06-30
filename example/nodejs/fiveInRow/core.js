@@ -51,19 +51,18 @@ class Core {
      * @return Boolean/String
      */
     getWinner() {
-        var mark = false;
         /**
          * To be implemented by the student.
          * It should return the players "pretty" name
          * e.g 'Player 1' or 'Player 2'
          * If no winner was found it should return false
          */
-        return mark;
+        return false;
     }
 
     /**
      * Returns the current players mark
-     * @return Character
+     * @return char
      */
     getCurrentPlayerMarker() {
         return this.turns % 2 === 0 ? 'X' : 'O';
