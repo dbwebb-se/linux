@@ -1,5 +1,7 @@
 Class in ecmascript 6
 =============================
+Ecmascript6 classes are syntactical sugar over javascripts existing prototype-based inheritance. 
+
 Example
 
 
@@ -18,7 +20,10 @@ class Person {
 
 
 var p = new Person('John', 'doe@doe.se');
-console.log(p.toString());
+console.log(p.toString()); // returns 'John doe@doe.se'
+
+var another = new Person('Jane', 'doe@doe.com');
+console.log(p.toString()); // returns 'Jane doe@doe.com'
 
 ```
 
@@ -35,5 +40,5 @@ Reference and read more
 
 Revision history
 ------------------------------
-
-2015-06-17 (Olund) First try.
+2015-06-30 (Olund) Small changes    
+2015-06-17 (Olund) First try.     
