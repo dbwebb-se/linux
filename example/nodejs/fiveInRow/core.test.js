@@ -91,15 +91,13 @@ describe('Five in row core', () => {
         }
     });
 
-/*    it('Winner X-led 5 in row', () => {
-        core.place(0, 0, 'X');
-        core.place(1, 0, 'X');
-        core.place(2, 0, 'X');
-        core.place(3, 0, 'X');
-        core.place(4, 0, 'X');
-        core.place(5, 0, 'X');
-        console.log(core.getMap());
-        assert.equal('Player 1', core.getWinner());
-    });*/
+    it('Should return Player 1 when giveing X', () => {
+        var result = core.getPlayerName('X');
+        assert.equal(result, 'Player 1');
+    });
 
+    it('Should return Player 2 when giveing O', () => {
+        var result = core.getPlayerName('O');
+        assert.equal(result, 'Player 2');
+    });
 });
