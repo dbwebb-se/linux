@@ -1,8 +1,6 @@
 Instruction to exercise 1
 ==============================
 
-### Part 1
-
 1. Read the chapters 1-4 in the course literature
 2. Locate the folder called **mySite**. It resides in the course repository.
 3. The folder **mySite** contains an unstructured website. Try out the commands you learned from step 1 to structure the website folder, described in step 4. You do not have to alter the content of the files.
@@ -11,9 +9,6 @@ Instruction to exercise 1
 
 Reference and read more
 ------------------------------
-
-[shebang, PATH](http://stackoverflow.com/questions/8779951/how-do-i-run-a-shell-script-without-using-sh-or-bash-commands)  
-[How to create a script](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)  
 
 
 Revision history
