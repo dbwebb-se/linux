@@ -9,6 +9,7 @@
 var url  = require('url');
 var http = require('http');
 var fs   = require('fs');
+var queryObject;
 
 var code = 200;
 
@@ -50,7 +51,7 @@ function getStatus() {
     var status = {};
     /**
      * To be implemented by the student.
-     * 
+     *
      * Add a status message to `status`.
      * Add the current time to `status`.
      */
@@ -79,8 +80,8 @@ function readFile(filename, directory = 'public/') {
 var server = http.createServer((request, response) => {
     // Gets the request url
     var path = url.parse(request.url).pathname;
-    // Gets the query string as an object
-    var queryObject = (url.parse(request.url, true)).query;
+    // Define the query string as an object
+    queryObject = (url.parse(request.url, true)).query;
 
     // Switches on given path
     switch (path) {
