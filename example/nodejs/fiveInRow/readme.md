@@ -9,6 +9,9 @@ Places a mark in the game board (map).
 | Integer | y | Y position on the gameboard | Production |
 | String | forcePlayerMark | Force place a players mark | Test |
 
+<span style="font-size: 18px;color:grey;">Throws</span>     
+Error  
+*if user tries to place outside the game board area*
 
 ## getMap()
 Returns the current gameboard as it is.

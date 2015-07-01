@@ -62,8 +62,7 @@ describe('Five in row core', () => {
         try {
             core.place(0, 0);
         } catch (e) {
-            console.log(e);
-            assert.equal(e, '[0][0] already taken by X, try again O');
+            assert.equal(e.message, '[0][0] already taken by X, try again O');
         }
         assert.equal('Player 2', core.getCurrentPlayer());
     });
@@ -72,22 +71,26 @@ describe('Five in row core', () => {
         try {
             core.place(10, 11, 'X');
         } catch (e) {
-            assert.equal(e, '[10][11] is outside the map-area, try again X');
+            assert.equal(e instanceof Error, true);
+            assert.equal(e.message, '[10][11] is outside the map-area, try again X');
         }
         try {
             core.place(11, 10, 'X');
         } catch (e) {
-            assert.equal(e, '[11][10] is outside the map-area, try again X');
+            assert.equal(e instanceof Error, true);
+            assert.equal(e.message, '[11][10] is outside the map-area, try again X');
         }
         try {
             core.place(-1, 1, 'X');
         } catch (e) {
-            assert.equal(e, '[-1][1] is outside the map-area, try again X');
+            assert.equal(e instanceof Error, true);
+            assert.equal(e.message, '[-1][1] is outside the map-area, try again X');
         }
         try {
             core.place(1, -1, 'X');
         } catch (e) {
-            assert.equal(e, '[1][-1] is outside the map-area, try again X');
+            assert.equal(e instanceof Error, true);
+            assert.equal(e.message, '[1][-1] is outside the map-area, try again X');
         }
     });
 

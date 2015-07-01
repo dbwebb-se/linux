@@ -20,6 +20,7 @@ class Core {
      * @param  Integer  x               X position on the gameboard
      * @param  Integer  y               Y position on the gameboard
      * @param  String forcePlayerMark   Force place a players mark
+     * @throws Error if user place outside the area of the gameboard
      */
     place(x, y, forcePlayerMark = false) {
         var mark = this.getCurrentPlayerMarker();
@@ -28,10 +29,10 @@ class Core {
         }
 
         if (x > this.size || x < 0 || y > this.size || y < 0) {
-            throw '[' + x + '][' + y + '] is outside the map-area, try again ' + mark;
+            throw new Error('[' + x + '][' + y + '] is outside the map-area, try again ' + mark);
         }
         if (this.map[x][y] !== undefined) {
-            throw '[' + x + '][' + y + '] already taken by ' + this.map[x][y] + ', try again ' + mark;
+            throw new Error('[' + x + '][' + y + '] already taken by ' + this.map[x][y] + ', try again ' + mark);
         }
         this.map[x][y] = mark;
         this.turns += 1;
