@@ -36,14 +36,16 @@ Write a bash-client that communicate with the server you wrote in part 1.
 Reference and read more
 ------------------------------
 
-[Examples](https://github.com/mosbth/linux/tree/master/example)   
-[Arrow-functions](https://github.com/mosbth/linux/blob/master/tutorial/nodejs/arrow-functions.md)     
-[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)   
-[Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)    
-[crontab](http://www.computerhope.com/unix/ucrontab.htm)   
-[Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)    
+[Examples](https://github.com/mosbth/linux/tree/master/example)
+[Arrow-functions](https://github.com/mosbth/linux/blob/master/tutorial/nodejs/arrow-functions.md)
+[List of Content-Types](https://en.wikipedia.org/wiki/Internet_media_type#List_of_common_media_types)
+[Curl](https://github.com/mosbth/linux/blob/master/tutorial/bash/curl.md)
+[crontab](http://www.computerhope.com/unix/ucrontab.htm)
+[Crontab, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/crontab.md)  
+[Functions, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/functions.md)
 
 Revision history
 ------------------------------
+2015-07-01 (lew) could be final version
 2015-06-24 (foikila) Wrote first draft
 2015-06-15 (lew) PA1 First try.

@@ -35,7 +35,7 @@ Reference and read more
 ------------------------------
 [shebang, PATH](http://stackoverflow.com/questions/8779951/how-do-i-run-a-shell-script-without-using-sh-or-bash-commands)  
 [How to create a script](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)  
-[Functions, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/functions.md)  
+
 
 
 
