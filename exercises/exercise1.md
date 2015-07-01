@@ -4,28 +4,10 @@ Instruction to exercise 1
 ### Part 1
 
 1. Read the chapters 1-4 in the course literature
-2. Locate the folder called **mySite**. It should reside in the course repository
-3. The folder **mySite** contains an unstructured website. Try out the commands you learned from step 1 to structure the website folder, shown in step 4. You do not have to alter the content of the files.
-5. The result should look like this:
-    * mySite/index.html
-    * mySite/js/main.js
-    * mySite/style/style.css
-6. Upload the structured site to your server? **TODO - havent solved this one yet**
-
-
-### Part 2
-1. Read part 4 - chapter 24 in the course literature
-2. Create your own script, called **genie.sh**
-    * `touch genie.sh`
-    * `chmod u+x genie.sh` (set it to be executable by user, course literature chapter 9)
-    * Add your script directory to the PATH, `nano ~/.profile` and add the line `export PATH=$PATH:$HOME/path/to/your/scripts/`, save and exit. Now you can use `genie.sh` instead of `./genie.sh`
-    * If you just want to type "genie", add an alias: alias genie="genie.sh" (course literature chapter 11)
-        * To permanently use an alias, edit the file ~/.bashrc and put the above line in there
-    * open genie.sh in an editor
-    * add `#!/bin/bash` at the top of the file, it is called "shebang"
-    * On the next line, type `echo "this is my first bash script"`
-    * Save and exit the editor
-    * Try typing `genie` in the terminal (or `./genie.sh` if you haven't created an alias for it). It should print out "this is my first bash script"
+2. Locate the folder called **mySite**. It resides in the course repository.
+3. The folder **mySite** contains an unstructured website. Try out the commands you learned from step 1 to structure the website folder, described in step 4. You do not have to alter the content of the files.
+4. The correct file-structure can be found in "correct.txt".
+5. Upload the structured site to your server? **TODO - havent solved this one yet**
 
 Reference and read more
 ------------------------------

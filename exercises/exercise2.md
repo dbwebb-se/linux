@@ -17,22 +17,24 @@ Instruction to exercise 2
 
 ### Part 2
 
-1. Open `genie.sh` in your editor. Add a function called 'menu' that prints a welcome message and describes what you can do with the script. Continue to fill it with information as your genie grows. The menu should show if the argument is wrong/not existing or with the argument 'menu' i.e. `genie menu`.
-2. Move the line with `echo "this is my first script"` into the menu function.  
-**For this exercise, use the file bigFileWithManyLines**  
-3. Create a function called "getLast" that fetches the last 10 lines from the file and prints them.  
-Called upon with: `genie getLast`.
-4. Create a function called "getFirst" that fetches the first 7 lines from the file and prints them.  
-Called upon with: `genie getFirst`.
-5. Create a function called "getSpecial" that fetches the last 5 lines containing the word/number: "5"  
-Called upon with: `genie getSpecial`.
-6. Create a function called "getLines" that prints the number of lines in the file.  
-Called upon with: `genie getLines`.
-7. It is always good to provide the current version of the script so create a case that prints the version with `genie -v` or `genie --version`.
+1. Read part 4 - chapter 24 in the course literature
+2. Create your own script, called **genie.sh**
+    * `touch genie.sh`
+    * `chmod u+x genie.sh` (set it to be executable by user, course literature chapter 9)
+    * Add your script directory to the PATH, `nano ~/.profile` and add the line `export PATH=$PATH:$HOME/path/to/your/scripts/`, save and exit. Now you can use `genie.sh` instead of `./genie.sh`
+    * If you just want to type "genie", add an alias: alias genie="genie.sh" (course literature chapter 11)
+        * To permanently use an alias, edit the file ~/.bashrc and put the above line in there
+    * open genie.sh in an editor
+    * add `#!/bin/bash` at the top of the file, it is called "shebang"
+    * On the next line, type `echo "this is my first bash script"`
+    * Save and exit the editor
+    * Try typing `genie` in the terminal (or `./genie.sh` if you haven't created an alias for it). It should print out "this is my first bash script"
+
 
 Reference and read more
 ------------------------------
-
+[shebang, PATH](http://stackoverflow.com/questions/8779951/how-do-i-run-a-shell-script-without-using-sh-or-bash-commands)  
+[How to create a script](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_02_01.html)  
 [Functions, tutorial](https://github.com/mosbth/linux/blob/master/tutorial/bash/functions.md)  
 
 
