@@ -6,8 +6,6 @@ process.env.NODE_ENV = 'test';
 import server from '../serverUptime/server-uptime';
 
 // Dependencies needed for tests.
-var assert = require('assert');
-
 var request = require('supertest')(server);
 
 describe('Server uptime', () => {
