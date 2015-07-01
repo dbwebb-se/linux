@@ -7,9 +7,10 @@
     "url": "git@github.com:mosbth/linux.git"
   },
   "scripts": {
-    "jscs": "jscs $(find . -not -path './node_modules/*' | grep '.js$')",
+    "jscs": "jscs $(find . -not -path './node_modules/*' | grep '.js$') --config ../../.jscsrc",
+    "jshint": "jshint $(find . -not -path './node_modules/*' | grep '.js$') --config ../../.jshintrc",
     "unit-test": "mocha --compilers js:mocha-traceur $(find . -not -path './node_modules/*' | grep '.test.js')",
-    "test": "npm run jscs && npm run unit-test",
+    "test": "npm run jscs && npm run jshint && npm run unit-test",
     "babel-node": "babel-node --stage 0"
   },
   "author": "Olund",
