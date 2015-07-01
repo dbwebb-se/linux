@@ -10,7 +10,7 @@ git:
 env:
   - TEST_DIR=example/nodejs/
 #  - TEST_DIR=tilt-server
-before_install: npm install -g jscs babel
+before_install: npm install -g jscs babel jshint
 script: cd $TEST_DIR && npm install && npm test
 
 
