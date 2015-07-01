@@ -23,7 +23,7 @@ var url = require('url');
 
 class Router {
 
-    constructor(req, res) {
+    constructor() {
         this.routes = [];
         this.methods = {
             'GET': 'get',
