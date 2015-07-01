@@ -100,11 +100,11 @@ describe('Router', () => {
 
     it('Multiple get requests', (done) => {
         router.get('/a', (req, res) => {
-            req.end('a');
+            res.end('a');
         });
 
         router.get('/b', (req, res) => {
-            req.end('b');
+            res.end('b');
         });
 
         request(setupServer())
@@ -133,19 +133,19 @@ describe('Router', () => {
             var id = req.params.id;
             var name = req.params.name;
 
-            res.end('ok');
+            res.end(id + name);
         });
 
         request(setupServer())
             .get('/animal/1/kalle')
-            .expect(200, 'ok', done);
+            .expect(200, '1kalle', done);
     });
 
     it('GET with many params', (done) => {
         var b,c,d;
         router.get('/a/:b/:c/:d', (req, res) => {
-                b = req.params.b,
-                c = req.params.c,
+                b = req.params.b;
+                c = req.params.c;
                 d = req.params.d;
 
             res.end(b + c + d);
