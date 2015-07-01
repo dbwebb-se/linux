@@ -4,5 +4,7 @@
   "unused": true,
   "predef": ["console", "window", "document", "require", "__dirname"],
   "laxbreak": true,
-  "loopfunc": true
+  "loopfunc": true,
+  "mocha": true,
+  "node": true
 }
