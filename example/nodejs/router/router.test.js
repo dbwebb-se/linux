@@ -239,5 +239,107 @@ describe('Router', () => {
                     .expect(200, 'not', done);
             });
     });
+/*
+    it('Group with a new router', (done) => {
+        var newRouter = new Router();
 
+        newRouter.get('/new', (req, res) => {
+            res.end('new router');
+        });
+
+        newRouter.get('/new/new', (req, res) => {
+            res.end('new router');
+        });
+
+        newRouter.get('/params/:id', (req, res) => {
+            res.end(req.params.id);
+        });
+
+        router.get('/asdf', (req, res) => {
+            res.end('standard router');
+        });
+
+        router.group('/api', newRouter);
+
+        var req = request(setupServer());
+
+        req
+            .get('/api/new')
+            .expect(200, 'new router')
+            .end(() => {
+                req
+                    .get('/asdf')
+                    .expect(200)
+                    .end(() => {
+                        req
+                            .get('/api/new/new')
+                            .expect(200, 'new router')
+                            .end(() => {
+                                req
+                                    .get('/api/params/1337')
+                                    .expect(200, '1337', done);
+                            })
+                    });
+            });
+
+    });
+*/
+    it('GROUP laravel style', (done) => {
+
+        // Group all routes inside to /api/v1
+        router.group('/api/v1', () => {
+            router.get('/test', (req, res) => {
+                res.end('v1 test');
+            });
+        });
+
+        router.get('/standard', (req, res) => {
+            res.end('standard');
+        });
+
+        router.get('/another', (req, res) => {
+            res.end('another');
+        });
+
+        // Group all routes inside to /api/v2
+        router.group('/api/v2', () => {
+            router.get('/users', (req, res) => {
+                res.end('GET /api/users');
+            });
+
+            router.post('/users', (req, res) => {
+                res.end('POST /api/users');
+            });
+        });
+
+        router.get('/kalle', (req, res) => {
+            res.end('kalle');
+        });
+
+        var req = request(setupServer());
+
+        req
+            .get('/standard')
+            .expect(200, 'standard')
+            .end(() => {
+                req
+                    .get('/api/v2/users')
+                    .expect(200, 'GET /api/users')
+                    .end(() => {
+                        req
+                            .post('/api/v2/users')
+                            .expect(200, 'POST /api/users')
+                            .end(() => {
+                                req
+                                    .get('/kalle')
+                                    .expect(200, 'kalle')
+                                    .end(() => {
+                                        req
+                                            .get('/api/v1/test')
+                                            .expect(200, 'v1 test', done);
+                                    });
+                            });
+                    });
+            });
+    });
 });

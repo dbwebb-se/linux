@@ -164,6 +164,43 @@ class Router {
         return this.routes.length;
     }
 
+    /**
+     * Group routes
+     * @param  {[type]} path   [description]
+     * @param  {[type]} routes [description]
+     * @return {[type]}        [description]
+     */
+    /*group(path, router) {
+        router.routes.forEach((obj, index) => {
+            // set the new path.
+            obj.path = path + obj.path;
+
+            // add the new routes to this.routes.
+            this.routes.push(obj);
+        });
+    }*/
+
+    /**
+     * Group routes
+     * @param  {[type]}   path     [description]
+     * @param  {Function} callback [description]
+     * @return {[type]}            [description]
+     */
+    group(path, callback) {
+
+        if (typeof callback !== 'function') {
+            throw 'No handler function was passed';
+        }
+
+        var oldLen = this.routes.length;
+        callback();
+        var length = this.routes.length - oldLen;
+
+        for (var i = this.routes.length; i > this.routes.length - length; i = i - 1) {
+            this.routes[i - 1].path = path + this.routes[i - 1].path;
+        }
+    }
+
 }
 
 function trimSlashes(str) {
