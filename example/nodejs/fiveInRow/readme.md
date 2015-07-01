@@ -4,7 +4,7 @@
 Places a mark in the game board (map).
 
 | Type        | Name          | Desc  |  Node Environment |
-| ------------- |-------------| ----- |
+| ------------- |-------------| ----- | ------------------- | 
 | Integer | x | X position on the gameboard | Production |
 | Integer | y | Y position on the gameboard | Production |
 | String | forcePlayerMark | Force place a players mark | Test |
@@ -47,7 +47,7 @@ String
 Gets the player name from the mark given
 
 | Type        | Name          | Desc  |  Node Environment |
-| ------------- |-------------| ----- |
+| ------------- |-------------| ----- | ------------------- |
 | Char | mark | Char mark | Production |
 
 <span style="font-size: 18px;color:grey;">Returns</span>      
