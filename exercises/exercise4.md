@@ -19,13 +19,13 @@ $ babel-node maze/index.js
    * `mazerunner init` should save down the game id and print the message.
    * `mazerunner maps` should return the available maps.
    * `mazerunner select <map>` should select the given map.
-   * `mazerunner info` should giv information about the current room.
+   * `mazerunner info` should give information about the current room.
    * `mazerunner go north` should navigate to the north
    * `mazerunner go south` should navigate to the south
    * `mazerunner go east` should navigate to the east
    * `mazerunner go west` should navigate to the west
 
-## Part 3
+## Part 2
 1. Extend the `mazerunner` even further
 **TODO** INPUT PART ABOUT WHILE-LOOPS AND THE OTHER
 
