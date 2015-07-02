@@ -27,12 +27,19 @@ $ babel-node maze/index.js
 
 ## Part 2
 1. Extend the `mazerunner` even further
-**TODO** INPUT PART ABOUT WHILE-LOOPS AND THE OTHER
+    * `mazerunner loop` should enter a loop where the script is listening for input.
+    * `mazerunner` should automatically init a new game and present the maps, for example:  
+    ```sh
+    1. maze-of-doom  
+    2. simple-maze  
+    Choose map:  
+    ```  
+    * Then `mazerunner` should listen on `go north, go south, go west, go east and done(to quit)`
 
 
 Reference and read more
 ------------------------------
-[API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md)
+[API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md)  
 [Bash tutorials](https://github.com/mosbth/linux/tree/master/tutorial/bash)
 
 Revision history
