@@ -34,12 +34,12 @@ $ babel-node maze/index.js
     2. simple-maze  
     Choose map:  
     ```  
-    * Then `mazerunner` should listen on `go north, go south, go west, go east and done(to quit)` 
+    * Then `mazerunner` should listen on `go north, go south, go west, go east and done(to quit)`
 
 
 Reference and read more
 ------------------------------
-[API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md)
+[API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md)  
 [Bash tutorials](https://github.com/mosbth/linux/tree/master/tutorial/bash)
 
 Revision history
