@@ -21,7 +21,7 @@ describe('Router', () => {
     });
 
     function setupServer() {
-       return http.createServer(function (req, res) {
+        return http.createServer(function (req, res) {
             router.route(req, res);
         });
     }
@@ -201,6 +201,48 @@ describe('Router', () => {
                         });
                 });
         });
+
+        it('Should throw if no function is provided', (done) => {
+            assert.throws(
+                function() {
+                    router.group('/');
+                },
+                /handler/
+            );
+
+            done();
+        });
+
+        it('Should throw if no path provided', (done) => {
+            assert.throws(
+                function() {
+                    router.group();
+                },
+                /path/
+            );
+
+            done();
+        });
+
+        it('/ route in a group', (done) => {
+
+            router.group('/api', function() {
+                router.get('/', function (req, res) {
+                    res.send('GET /');
+                });
+            });
+
+            var req = request(setupServer());
+
+            req
+                .get('/api')
+                .expect(200, 'GET /')
+                .end(() => {
+                    req
+                        .get('/api/')
+                        .expect(200, 'GET /', done);
+                });
+        });
     });
 
     describe('The response object', () => {
@@ -253,7 +295,6 @@ describe('Router', () => {
                 .expect(200)
                 .expect('Content-Type', /json/, done);
         });
-
 
     });
 

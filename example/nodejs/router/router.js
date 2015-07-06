@@ -17,7 +17,6 @@
     }).listen(1337);
 */
 
-
 var url = require('url');
 var buildResponse = require('./response');
 var buildRequest = require('./request');
@@ -188,9 +187,12 @@ class Router {
      * @return {[type]}            [description]
      */
     group(path, callback) {
+        if (!path) {
+            throw new Error('No path passed');
+        }
 
         if (typeof callback !== 'function') {
-            throw 'No handler function was passed';
+            throw new Error('No handler function was passed');
         }
 
         var oldLen = this.routes.length;
