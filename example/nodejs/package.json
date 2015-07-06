@@ -16,8 +16,12 @@
   "author": "Olund",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^5.6.14",
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.2",
     "mocha": "2.0.1",
     "mocha-traceur": "2.1.0",
-    "supertest": "1.0.1"
+    "supertest": "1.0.1",
+    "gulp-util": "^3.0.6"
   }
 }
