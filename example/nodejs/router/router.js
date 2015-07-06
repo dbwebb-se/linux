@@ -19,7 +19,7 @@
 
 
 var url = require('url');
-
+var buildResponse = require('./response');
 
 class Router {
 
@@ -78,6 +78,10 @@ class Router {
      * @param  {[type]} res HTTP response object
      */
     route(req, res) {
+
+        // EXTEND RES AND REQ better defaults/methods...
+        res = buildResponse(req, res);
+
 
         req.params = {};
         // Set the request query to the request object.
