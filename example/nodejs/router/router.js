@@ -20,6 +20,7 @@
 
 var url = require('url');
 var buildResponse = require('./response');
+var buildRequest = require('./request');
 
 class Router {
 
@@ -79,13 +80,9 @@ class Router {
      */
     route(req, res) {
 
-        // EXTEND RES AND REQ better defaults/methods...
+        // Extend request and response object.
+        req = buildRequest(req, res);
         res = buildResponse(req, res);
-
-
-        req.params = {};
-        // Set the request query to the request object.
-        req.query = url.parse(req.url, true).query;
 
         // Get the path and the method.
         var path = trimSlashes(url.parse(req.url).pathname);

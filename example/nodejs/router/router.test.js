@@ -346,7 +346,6 @@ describe('Router', () => {
     describe('The response object', () => {
         it('send method', (done) => {
             router.get('/', (req, res) => {
-                console.log(res);
                 res.send('ok');
             });
 

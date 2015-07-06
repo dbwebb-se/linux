@@ -4,8 +4,8 @@ module.exports = function buildResponse (req, res) {
 
     res.send = function send(body, contentType, statusCode) {
 
-        console.log('ARGS:', body);
-        console.log(res._headers);
+        /*console.log('ARGS:', body);
+        console.log(res._headers);*/
 
         // Ensure charset is set.
         res.charset = res.charset || 'utf-8';
@@ -54,8 +54,6 @@ module.exports = function buildResponse (req, res) {
     res.get = function(field) {
         return this.getHeader(field);
     };
-
-    //console.log(res);
 
     return res;
 };
