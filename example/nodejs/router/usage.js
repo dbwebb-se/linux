@@ -80,6 +80,36 @@ router.get('/', (req, res) => {
     res.end(queryParam);
 });
 
+router.get('/send', (req, res) => {
+    res.send('ok', 200);
+});
+
+router.get('/obj', (req, res) => {
+    var obj = {
+        x: 1,
+        y: 2
+    };
+
+    res.json(obj);
+});
+
+router.get('/json', (req, res) => {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    var obj = {
+        x: 1,
+        y: 2
+    };
+    res.end(JSON.stringify(obj));
+});
+
+router.get('/plain', (req, res) => {
+    res.send('asdasd', 'text/plain');
+});
+
+router.get('/html', (req, res) => {
+    res.send('<html><body><h1>Hello!</h1></body></html>');
+});
+
 // Create the server using the router.
 http.createServer((req, res) => {
     router.route(req, res);

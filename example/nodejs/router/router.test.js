@@ -342,4 +342,44 @@ describe('Router', () => {
                     });
             });
     });
+
+    describe('The response object', () => {
+        it('send method', (done) => {
+            router.get('/', (req, res) => {
+                console.log(res);
+                res.send('ok');
+            });
+
+            request(setupServer())
+                .get('/')
+                .expect(200, 'ok', done);
+        });
+
+        it('send method html', (done) => {
+            router.get('/', (req, res) => {
+                res.send('<p>hello</p>');
+            });
+
+            request(setupServer())
+                .get('/')
+                .expect(200)
+                .expect('Content-Type', 'text/html', done);
+        });
+
+        it('json method', (done) => {
+            router.get('/', (req, res) => {
+                var obj = {
+                    x: 11,
+                    y: 55
+                };
+
+                res.json(obj);
+            });
+
+            request(setupServer())
+                .get('/')
+                .expect(200)
+                .expect('Content-Type', /json/, done);
+        });
+    });
 });

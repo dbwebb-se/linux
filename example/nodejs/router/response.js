@@ -2,7 +2,7 @@ module.exports = function buildResponse (req, res) {
     res = res || {};
 
 
-    res.send = function send(body, statusCode) {
+    res.send = function send(body, contentType, statusCode) {
 
         console.log('ARGS:', body);
         console.log(res._headers);
@@ -12,27 +12,47 @@ module.exports = function buildResponse (req, res) {
         res.statusCode = statusCode || res.statusCode || 200;
 
         res.body = body;
+        res.headers = 'text/html';
 
 
-
-
-        if (typeof body === 'object') {
-            try {
-                body = JSON.stringify(body);
-            } catch (e) {
-
-                console.error('failed to stringify in send function');
-
-                res.statusCode = 500;
-            }
-
+        if (contentType) {
+            this.setHeader('Content-Type', contentType);
+        } else {
+            this.setHeader('Content-Type', 'text/html');
         }
-        res.write(body);
+
+        switch (typeof body) {
+            case 'string':
+                if (!this.get('Content-Type')) {
+                    this.setHeader('Content-Type', 'text/html');
+                }
+            break;
+
+            case 'boolean':
+            case 'number':
+            case 'object':
+                if (body === null) {
+                    body = '';
+                }
+
+                body = JSON.stringify(body);
+
+            break;
+        }
+
+        res.write(body, statusCode);
         res.end();
     };
 
-    res.json = function sendJson(body, statusCode) {
-        return res.send(body, statusCode || 200);
+    res.json = function sendJson(body) {
+        if (!this.get('Content-Type')) {
+            this.setHeader('Content-Type', 'application/json');
+        }
+        return res.send(body, 'application/json', 200);
+    };
+
+    res.get = function(field) {
+        return this.getHeader(field);
     };
 
     //console.log(res);
