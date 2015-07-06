@@ -10,7 +10,9 @@ class Core {
         this.map.length = this.size;
         for (var i = 0; i < this.map.length; i += 1) {
             this.map[i] = [];
-            this.map[i].length = this.size;
+            for (var y = 0; y < this.size; y += 1) {
+                this.map[i][y] = ' ';
+            }
         }
         this.turns = 0;
     }
@@ -31,7 +33,8 @@ class Core {
         if (x > this.size || x < 0 || y > this.size || y < 0) {
             throw new Error('[' + x + '][' + y + '] is outside the map-area, try again ' + mark);
         }
-        if (this.map[x][y] !== undefined) {
+        // this.map[x][y] !== undefined
+        if (this.map[x][y] !== ' ') {
             throw new Error('[' + x + '][' + y + '] already taken by ' + this.map[x][y] + ', try again ' + mark);
         }
         this.map[x][y] = mark;
