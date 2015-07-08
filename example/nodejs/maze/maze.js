@@ -44,6 +44,34 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
                 'Content-Type': 'application/octet-stream'
             };
             break;
+        case 'csv':
+            contentType = {
+                'Content-Type': 'text/csv'
+            };
+
+            var temp = [];
+            var values = [];
+            for (var t in content) {
+                if (t === 'directions') {
+                    for (var dir in content[t]) {
+                        temp.push(dir);
+                        values.push(content[t][dir]);
+                    }
+                } else {
+                    temp.push(t);
+                    values.push(content[t]);
+                }
+            }
+            content = '';
+            temp.forEach((t) => {
+                content += t += ',';
+            });
+            content = content.replace(/,$/g, '\n');
+            values.forEach((t) => {
+                content += t += ',';
+            });
+            content = content.replace(/,$/g, '\n');
+            break;
     }
     resObj.writeHead(code, contentType);
     resObj.write(content);
@@ -56,6 +84,7 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
  * @param Object res The response
  */
 router.get('/', (req, res) => {
+    var type = req.query.type;
     var gameid = ((String)(Math.random() * 100)).replace('.', '').substr(0, 5);
     var content = {
         text: 'New game initialized',
@@ -67,7 +96,7 @@ router.get('/', (req, res) => {
         lastRoom: null
     };
 
-    sendResponse(res, content);
+    sendResponse(res, content, 200, type);
 });
 
 /**
@@ -77,11 +106,12 @@ router.get('/', (req, res) => {
  */
 router.get('/map', (req, res) => {
     maps = fs.readdirSync(__dirname + '/maps');
+    var type = req.query.type;
 
     // Filter away all non json-files
     maps = maps.filter((map) => map.includes('.json'));
 
-    sendResponse(res, maps);
+    sendResponse(res, maps, 200, type);
 });
 
 /**
@@ -92,6 +122,7 @@ router.get('/map', (req, res) => {
 router.get('/:gameid/map/:map', (req, res) => {
     var map = req.params.map;
     var gameid = req.params.gameid;
+    var type = req.query.type;
 
     if (!map.includes('.json')) {
         map += '.json';
@@ -112,7 +143,7 @@ router.get('/:gameid/map/:map', (req, res) => {
     //console.log(games[gameid]);
     sendResponse(res, {
         'text': 'New map selected.'
-    });
+    }, 200, type);
 });
 
 /**
@@ -122,26 +153,26 @@ router.get('/:gameid/map/:map', (req, res) => {
  */
 router.get('/:gameid/maze', (req, res) => {
     var gameid = req.params.gameid;
+    var type = req.query.type;
 
     if (games[gameid] === undefined) {
         sendResponse(res, {
             'text': 'A game with that gameid don\'t exist'
-        }, 500, 'json');
+        }, 500, type);
         return;
     }
 
     if (games[gameid].currentMap === null) {
-
         sendResponse(res, {
             'text': 'Map not selected.',
             'hint': 'Call /map/:map first'
-        }, 500);
+        }, 500, type);
         return;
     }
 
     games[gameid].lastRoom = games[gameid].currentMap[0];
 
-    sendResponse(res, games[gameid].lastRoom);
+    sendResponse(res, games[gameid].lastRoom, 200, type);
 });
 
 /**
@@ -151,16 +182,17 @@ router.get('/:gameid/maze', (req, res) => {
  */
 router.get('/:gameid/maze/:roomId', (req, res) => {
     var gameid = req.params.gameid;
+    var type = req.query.type;
 
     if (games[gameid] === undefined) {
         sendResponse(res, {
             'text': 'A game with that gameid don\'t exist'
-        }, 500, 'json');
+        }, 500, type);
         return;
     }
 
     if (games[gameid].currentMap === null) {
-        sendResponse(res, 'Content not loaded', 404, 'plain');
+        sendResponse(res, 'Content not loaded', 404, type);
         return;
     }
     var id = req.params.roomId;
@@ -172,7 +204,7 @@ router.get('/:gameid/maze/:roomId', (req, res) => {
         return;
     }
 
-    sendResponse(res, games[gameid].current);
+    sendResponse(res, games[gameid].current, 200, type);
 });
 
 /**
@@ -184,11 +216,12 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
     var gameid = req.params.gameid;
     var id = req.params.roomId;
     var dir = req.params.direction;
+    var type = req.query.type;
 
     if (games[gameid] === undefined) {
         sendResponse(res, {
             'text': 'A game with that gameid don\'t exist'
-        }, 500, 'json');
+        }, 500, type);
         return;
     }
 
@@ -213,7 +246,7 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
     if (lastRoom === undefined) {
         lastRoom = temp;
         current.error = 'Path dont exist';
-        sendResponse(res, current, 404);
+        sendResponse(res, current, 404, type);
         return;
     }
 
