@@ -27,7 +27,7 @@ Third part: potato
 Reference and read more
 ------------------------------
 
-[CUt, man page](http://unixhelp.ed.ac.uk/CGI/man-cgi?cut)  
+[Cut, man page](http://unixhelp.ed.ac.uk/CGI/man-cgi?cut)  
 
 
 Revision history
