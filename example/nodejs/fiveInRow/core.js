@@ -47,7 +47,7 @@ class Core {
     printMap() {
         process.stdout.write(' ');
         for (var i = 0; i < this.size; i += 1) {
-            console.log(' ' + i);
+            process.stdout.write(' ' + i);
         }
         process.stdout.write('\n');
         for (i = 0; i < this.size; i += 1) {
