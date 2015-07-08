@@ -42,6 +42,24 @@ class Core {
     }
 
     /**
+     * Prints the game board in a petty faction
+     */
+    printMap() {
+        process.stdout.write(' ');
+        for (var i = 0; i < this.size; i += 1) {
+            console.log(' ' + i);
+        }
+        process.stdout.write('\n');
+        for (i = 0; i < this.size; i += 1) {
+            process.stdout.write(i + '|');
+            for (var j = 0; j < this.size; j += 1) {
+                process.stdout.write(this.map[i][j] + '|');
+            }
+            process.stdout.write('\n');
+        }
+    }
+
+    /**
      * Returns the current game board as it is
      * @return Array
      */
