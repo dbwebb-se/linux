@@ -225,7 +225,7 @@ describe('Maze', () => {
                                                                     .end(() => {
                                                                         req
                                                                             .get('/' + gameid + '/maze/' + perfectPath[6].id + '/' + perfectPath[6].dir)
-                                                                            .expect(200, '{"roomid":9,"description":"You found the exit","directions":{}}', done); // END 6
+                                                                            .expect(200, '{"roomid":9,"description":"You found the exit","directions":{"west":"-","east":"-","south":"-","north":"-"}}', done); // END 6
                                                                     }); // END 5
                                                             }); // END 4
                                                     }); // END 3
@@ -270,7 +270,7 @@ describe('Maze', () => {
                     .end(() => {
                         req.get('/' + gameid + '/maze/1/south')
                         .expect(200,
-                        '{"roomid":2,"description":"You found the exit","directions":{}}'
+                        '{"roomid":2,"description":"You found the exit","directions":{"west":"-","east":"-","south":"-","north":"-"}}'
                         );
                     });
                 });
@@ -289,7 +289,7 @@ describe('Maze', () => {
                     .end(() => {
                         req.get('/' + gameid + '/maze/1/south')
                         .expect(200,
-                        '{"roomid":2,"description":"You found the exit","directions":{}}',
+                        '{"roomid":2,"description":"You found the exit","directions":{"west":"-","east":"-","south":"-","north":"-"}}',
                         done
                         );
                     });
@@ -311,7 +311,7 @@ describe('Maze', () => {
                 .expect(200)
                 .end(() => {
                     req.get('/' + gameid + '/maze/0?type=csv')
-                    .expect(200, 'roomid,description,south\n0,Entry,1\n', done);
+                    .expect(200, 'roomid,description,west,east,south,north\n0,Entry,-,-,1,-\n', done);
                 });
             });
         });
