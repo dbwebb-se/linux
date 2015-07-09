@@ -235,7 +235,7 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
     // Check if its not a valid path choosen
     if (current.directions[dir] === undefined) {
         current.error = 'Direction not allowed';
-        sendResponse(res, current, 404);
+        sendResponse(res, current, 404, type);
         return;
     }
 
@@ -251,7 +251,7 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
     }
 
     games[gameid].lastRoom = lastRoom;
-    sendResponse(res, lastRoom);
+    sendResponse(res, lastRoom, 200, type);
 });
 
 var server = http.createServer((req, res) => {
