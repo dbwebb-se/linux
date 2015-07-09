@@ -6,7 +6,7 @@ Instruction to exercise 4
 Start up the maze-server by execute the following command.
 
 ```bash
-$ babel-node maze/index.js
+$ babel-node -- maze/index.js
 ```
 
 ## Part 1

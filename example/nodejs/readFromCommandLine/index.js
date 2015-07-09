@@ -1,6 +1,6 @@
 /**
  * Execute this project by:
- * $ babel-node index.js
+ * $ babel-node -- index.js
  */
 
 var usage = 'Read passed parameters to the script.\n' +

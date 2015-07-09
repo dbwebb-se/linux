@@ -9,7 +9,7 @@ Copy the example server from `example/kmom04/` and place it in **INPUT me-PATH**
 
 You run the server by executing this command:
 ```bash
-$ babel-node kmom04/index.js
+$ babel-node -- kmom04/index.js
 ```
 
 ### Requirements
