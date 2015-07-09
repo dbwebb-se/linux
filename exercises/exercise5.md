@@ -24,8 +24,8 @@ Utilize the fiveInRow-core to build your own fiveInRow-game via a CLI-program.
     - `fiveInRowCli.js -h` could give information and options on how to start the game.
     - `fiveInRowCli.js --start` should start the game and "go into" the menu-loop.
 5. The game should implement the following functionality
-    - When the game start it must display Menu.
-    - Player must be able to place a mark with giving row, column - number
+    - When the game start it must display a menu.
+    - Player must be able to place a mark with given row, column - number
     - Player must be able to quit by writing `Quit` or `exit`
     - The game must check if a player has won after every placed marker.
     - The game must display the game board after every placed mark.
