@@ -3,10 +3,10 @@
         "roomid": 0,
         "description": "You are in a dark room and you feel 2 doors in the dark dark room",
         "directions": {
-	    "west": "-",
+	        "west": "-",
             "east": 1,
             "south": 3,
-	    "north": "-"
+	        "north": "-"
         }
     },
     "1": {
@@ -15,7 +15,8 @@
         "directions": {
             "west": 0,
             "east": 2,
-            "south": 4
+            "south": 4,
+	        "north": "-"
         }
     },
     "2": {
@@ -23,40 +24,49 @@
 	    "description": "Room 2",
 	    "directions": {
             "west": 1,
-            "south":  5
+            "east": "-",
+            "south":  5,
+            "north": "-"
         }
 	},
     "3": {
         "roomid": 3,
         "description": "Room 3",
         "directions": {
-            "north": 0,
+            "west": "-",
             "east": 4,
-            "south": 6
+            "south": 6,
+            "north": 0
         }
     },
     "4": {
         "roomid": 4,
         "description": "Room 4",
         "directions": {
-            "north": 1,
-            "west": 3
+            "west": 3,
+            "east": "-",
+            "south": "-",
+            "north": 1
         }
     },
     "5": {
         "roomid": 5,
         "description": "Room 5",
         "directions": {
-            "north": 2,
-            "south": 8
+            "west": "-",
+            "east": "-",
+            "south": 8,
+            "north": 2
         }
     },
     "6": {
         "roomid": 6,
         "description": "Room 6",
         "directions": {
+            "west": "-",
+            "east": 7,
+            "south": "-",
             "north": 3,
-            "east": 7
         }
     },
     "7": {
@@ -64,7 +74,9 @@
         "description": "Room 7",
         "directions": {
             "west": 6,
-            "east": 8
+            "east": 8,
+            "south": "-",
+            "north": "-"
         }
     },
     "8": {
@@ -72,14 +84,19 @@
         "description": "Room 8",
         "directions":{
             "west": 7,
+            "east": "-",
+            "south": 11,
             "north": 5,
-            "south": 11
         }
     },
     "9": {
         "roomid": 9,
         "description": "You found the exit",
         "directions": {
+            "west": "-",
+            "east": "-",
+            "south": "-",
+            "north": "-"
         }
     },
     "10": {
@@ -87,7 +104,9 @@
         "description": "Room 10",
         "directions": {
             "west": 9,
-            "east": 11
+            "east": 11,
+            "south": "-",
+            "north": "-"
         }
     },
     "11": {
@@ -95,6 +114,8 @@
         "description": "Room 11",
         "directions": {
             "west": 10,
+            "east": "-",
+            "south": "-",
             "north": 8
         }
     }
