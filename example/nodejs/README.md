@@ -76,7 +76,7 @@ Lets start a webserver-like server. You find it in the example [`simpleServer`](
 Start the server by running the main-program.
 
 ```bash
-$ babel-node index.js
+$ babel-node -- index.js
 ```
 
 Use curl, or you web browser, to try out the server.
