@@ -13,15 +13,17 @@ $ babel-node -- maze/index.js
 
 1. Create a script called "mazerunner.sh" and follow up with instructions from exercise 1, regarding script creation.
 2. Use the [API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md) for the maze to extend the `mazerunner` with these functionalities (think about that some information have to be resused and saved to file. Add "?type=csv" in the end of your curl, i.e. "curl localhost:1337/map?type=csv", to get the response comma-separated)  
-   * `mazerunner init` should save down the game id and print the message.
-   * `mazerunner maps` should return the available maps.
-   * `mazerunner select <map>` should select the given map.
-   * `mazerunner info` should give information about the current room.
+   * `mazerunner init` should save down the game id and print the message
+   * `mazerunner maps` should return the available maps
+   * `mazerunner select <map>` should select the given map
    * `mazerunner enter` should enter the first room
    * `mazerunner go north` should navigate to the north
    * `mazerunner go south` should navigate to the south
    * `mazerunner go east` should navigate to the east
    * `mazerunner go west` should navigate to the west
+
+An example:  
+[![asciicast](https://asciinema.org/a/1voz3ecbgsbu5dytp9sz5n2kb.png)](https://asciinema.org/a/1voz3ecbgsbu5dytp9sz5n2kb)  
 
 ## Part 2
 1. Extend the `mazerunner` even further
@@ -33,6 +35,9 @@ $ babel-node -- maze/index.js
     Choose map:  
     ```  
     * Then `mazerunner` should listen on `north, south, west, east and done (to quit)`
+
+## Optional assignment
+1. Make the script automatically start the server when initiated
 
 An example:  
 [![asciicast](https://asciinema.org/a/c8u2zbu69jxjdro8wlxxyip5o.png)](https://asciinema.org/a/c8u2zbu69jxjdro8wlxxyip5o)  
