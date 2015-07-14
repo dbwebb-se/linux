@@ -22,24 +22,20 @@ $ babel-node -- maze/index.js
    * `mazerunner go east` should navigate to the east
    * `mazerunner go west` should navigate to the west
 
-An example:  
+Example of part 1:  
 [![asciicast](https://asciinema.org/a/1voz3ecbgsbu5dytp9sz5n2kb.png)](https://asciinema.org/a/1voz3ecbgsbu5dytp9sz5n2kb)  
 
 ## Part 2
 1. Extend the `mazerunner` even further
     * `mazerunner loop` should enter a loop where the script is listening for input.
-    * `mazerunner` should automatically init a new game and present the maps, for example:  
-    ```sh
-    1. maze-of-doom  
-    2. simple-maze  
-    Choose map:  
-    ```  
+    * `mazerunner` should automatically init a new game and present the maps.
+    * Choose map and enter the maze
     * Then `mazerunner` should listen on `north, south, west, east and done (to quit)`
 
 ## Optional assignment
 1. Make the script automatically start the server when initiated
 
-An example:  
+Example of part 2 with optional assignment:  
 [![asciicast](https://asciinema.org/a/c8u2zbu69jxjdro8wlxxyip5o.png)](https://asciinema.org/a/c8u2zbu69jxjdro8wlxxyip5o)  
 
 
