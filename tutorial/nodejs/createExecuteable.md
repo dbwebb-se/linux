@@ -11,7 +11,6 @@
 
     // "routes" or switches on them to see
     //  if they match anything pre-defined.
-    //  
     arguments.forEach(function(arg) {
         if (arg === '--version') {
             console.log('v1.0.0')
@@ -24,8 +23,13 @@
 
 ## Make it executeable 
 
-1. Add the appropriate shebang. In my case `#!/usr/bin/env nodejs`. This might differ for you. If you are on a Windows or a Mac machine it might look something like this `#!/usr/bin#/env node`. It's important that the shebang is placed  on the first row in the script.    
-*The file should now look something like this:*
+1. Add the appropriate shebang. In my case `#!/usr/bin/env nodejs`.    
+     This might differ for you. If you are on a Windows or
+a Mac machine it might look something like this 
+`#!/usr/bin#/env node`. It's important that the shebang is 
+placed  on the first row in the script. 
+   
+    *The file should now look something like this:*
     ```javascript
     #!/usr/bin/env nodejs
     
@@ -45,8 +49,9 @@
     ```
 
 ## Move the file
-Now its time to make the script executeable from anywhere in the file system. 
-To do that the following steps needs to be completed.
+Now it is time to make the script executeable from anywhere in 
+the file system. To do that the following steps needs to be 
+completed.
 
 1. Copy the file to `/usr/local/bin/`.
     ```bash
@@ -64,7 +69,9 @@ To do that the following steps needs to be completed.
 
 #### Alternative way of creating a executable from anywhere in the file system
 
-An alternative to this is to create a soft-link (symlink) from the script to the `/usr/local/bin` directory. To achieve this, follow the steps below.
+An alternative to this is to create a soft-link (symlink) from
+the script to the `/usr/local/bin` directory. To achieve 
+this, follow the steps below.
 
 1. Create a symlink to the `/usr/local/bin` directory
     ```bash
