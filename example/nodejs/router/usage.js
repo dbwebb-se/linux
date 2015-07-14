@@ -110,6 +110,32 @@ router.get('/html', (req, res) => {
     res.send('<html><body><h1>Hello!</h1></body></html>');
 });
 
+router.group('/api', function() {
+    // /api
+    router.get('/', function(req, res) {
+        res.send('GET /api');
+    });
+
+    // /api/test
+    router.get('/test', function(req, res) {
+        res.send('GET /api/test');
+    });
+
+    // /api/v1/
+    router.group('/v1', function() {
+
+        // /api/v1/
+        router.get('/', function(req, res) {
+            res.send('/api/v1/')
+        });
+        // /api/v1/test
+        router.get('/test', function (req, res) {
+            res.send('/api/v1/test')
+        });
+    });
+
+});
+
 // Create the server using the router.
 http.createServer((req, res) => {
     router.route(req, res);

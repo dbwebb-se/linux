@@ -243,6 +243,58 @@ describe('Router', () => {
                         .expect(200, 'GET /', done);
                 });
         });
+
+        it ('Multiple groups inside', (done) => {
+            router.group('/api', function() {
+                // /api
+                router.get('/', function(req, res) {
+                    res.send('GET /api');
+                });
+
+                // /api/test
+                router.get('/test', function(req, res) {
+                    res.send('GET /api/test');
+                });
+
+                // /api/v1/
+                router.group('/v1', function() {
+
+                    // /api/v1/
+                    router.get('/', function(req, res) {
+                        res.send('/api/v1/')
+                    });
+                    // /api/v1/test
+                    router.get('/test', function (req, res) {
+                        res.send('/api/v1/test')
+                    });
+
+                    // /api/v1/something/
+                    router.group('/something', function() {
+
+                        // /api/v1/something/kalle
+                        router.get('/kalle', function (req, res) {
+                            res.send('kalle');
+                        });
+                    });
+
+                });
+            });
+
+            var req = request(setupServer());
+            req
+                .get('/api/v1')
+                .expect(200, '/api/v1/')
+                .end(() => {
+                    req
+                        .get('/api/v1/test')
+                        .expect(200, '/api/v1/test')
+                        .end(function () {
+                            req
+                                .get('/api/v1/something/kalle')
+                                .expect(200, 'kalle', done);
+                        });
+                });
+        });
     });
 
     describe('The response object', () => {
