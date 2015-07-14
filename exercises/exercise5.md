@@ -7,7 +7,7 @@ Part 1
 ------
 Extend the already existing fiveInRow-core. 
 Implement the `getWinner()`-function. 
-You can verify the winner by executeing npm test.
+You can verify the winner by executeing npm test (om vi ska ha med testerna för getWinner() i examples, detta kommer bryta builden).
 
 Part 2
 ------
@@ -26,8 +26,8 @@ Utilize the fiveInRow-core to build your own fiveInRow-game via a CLI-program.
 5. The game should implement the following functionality
     - When the game start it must display a menu.
     - Player must be able to place a mark with given row, column - number
-    - Player must be able to quit by writing `Quit` or `exit`
-    - The game must check if a player has won after every placed marker.
+    - Player must be able to quit by either writing `Quit` or `Exit`
+    - The game must check if a player has won after every placed mark.
     - The game must display the game board after every placed mark.
     - When a player places a marker where a marker already exist it should display an error message telling the player it did something wrong.
     
@@ -45,7 +45,7 @@ Reference and read more
 [?](#) **TODO - Fix a reference to the book**     
 [Read from commandline with nodejs, example](https://github.com/mosbth/linux/tree/master/example/nodejs/readFromCommandLine)     
 [Build a menu loop in nodejs]()    
-[Run nodejs program as cli-script with shebang, tutorial](https://github.com/linux/tree/master/tutorial/nodejs/createExecuteable.md)     
+[Run nodejs program as cli-script with shebang, tutorial](https://github.com/mosbth/linux/tree/master/tutorial/nodejs/createExecuteable.md)     
 [Read cli input, nodejs](https://github.com/mosbth/linux/tree/master/tutorial/nodejs/read-cli-input-nodejs.md)    
 
 Revision history
