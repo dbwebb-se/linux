@@ -261,11 +261,11 @@ describe('Router', () => {
 
                     // /api/v1/
                     router.get('/', function(req, res) {
-                        res.send('/api/v1/')
+                        res.send('/api/v1/');
                     });
                     // /api/v1/test
                     router.get('/test', function (req, res) {
-                        res.send('/api/v1/test')
+                        res.send('/api/v1/test');
                     });
 
                     // /api/v1/something/
