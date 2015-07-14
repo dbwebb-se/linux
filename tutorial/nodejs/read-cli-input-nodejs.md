@@ -39,4 +39,4 @@ Reference and read more
 Revision history
 ------------------------------
 
-2015-07-30 (foiki) Initial draft.
+2015-07-14 (foiki) Initial draft.
