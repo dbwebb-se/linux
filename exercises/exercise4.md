@@ -35,8 +35,7 @@ $ babel-node -- maze/index.js
     * Then `mazerunner` should listen on `north, south, west, east and done (to quit)`
 
 An example:  
-[![asciicast](https://asciinema.org/a/3xjuwwl35cq81gj7244eqfrqj.png)](https://asciinema.org/a/3xjuwwl35cq81gj7244eqfrqj)  
-
+[![asciicast](https://asciinema.org/a/c8u2zbu69jxjdro8wlxxyip5o.png)](https://asciinema.org/a/c8u2zbu69jxjdro8wlxxyip5o)  
 
 
 Reference and read more
