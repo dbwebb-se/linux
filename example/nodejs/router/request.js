@@ -4,7 +4,7 @@
 
 
 var url = require('url');
-module.exports = function buildRequest (req, res) {
+export function buildRequest (req, res) {
     // stupid jshint gives error on res not being used..
     /*jshint unused:false*/
     req = req || {};
@@ -14,4 +14,4 @@ module.exports = function buildRequest (req, res) {
     req.query = url.parse(req.url, true).query;
 
     return req;
-};
+}

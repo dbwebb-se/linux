@@ -18,8 +18,10 @@
 */
 
 var url = require('url');
-var buildResponse = require('./response');
-var buildRequest = require('./request');
+
+import { buildResponse } from './response';
+import { buildRequest } from './request';
+
 
 class Router {
 

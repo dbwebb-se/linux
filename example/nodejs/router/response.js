@@ -1,4 +1,4 @@
-module.exports = function buildResponse(req, res) {
+export function buildResponse(req, res) {
     res = res || {};
 
     /**
@@ -9,10 +9,6 @@ module.exports = function buildResponse(req, res) {
      * @return obj
      */
     res.send = function send(body, contentType, statusCode) {
-
-        /*console.log('ARGS:', body);
-        console.log(res._headers);*/
-
         // Ensure charset is set.
         res.charset = res.charset || 'utf-8';
         res.statusCode = statusCode || res.statusCode || 200;
@@ -73,4 +69,4 @@ module.exports = function buildResponse(req, res) {
     };
 
     return res;
-};
+}
