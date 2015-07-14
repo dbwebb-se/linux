@@ -12,14 +12,12 @@ $ babel-node -- maze/index.js
 ## Part 1
 
 1. Create a script called "mazerunner.sh" and follow up with instructions from exercise 1, regarding script creation.
-2. Use the [API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md) for the maze to add the following functionality.
-    * `mazerunner <url>` should call the url and show the response. ???
-**TODO** add part about saving maze-info, since it is stateless, in some faction. Ex saving the current-room and gameid on file.
-3. Use the [API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md) for the maze to extend the `mazerunner`  with these functionalities  
+2. Use the [API](https://github.com/mosbth/linux/blob/master/example/nodejs/maze/api.md) for the maze to extend the `mazerunner` with these functionalities (think about that some information have to be resused and saved to file. Add "?type=csv" in the end of your curl, i.e. "curl localhost:1337/map?type=csv", to get the response comma-separated)  
    * `mazerunner init` should save down the game id and print the message.
    * `mazerunner maps` should return the available maps.
    * `mazerunner select <map>` should select the given map.
    * `mazerunner info` should give information about the current room.
+   * `mazerunner enter` should enter the first room
    * `mazerunner go north` should navigate to the north
    * `mazerunner go south` should navigate to the south
    * `mazerunner go east` should navigate to the east
@@ -34,7 +32,8 @@ $ babel-node -- maze/index.js
     2. simple-maze  
     Choose map:  
     ```  
-    * Then `mazerunner` should listen on `go north, go south, go west, go east and done(to quit)`
+    * Then `mazerunner` should listen on `north, south, west, east and done (to quit)`
+
 
 
 Reference and read more
