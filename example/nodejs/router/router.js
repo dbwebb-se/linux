@@ -53,6 +53,7 @@ class Router {
             path: path,
             handler: handler
         });
+
     }
 
 
@@ -80,6 +81,9 @@ class Router {
      * @param  {[type]} res HTTP response object
      */
     route(req, res) {
+        console.log(this.routes);
+
+
 
         // Extend request and response object.
         req = buildRequest(req, res);
@@ -91,6 +95,7 @@ class Router {
 
         // Split the path to get the parameters.
         var urlParams = path.split('/');
+
 
         // Filter out the routes to process..
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
@@ -146,14 +151,14 @@ class Router {
             return;
         }
 
-        /*console.log('--------------');
+        /*
+        console.log('--------------');
         console.log('Routes to process: ', routesToProcess);
         console.log('--------------');*/
 
-
         // Handle the request.
         routesToProcess.forEach(function (route) {
-            // Calling the function.
+            // Calling the function(s).
             route.handler(req, res);
         });
 
@@ -204,6 +209,40 @@ class Router {
         for (var i = this.routes.length; i > this.routes.length - length; i = i - 1) {
             this.routes[i - 1].path = path + this.routes[i - 1].path;
         }
+    }
+
+    /**
+     * Mount middlewares..
+     *
+     * Usage:
+     * router.use(function (req, res, next) {
+     *     console.log('Hello World in all requests..');
+     * });
+     */
+    use(fn) {
+        //var path = '/';
+        var offset = 0;
+
+        if (typeof fn !== 'function') {
+
+        }
+        var slice = Array.prototype.slice;
+
+        var callbacks = slice.call(arguments, offset);
+        console.log(callbacks.length);
+
+        for (var i = 0; i < callbacks.length; i += 1) {
+            var funk = callbacks[i];
+            console.log('Function: ', funk);
+
+            if (typeof funk !== 'function') {
+                throw new Error('Router.use() requires middle function');
+            }
+
+            this.add('GET', '/', funk);
+        }
+
+        return this;
     }
 
 }

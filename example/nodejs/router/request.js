@@ -12,6 +12,7 @@ export function buildRequest (req, res) {
 
     req.params = {};
     req.query = url.parse(req.url, true).query;
+    req.queryParts = url.parse(req.url, true);
 
     return req;
 }
