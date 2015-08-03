@@ -1,0 +1,144 @@
+#!/bin/bash
+#
+# dbwebb: tool to manage course repos
+#
+# exit values:
+#  0 on success
+#  1 on failing to carry out current command
+#  2 on bad usage
+#
+
+
+
+#
+# Current version
+#
+DBW_VERSION="v1.9.5x (2015-06-17)"
+
+
+
+#
+# Message to display for usage and help.
+#
+function usage ()
+{
+    local txt=(
+"Utility dbwebb for working with course repos: http://dbwebb.se/dbwebb-cli"
+"Usage: dbwebb [options] <command> [arguments]"
+""
+"Command:"
+"  check             Check the environment."
+"  config            (Re-)Create config file."
+"  selfupdate        Update to latest version."
+"  sshkey            Create and install ssh-keys."
+"  login             Login to the remote server."
+"  clone [repo]      Clone a course repo."
+"  init              Init course repo and remote server."
+"  github [repo]     Get urls to repo on GitHub."
+"  update            Update course repo."
+"  upload [part]     Upload to server."
+"  download [part]   Download from server."
+"  create labid      Create a lab."
+"  validate [part]   Validate it."
+"  publish [part]    Publish it."
+"  inspect [course] [kmom] [user]  Inspect a kmom."
+""
+"Options:"
+"  --inspect, -i  Help for inspect."
+"  --verbose, -v  More verbose."
+"  --yes, -y      Do not wait for my input."
+"  --help, -h     Print help."
+"  --version      Print version."
+    )
+    printf "%s\n" "${txt[@]}"
+}
+
+
+
+#
+# Message to display when bad usage.
+#
+function badUsage ()
+{
+    local message="$1"
+    local txt=(
+"For an overview of the command, execute:"
+"dbwebb --help"
+    )
+    
+    if [[ "$message" ]]; then
+        printf "$message\n"
+    fi
+    
+    printf "%s\n" "${txt[@]}"
+}
+
+
+
+#
+# Message to display for version.
+#
+function version ()
+{
+    local txt=(
+"dbwebb version $DBW_VERSION"
+    )
+    printf "%s\n" "${txt[@]}"
+}
+
+
+
+#
+# Create default files.
+#
+function dbwebb-init-me()
+{
+    local meDefault="$DBW_COURSE_DIR/.default/"
+    local me="$DBW_COURSE_DIR/me/"
+
+    local intro="Creating and initiating the directory 'me/' by copying directory structure and files from the directory '.default/' (will not overwrite existing files)."
+    local command="rsync -av --exclude README.md --ignore-existing \"$meDefault\" \"$me\""
+    local message="to init the directory 'me/'."
+
+    checkIfValidCourseRepoOrExit
+    executeCommand "$intro" "$command" "$message"
+}
+
+
+
+#
+# Process options
+#
+while (( $# ))
+do
+    case "$1" in
+
+        --help | -h)
+            usage
+            exit 0
+        ;;
+
+        --version | -v)
+            version
+            exit 0
+        ;;
+
+        update         \
+        | check        \
+        | init-me)
+            command=$1
+            shift
+            dbwebb-$command $*
+            exit 0
+        ;;
+        
+        *)
+            badUsage "$MSG_FAILED Option/command not recognized."
+            exit 2
+        ;;
+        
+    esac
+done
+
+badUsage
+exit 1
