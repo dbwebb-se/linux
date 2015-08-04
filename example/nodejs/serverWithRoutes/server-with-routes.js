@@ -14,14 +14,14 @@ var server = http.createServer((req, res) => {
 
     var ipAddress,
         path;
-        
+
     // Get the path for the requested URL.
     path = url.parse(req.url).pathname;
 
     // Log incoming requests
     ipAddress = req.connection.remoteAddress;
     console.log("Incoming request from ip " + ipAddress + " for " + path);
-    
+
     // Switch (route) on the path.
     switch (path) {
         // Home page route.
