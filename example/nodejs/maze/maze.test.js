@@ -168,25 +168,25 @@ describe('Maze', () => {
         it('Test perfect round', (done) => {
             var perfectPath = [
                 {
-                    'id':0, 'dir':'west'
+                    'id': 0, 'dir': 'west'
                 },
                 {
-                    'id':1, 'dir':'east',
+                    'id': 1, 'dir': 'east',
                 },
                 {
-                    'id':2, 'dir':'south'
+                    'id': 2, 'dir': 'south'
                 },
                 {
-                    'id':5, 'dir':'south'
+                    'id': 5, 'dir': 'south'
                 },
                 {
-                    'id':6, 'dir':'south'
+                    'id': 6, 'dir': 'south'
                 },
                 {
-                    'id':11, 'dir':'west'
+                    'id': 11, 'dir': 'west'
                 },
                 {
-                    'id':10, 'dir':'west'
+                    'id': 10, 'dir': 'west'
                 }
             ];
 
