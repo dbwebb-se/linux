@@ -4,5 +4,6 @@
 	"requireSpacesInFunctionExpression": null,
 	"requireSpaceBeforeBlockStatements": null,
 	"requirePaddingNewlinesInBlocks": null,
-    "esnext": true
+    "esnext": true,
+	"disallowSpacesInsideParentheses": true
 }
