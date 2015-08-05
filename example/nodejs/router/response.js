@@ -42,6 +42,7 @@ export function buildResponse(req, res) {
 
             break;
         }
+
         // Write and end..
         res.write(body, statusCode);
         res.end();
