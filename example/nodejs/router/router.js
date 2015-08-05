@@ -147,11 +147,14 @@ class Router {
 
         // Handle the request.
         routesToProcess.forEach(function (route) {
-            // Calling the function.
+
             req.on('end', () => {
+                // Does the raw body have any data?
                 if (req.rawBody !== '') {
                     console.log(req.headers['content-type']);
                     var body;
+                    // What type of data is? Which method of parsing
+                    // the data does I need?
                     switch (req.headers['content-type']) {
                         case 'application/json':
                             body = JSON.parse(req.rawBody);
@@ -163,6 +166,8 @@ class Router {
                     }
                     req.body = body;
                 }
+
+                // Calling the function.
                 route.handler(req, res);
             });
         });
