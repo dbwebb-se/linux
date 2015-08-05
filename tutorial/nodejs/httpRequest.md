@@ -1,7 +1,8 @@
 # Send http-request to a server with nodejs
 
-Since the most common request method is a GET-request, nodejs have created a shorthand-
-function for just this request. `http.get()`. Here is an example on how to use it.
+Since the most common request method is a GET-request, nodejs have created a 
+shorthand-function for just this request. `http.get()`. Here is an example on 
+how to use it.
 
 ```javascript
 // include the required nodejs-module
@@ -26,7 +27,7 @@ http.get({
         console.info('The _fullresponse_');
         console.log(body);
     });
-})..on('error', (e) => {
+}).on('error', (e) => {
     console.log(e.message);
 });
 ```
@@ -36,6 +37,9 @@ an other request method, nodejs have a function named `http.request()`.
 Here is an example on how to use it.
 
 ```javascript
+var querystring = require('querystring');
+var http        = require('http');
+
 var postData = querystring.stringify({
   'msg' : 'Hello World!'
 });
@@ -69,11 +73,10 @@ req.write(postData);
 req.end();
 ```
 
-
 Reference and read more
 ------------------------------
 
-[http](https://nodejs.org/api/http.html)
+[HTTP, nodejs](https://nodejs.org/api/http.html)
 
 Revision history
 ------------------------------
