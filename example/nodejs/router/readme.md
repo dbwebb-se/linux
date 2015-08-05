@@ -38,5 +38,7 @@ router.get('/', (req, res) => {
 http.createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
-
 ```
+
+View more examples on how to use the Router in 
+[usage.js](https://github.com/mosbth/linux/blob/master/example/nodejs/router/usage.js).
