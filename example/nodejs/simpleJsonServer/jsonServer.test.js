@@ -4,7 +4,7 @@
 process.env.NODE_ENV = 'test';
 
 // Import the server "module" as "server"
-import server from '../simpleJsonServer/json-server';
+import server from '../simpleJsonServer/jsonServer';
 
 
 // Dependencies needed for tests.

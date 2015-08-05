@@ -409,7 +409,7 @@ describe('Router', () => {
         });
 
         it('GET with many params', (done) => {
-            var b,c,d;
+            var b, c, d;
             router.get('/a/:b/:c/:d', (req, res) => {
                     b = req.params.b;
                     c = req.params.c;
