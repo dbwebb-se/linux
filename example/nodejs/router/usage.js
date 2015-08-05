@@ -96,6 +96,11 @@ router.group('/api', function() {
     });
 });
 
+router.post('/test', (req, res) => {
+    console.log(req.body);
+    res.send('ok', 200);
+});
+
 // Create the server using the router.
 http.createServer((req, res) => {
     router.route(req, res);
