@@ -48,7 +48,7 @@ Utilize the fiveInRow-API to build your own fiveInRow-game via a CLI-program.
 - When running the game, you could be able to write `help [command]` and it should display usage of that "command".
 
 
-### Simulated game round
+### Exampel on solution
 [![asciicast](https://asciinema.org/a/23190.png)](https://asciinema.org/a/23190)
 
 Reference and read more
