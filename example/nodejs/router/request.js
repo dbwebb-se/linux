@@ -11,5 +11,11 @@ export function buildRequest (req, res) {
     req.params = {};
     req.query = url.parse(req.url, true).query;
 
+    // Takes care of any data that comes frome a post-request
+    req.rawBody  = '';
+    req.on('data', (chunk) => {
+        req.rawBody += chunk;
+    });
+
     return req;
 }

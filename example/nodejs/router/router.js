@@ -148,7 +148,23 @@ class Router {
         // Handle the request.
         routesToProcess.forEach(function (route) {
             // Calling the function.
-            route.handler(req, res);
+            req.on('end', () => {
+                if (req.rawBody !== '') {
+                    console.log(req.headers['content-type']);
+                    var body;
+                    switch (req.headers['content-type']) {
+                        case 'application/json':
+                            body = JSON.parse(req.rawBody);
+                            break;
+                        default:
+                        case 'applicaton/x-www-form-urlencoded':
+                            body = require('querystring').parse(req.rawBody);
+                            break;
+                    }
+                    req.body = body;
+                }
+                route.handler(req, res);
+            });
         });
     }
 
