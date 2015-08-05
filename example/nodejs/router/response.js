@@ -1,3 +1,6 @@
+/**
+ * @version 1.0
+ */
 export function buildResponse(req, res) {
     res = res || {};
 

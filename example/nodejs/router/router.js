@@ -22,7 +22,9 @@ var url = require('url');
 import { buildResponse } from './response';
 import { buildRequest } from './request';
 
-
+/**
+ * @version 1.0
+ */
 class Router {
 
     constructor() {

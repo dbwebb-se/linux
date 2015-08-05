@@ -4,6 +4,9 @@
 
 var url = require('url');
 
+/**
+ * @version 1.0
+ */
 export function buildRequest (req, res) {
     // stupid jshint gives error on res not being used..
     /*jshint unused:false*/
