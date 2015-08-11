@@ -1,4 +1,4 @@
-// Get the module for http and store it in a variable 
+// Get the module for http and store it in a variable
 var http = require('http');
 
 // Use the variable to create a server.
