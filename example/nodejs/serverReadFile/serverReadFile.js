@@ -5,7 +5,7 @@
 var http = require('http');
 
 // To parse the route from the url
-var url  = require('url');
+var url = require('url');
 
 // To able to talk with the file system we require the fs-modul
 var fs = require('fs');
