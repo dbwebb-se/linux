@@ -10,7 +10,7 @@ Relased as part of a University course presented at:
 
 The usage of this repo is also documented here (in swedish):
 
-* http://dbwebb.se/kunskap/kurskatalogen-ett-kursrepo-pa-github
+* http://dbwebb.se/dbwebb-cli
 
 
 
