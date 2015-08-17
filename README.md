@@ -44,6 +44,11 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
+v1.0.1 (2015-08-17)
+
+* Added missing configfile for html-minifier.
+
+
 v1.0.0 (2015-08-17)
 
 * Started work in january 2015, planned release end of august 2015.
