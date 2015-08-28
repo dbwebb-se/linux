@@ -44,6 +44,11 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
+v1.0.1x (2015-08-28)
+
+* Removed from .jscsrc "requireSpaceBeforePostfixUnaryOperators".
+
+
 v1.0.1 (2015-08-17)
 
 * Added missing configfile for html-minifier.
