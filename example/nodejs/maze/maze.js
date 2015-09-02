@@ -66,21 +66,22 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
                     values.push(content[t]);
                 }
             }
-    
+
             content = '';
             temp.forEach((t) => {
                 content += t += ',';
             });
-    
+
             content = content.replace(/,$/g, '\n');
             values.forEach((t) => {
                 content += t += ',';
             });
-    
+
             content = content.replace(/,$/g, '\n');
             break;
 
         case 'json':
+            /* falls through */
         default:
             contentType = {
                 'Content-Type': 'application/json'
@@ -88,7 +89,7 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
             content = JSON.stringify(content);
             break;
     }
-    
+
     resObj.writeHead(code, contentType);
     resObj.write(content);
     resObj.end();
@@ -288,7 +289,7 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
 var server = http.createServer((req, res) => {
     var ipAddress,
         route;
-        
+
     // Log incoming requests
     ipAddress = req.connection.remoteAddress;
 
