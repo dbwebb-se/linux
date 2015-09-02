@@ -44,8 +44,10 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.1x (2015-08-28)
+v1.0.1x (2015-09-02)
 
+* Minor updates to `example/nodejs/maze`.
+* Added `me/kmom05/maze`.
 * Removed from .jscsrc "requireSpaceBeforePostfixUnaryOperators".
 
 

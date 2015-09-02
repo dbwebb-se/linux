@@ -2,6 +2,10 @@
  *
  */
 
+// To parse the route from the url
+var url = require('url');
+
+// A better router to create a handler for all routes
 import Router from '../router/router';
 
 var router = new Router();
@@ -12,8 +16,11 @@ var http = require('http');
 var maps = [];
 var games = [];
 
+
+
 /**
  * Wrapper function for sending a response
+ *
  * @param  Object        resObj  The response
  * @param  Object/String content What should be written to the response
  * @param  Integer       code    HTTP status code
@@ -21,29 +28,26 @@ var games = [];
  */
 function sendResponse(resObj, content, code = 200, type = 'json') {
     var contentType;
+
     switch (type) {
-        default:
-        case 'json':
-            contentType = {
-                'Content-Type': 'application/json'
-            };
-            content = JSON.stringify(content);
-            break;
         case 'plain':
             contentType = {
                 'Content-Type': 'text/plain'
             };
             break;
+
         case 'html':
             contentType = {
                 'Content-Type': 'text/html'
             };
             break;
+
         case 'zip':
             contentType = {
                 'Content-Type': 'application/octet-stream'
             };
             break;
+
         case 'csv':
             contentType = {
                 'Content-Type': 'text/csv'
@@ -62,24 +66,39 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
                     values.push(content[t]);
                 }
             }
+    
             content = '';
             temp.forEach((t) => {
                 content += t += ',';
             });
+    
             content = content.replace(/,$/g, '\n');
             values.forEach((t) => {
                 content += t += ',';
             });
+    
             content = content.replace(/,$/g, '\n');
             break;
+
+        case 'json':
+        default:
+            contentType = {
+                'Content-Type': 'application/json'
+            };
+            content = JSON.stringify(content);
+            break;
     }
+    
     resObj.writeHead(code, contentType);
     resObj.write(content);
     resObj.end();
 }
 
+
+
 /**
  * Initialize the maze
+ *
  * @param Object req The request
  * @param Object res The response
  */
@@ -99,8 +118,11 @@ router.get('/', (req, res) => {
     sendResponse(res, content, 200, type);
 });
 
+
+
 /**
  * Retuns list of all avaliable maps
+ *
  * @param Object req The request
  * @param Object res The response
  */
@@ -114,8 +136,11 @@ router.get('/map', (req, res) => {
     sendResponse(res, maps, 200, type);
 });
 
+
+
 /**
  * Loads the map to the maze
+ *
  * @param Object req The request
  * @param Object res The response
  */
@@ -146,6 +171,8 @@ router.get('/:gameid/map/:map', (req, res) => {
     }, 200, type);
 });
 
+
+
 /**
  * Gets content of first room
  * @param Object req The request
@@ -174,6 +201,8 @@ router.get('/:gameid/maze', (req, res) => {
 
     sendResponse(res, games[gameid].lastRoom, 200, type);
 });
+
+
 
 /**
  * Gets info about the room
@@ -206,6 +235,8 @@ router.get('/:gameid/maze/:roomId', (req, res) => {
 
     sendResponse(res, games[gameid].current, 200, type);
 });
+
+
 
 /**
  * Walks into next room from given roomId and gives the next rooms info.
@@ -255,7 +286,18 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
 });
 
 var server = http.createServer((req, res) => {
-        router.route(req, res);
+    var ipAddress,
+        route;
+        
+    // Log incoming requests
+    ipAddress = req.connection.remoteAddress;
+
+    // Check what route is requested
+    route = url.parse(req.url).pathname;
+    console.log("Incoming route " + route + " from ip " + ipAddress);
+
+    // Let the router take care of all requests
+    router.route(req, res);
 });
 
 export default server;
