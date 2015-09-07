@@ -46,6 +46,7 @@ History
 
 v1.0.1x (2015-09-02)
 
+* Removed `example/nodejs/kmom04`
 * Minor updates to `example/nodejs/maze`.
 * Added `me/kmom05/maze`.
 * Removed from .jscsrc "requireSpaceBeforePostfixUnaryOperators".
