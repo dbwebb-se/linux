@@ -47,7 +47,7 @@ function version() {
  * @param String question to ask
  */
 function askQuestion(question){
-    rl.question(question + "\n", function(answer) {
+    rl.question(question + "\n", (answer) => {
         if (answer < number) {
             askQuestion("Too low, Guess again!");
         } else if (answer > number) {

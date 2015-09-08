@@ -45,7 +45,7 @@ function version() {
  * Display a menu.
  */
 function menu() {
-    console.log(`Use any of the commands: guess, hint, menu, exit, hello, version.
+    console.log(`Use any of the commands: random, hint, menu, exit, hello, version.
 Or enter a number to take a guess.`);
 }
 
