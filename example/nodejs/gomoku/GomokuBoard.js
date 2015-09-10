@@ -66,12 +66,7 @@ class GomokuBoard {
      *
      */
     place(x, y) {
-        var position;
-
-        console.log(x + ", " + y);
-        position = this.getPosition(x, y);
-        console.log(position);
-        //console.log(this.board);
+        var position = this.getPosition(x, y);
 
         if (this.isTaken(position)) {
             throw new Error("The position is already taken.");
