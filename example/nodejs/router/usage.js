@@ -96,21 +96,13 @@ router.group('/api', function() {
     });
 });
 
-<<<<<<< HEAD
-/*router.use(function (req, res, next) {
-    console.log('Time: %d', Date.now());
-    next();
-});*/
-=======
 router.post('/test', (req, res) => {
     console.log(req.body);
     res.send('ok', 200);
 });
->>>>>>> 155c1ed61da1f741b1bcb9aa8369ea29516ab557
+
 
 // Create the server using the router.
-//
-
 http.createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
