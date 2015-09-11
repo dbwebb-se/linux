@@ -11,7 +11,19 @@ You can verify the winner by executeing npm test (om vi ska ha med testerna för
 
 Part 2
 ------
-Utilize the fiveInRow-core to build your own fiveInRow-game via a CLI-program.
+
+Utilize the fiveInRow-core to build your own fiveInRow-API.
+
+### Requirements
+1. The game must be written in javascript.
+2. The server must be named fiveInRowServer
+3.  Sending a GET-method on `/` must initialize the game and respond with the game id, game board and who will start placing marker.
+4. Sending a GET-method on `/map` with the game id as a query-parameter must respond with the game board. 
+5. Sending a POST-method on `/place` must place a marker on given `row` and `column`. The request must contain the game id, row and the column where to place the marker.
+
+Part 3
+------
+Utilize the fiveInRow-API to build your own fiveInRow-game via a CLI-program.
 
 ### Requirements
 1. The game must be written in javascript.
@@ -36,7 +48,7 @@ Utilize the fiveInRow-core to build your own fiveInRow-game via a CLI-program.
 - When running the game, you could be able to write `help [command]` and it should display usage of that "command".
 
 
-### Simulated game round
+### Exampel on solution
 [![asciicast](https://asciinema.org/a/23190.png)](https://asciinema.org/a/23190)
 
 Reference and read more

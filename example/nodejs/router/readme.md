@@ -34,9 +34,18 @@ router.get('/', (req, res) => {
     res.end(queryParam);
 });
 
+// Below you can see how to get any post data
+router.post('/', (req, res) => {
+    // Parsed object of the posted data
+    var body = req.body.myVarThatIsentFromClient;
+    console.log('from post:', body);
+    res.end(200);
+});
+
 // Create the server using the router.
 http.createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
-
 ```
+
+Checkout [usage.js](https://github.com/mosbth/linux/blob/master/example/nodejs/router/usage.js) to view more examples on how to use the Router.

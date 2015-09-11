@@ -27,10 +27,22 @@ describe('Router', () => {
     }
 
     describe('Route', () => {
-        it('Should not route to non-existent routes', (done) => {
-            request(setupServer())
-                .get('/i-do-not-exist')
-                .expect(404, done);
+
+        it('Should remove trailing slashes from path', (done) => {
+            router.get('/animal/', (req, res) => {
+                res.end('animal');
+            });
+
+            var req = request(setupServer());
+
+            req
+                .get('/animal')
+                .expect(200, 'animal')
+                .end(() => {
+                    req
+                        .get('/animal/')
+                        .expect(200, 'animal', done);
+                });
         });
 
         it('Using add method with get, post, put, delete', (done) => {
@@ -69,77 +81,114 @@ describe('Router', () => {
                 });
         });
 
-        it('GET /hello', (done) => {
-            router.get('/hello', (req, res) => {
-                res.end('hello');
-            });
-            // The actual test.
-            request(setupServer())
-                .get('/hello')
-                .expect(200, 'hello', done);
-        });
-
-        it('GET /', (done) => {
-            router.get('/', (req, res) => {
-                res.end('Home page');
+        describe('GET', () => {
+            it('Should not route to non-existent routes', (done) => {
+                request(setupServer())
+                    .get('/i-do-not-exist')
+                    .expect(404, done);
             });
 
-            request(setupServer())
-                .get('/')
-                .expect(200, 'Home page', done);
-        });
-
-        it ('404 not found', (done) => {
-            request(setupServer())
-                .get('/404')
-                .expect(404, done);
-        });
-
-        it('POST /hello', (done) => {
-            router.post('/hello', (req, res) => {
-                res.end('POST');
-            });
-
-            request(setupServer())
-                .post('/hello')
-                .expect(200, done);
-        });
-
-        it('Multiple get requests', (done) => {
-            router.get('/a', (req, res) => {
-                res.end('a');
-            });
-
-            router.get('/b', (req, res) => {
-                res.end('b');
-            });
-
-            request(setupServer())
-                .get('/a')
-                .expect(200, 'a');
-
-            var nrOfRoutes = router.nrOfRoutes();
-
-            assert.equal(2, nrOfRoutes);
-            done();
-        });
-
-        it('Should remove trailing slashes from path', (done) => {
-            router.get('/animal/', (req, res) => {
-                res.end('animal');
-            });
-
-            var req = request(setupServer());
-
-            req
-                .get('/animal')
-                .expect(200, 'animal')
-                .end(() => {
-                    req
-                        .get('/animal/')
-                        .expect(200, 'animal', done);
+            it('/hello', (done) => {
+                router.get('/hello', (req, res) => {
+                    res.end('hello');
                 });
+                // The actual test.
+                request(setupServer())
+                    .get('/hello')
+                    .expect(200, 'hello', done);
+            });
+
+            it('/', (done) => {
+                router.get('/', (req, res) => {
+                    res.end('Home page');
+                });
+
+                request(setupServer())
+                    .get('/')
+                    .expect(200, 'Home page', done);
+            });
+
+            it ('404 not found', (done) => {
+                request(setupServer())
+                    .get('/404')
+                    .expect(404, done);
+            });
+
+
+
+            it('Multiple get requests', (done) => {
+                router.get('/a', (req, res) => {
+                    res.end('a');
+                });
+
+                router.get('/b', (req, res) => {
+                    res.end('b');
+                });
+
+                request(setupServer())
+                    .get('/a')
+                    .expect(200, 'a');
+
+                var nrOfRoutes = router.nrOfRoutes();
+
+                assert.equal(2, nrOfRoutes);
+                done();
+            });
         });
+
+        describe('POST', () => {
+            it('/hello', (done) => {
+                router.post('/hello', (req, res) => {
+                    res.end('POST');
+                });
+
+                request(setupServer())
+                    .post('/hello')
+                    .expect(200, done);
+            });
+
+            it('/hello with json-data', (done) => {
+                router.post('/hello', (req, res) => {
+                    var word = req.body.a + ' ' + req.body.b;
+                    res.end(word, 200);
+                });
+
+                request(setupServer())
+                    .post('/hello')
+                    .set('Content-Type', 'application/json')
+                    .send({ a: 'Hello', b: 'World' })
+                    .expect(200, 'Hello World')
+                    .end(function(err) {
+                        if (err) {
+                            return done(err);
+                        }
+                        done();
+                    });
+            });
+
+            it('/world with query-data', (done) => {
+                router.post('/world', (req, res) => {
+                    var word = req.body.a + ' ' + req.body.b;
+                    res.end(word, 200);
+                });
+
+                var data = require('querystring').stringify({ a: 'Hello', b: 'World' });
+
+                request(setupServer())
+                    .post('/world')
+                    .set('Content-Type', 'application/x-www-form-urlencoded')
+                    .send(data)
+                    .expect(200, 'Hello World')
+                    .end(function(err) {
+                        if (err) {
+                            return done(err);
+                        }
+                        done();
+                    });
+            });
+
+        });
+
     });
 
     describe('Group method', () => {
@@ -409,7 +458,7 @@ describe('Router', () => {
         });
 
         it('GET with many params', (done) => {
-            var b,c,d;
+            var b, c, d;
             router.get('/a/:b/:c/:d', (req, res) => {
                     b = req.params.b;
                     c = req.params.c;

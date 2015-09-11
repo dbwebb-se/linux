@@ -1,6 +1,11 @@
-import maze from '../maze/maze';
+/**
+ * Main program to run the maze server
+ *
+ */
+import maze from './maze';
 
-var PORT = 1337;
+var port = 1337;
 
-maze.listen(PORT);
-console.log('The maze server is now listening on: ' + PORT);
+maze.listen(port);
+
+console.log('The maze server is now listening on: ' + port);

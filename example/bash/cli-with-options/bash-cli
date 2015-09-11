@@ -30,7 +30,7 @@ function usage
 "Command:"
 "  command1             Demo of command."
 "  command2 [anything]  Demo of command using arguments."
-"  calendar [events]    Print out current calendar with events."
+"  calendar [events]    Print out current calendar with(out) events."
 ""
 "Options:"
 "  --help, -h     Print help."
@@ -108,7 +108,7 @@ function app-calendar
     local events="$1"
     
     echo "This is output from command3, showing the current calender."
-    cal
+    cal -3
     
     if [ "$events" = "events" ]; then
         echo
@@ -145,7 +145,7 @@ do
         ;;
         
         *)
-            badUsage "$MSG_FAILED Option/command not recognized."
+            badUsage "Option/command not recognized."
             exit 1
         ;;
         

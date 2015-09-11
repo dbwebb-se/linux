@@ -2,46 +2,46 @@
  * Server with routes.
  * URLS:
  *  localhost:1337/     - home.
- *  localhost:1337about - about page.
+ *  localhost:1337/about - about page.
  *  localhost:1337/*    - 404 page.
  */
 
-var url = require('url');
 var http = require('http');
+var url = require('url');
 
 
 var server = http.createServer((req, res) => {
 
     var ipAddress,
-        path;
-        
-    // Get the path for the requested URL.
-    path = url.parse(req.url).pathname;
+        route;
 
     // Log incoming requests
     ipAddress = req.connection.remoteAddress;
-    console.log("Incoming request from ip " + ipAddress + " for " + path);
-    
+
+    // Check what route is requested
+    route = url.parse(req.url).pathname;
+    console.log("Incoming route " + route + " from ip " + ipAddress);
+
+
     // Switch (route) on the path.
-    switch (path) {
-        // Home page route.
+    switch (route) {
         case '/':
+            // Home page route.
             res.writeHead(200, { 'Content-Type': 'text/plain' });
             res.end('Home page\n');
         break;
 
-        // About page route.
         case '/about':
+            // About page route.
             res.writeHead(200, { 'Content-Type': 'text/plain' });
             res.end('About\n');
         break;
 
-        // Not found route.
         default:
+            // Not found route.
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('404. No route matching.\n');
         break;
-
     }
 });
 

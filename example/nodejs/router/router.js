@@ -1,28 +1,30 @@
 /**
  * Router
+ *
+ * Example usage..
+ *
+ * var http = require('http');
+ * var router = new Router();
+ *
+ * // Write a simple route..
+ * router.get('/', function(req, res) {
+ * 	res.end('hello');
+ * });
+ *
+ * http.createServer(function (req, res) {
+ *    router.route(req, res);
+ * }).listen(1337);
+ *
  */
-
-/* Example usage..
-
-    var http = require('http');
-    var router = new Router();
-
-    // Write a simple route..
-    router.get('/', function(req, res) {
-        res.end('hello');
-    });
-
-    http.createServer(function (req, res) {
-        router.route(req, res);
-    }).listen(1337);
-*/
 
 var url = require('url');
 
 import { buildResponse } from './response';
 import { buildRequest } from './request';
 
-
+/**
+ * @version 1.0
+ */
 class Router {
 
     constructor() {
@@ -55,7 +57,6 @@ class Router {
         });
 
     }
-
 
     /**
      * Shorthand GET route
@@ -151,18 +152,34 @@ class Router {
             return;
         }
 
-        /*
-        console.log('--------------');
-        console.log('Routes to process: ', routesToProcess);
-        console.log('--------------');*/
-
         // Handle the request.
         routesToProcess.forEach(function (route) {
-            // Calling the function(s).
-            route.handler(req, res);
-        });
 
+            req.on('end', () => {
+                // Does the raw body have any data?
+                if (req.rawBody !== '') {
+                    console.log(req.headers['content-type']);
+                    var body;
+                    // What type of data is? Which method of parsing
+                    // the data does I need?
+                    switch (req.headers['content-type']) {
+                        case 'application/json':
+                            body = JSON.parse(req.rawBody);
+                            break;
+                        default:
+                        case 'applicaton/x-www-form-urlencoded':
+                            body = require('querystring').parse(req.rawBody);
+                            break;
+                    }
+                    req.body = body;
+                }
+
+                // Calling the function.
+                route.handler(req, res);
+            });
+        });
     }
+
     /**
      * Returns the number of routes added.
      * @return Integer
@@ -173,25 +190,8 @@ class Router {
 
     /**
      * Group routes
-     * @param  {[type]} path   [description]
-     * @param  {[type]} routes [description]
-     * @return {[type]}        [description]
-     */
-    /*group(path, router) {
-        router.routes.forEach((obj, index) => {
-            // set the new path.
-            obj.path = path + obj.path;
-
-            // add the new routes to this.routes.
-            this.routes.push(obj);
-        });
-    }*/
-
-    /**
-     * Group routes
-     * @param  {[type]}   path     [description]
-     * @param  {Function} callback [description]
-     * @return {[type]}            [description]
+     * @param  String   path     Name on the group of routes
+     * @param  Function callback
      */
     group(path, callback) {
         if (!path) {
@@ -247,8 +247,12 @@ class Router {
 
 }
 
+/**
+ * Removes the last slash of a string
+ * @param  String str
+ * @return String
+ */
 function trimSlashes(str) {
-
     if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
         str = str.substr(0, str.length - 1);
     }

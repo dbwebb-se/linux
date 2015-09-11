@@ -10,7 +10,7 @@ Relased as part of a University course presented at:
 
 The usage of this repo is also documented here (in swedish):
 
-* http://dbwebb.se/kunskap/kurskatalogen-ett-kursrepo-pa-github
+* http://dbwebb.se/dbwebb-cli
 
 
 
@@ -44,7 +44,22 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.x (latest)
+v1.0.1x (2015-09-10)
+
+* Adding example gomoku.
+* Adding example guess-my-number-cli.
+* Removed `example/nodejs/kmom04`
+* Minor updates to `example/nodejs/maze`.
+* Added `me/kmom05/maze`.
+* Removed from .jscsrc "requireSpaceBeforePostfixUnaryOperators".
+
+
+v1.0.1 (2015-08-17)
+
+* Added missing configfile for html-minifier.
+
+
+v1.0.0 (2015-08-17)
 
 * Started work in january 2015, planned release end of august 2015.
 
