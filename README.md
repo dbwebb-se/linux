@@ -44,7 +44,7 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.1x (2015-09-10)
+v1.0.1x (2015-09-11)
 
 * Adding example gomoku.
 * Adding example guess-my-number-cli.
