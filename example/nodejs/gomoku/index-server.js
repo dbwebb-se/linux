@@ -12,7 +12,6 @@ var path = require("path");
 var scriptName = path.basename(process.argv[1]);
 var args = process.argv.slice(2);
 var arg;
-//var remainingArgs = [];
 
 
 
@@ -86,9 +85,6 @@ while ((arg = args.shift()) !== undefined) {
             break;
     }
 }
-
-// Check if there is remaining arguments that should be used for argument
-// Ignoring remaining unknown arguments.
 
 
 
