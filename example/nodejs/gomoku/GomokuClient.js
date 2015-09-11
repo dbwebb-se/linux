@@ -41,9 +41,9 @@ class GomokuClient {
 
 
     /**
-     * make a HTTP GET request, wrapped in a Promise.
+     * Make a HTTP GET request, wrapped in a Promise.
      *
-     * @param  String url to connec to.
+     * @param  String url to connect to.
      *
      * @return Promise
      *
