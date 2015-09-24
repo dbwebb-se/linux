@@ -46,6 +46,7 @@ History
 
 v1.0.1x (2015-09-11)
 
+* Adding example for child_process.
 * Adding example gomoku.
 * Adding example guess-my-number-cli.
 * Removed `example/nodejs/kmom04`
