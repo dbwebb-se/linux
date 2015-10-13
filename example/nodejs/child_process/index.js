@@ -7,14 +7,16 @@ var url = "https://strongloop.com/strongblog/whats-new-in-node-js-v0-12-execsync
 
 var child = require('child_process');
 
+
 child.exec('uptime', (error, stdout, stderr) => {
-  var a = stdout;
-  console.log("Async uptime: " + a);
+    /* jshint unused: false */
+    console.log("Async uptime: " + stdout);
 });
+
 
 try {
     var b = child.execSync("uptime");
-    console.log(b);
+    console.log("Sync uptime: " + b);
 } catch (e) {
     console.log(e);
     console.log("ERROR: Seems like you have no support for synchronous child processes. Read more on\n" + url);
