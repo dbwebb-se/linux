@@ -44,8 +44,9 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.1x (2015-10-13)
+v1.0.1x (2015-10-16)
 
+* Cleaning up .default-dir.
 * Adding example for `nodejs/serverWithQueryString`.
 * Adding example for `nodejs/child_process`.
 * Adding example gomoku.
