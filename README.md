@@ -46,6 +46,7 @@ History
 
 v1.0.1x (2015-10-16)
 
+* Adding example `nodejs/saveProcessId`.
 * Cleaning up .default-dir.
 * Adding example for `nodejs/serverWithQueryString`.
 * Adding example for `nodejs/child_process`.
