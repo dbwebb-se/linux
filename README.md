@@ -44,8 +44,17 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.1x (2015-08-28)
+v1.0.1x (2015-10-16)
 
+* Adding example `nodejs/saveProcessId`.
+* Cleaning up .default-dir.
+* Adding example for `nodejs/serverWithQueryString`.
+* Adding example for `nodejs/child_process`.
+* Adding example gomoku.
+* Adding example guess-my-number-cli.
+* Removed `example/nodejs/kmom04`
+* Minor updates to `example/nodejs/maze`.
+* Added `me/kmom05/maze`.
 * Removed from .jscsrc "requireSpaceBeforePostfixUnaryOperators".
 
 

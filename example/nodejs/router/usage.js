@@ -38,7 +38,7 @@ router.get('/animal/:id/:name', (req, res) => {
 
 router.get('/', (req, res) => {
     var queryParam = req.query.q;
-    res.end(queryParam);
+    res.end('Hello World: ' +  queryParam);
 });
 
 router.get('/send', (req, res) => {
@@ -101,7 +101,10 @@ router.post('/test', (req, res) => {
     res.send('ok', 200);
 });
 
+
 // Create the server using the router.
 http.createServer((req, res) => {
     router.route(req, res);
 }).listen(1337);
+//http.createServer(router.route.bind(router)).listen(1337);
+//http.createServer(router.route).listen(1337);
