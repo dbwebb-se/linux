@@ -8,8 +8,6 @@
 	"disallowKeywords": [ "with" ],
 	"requireLineFeedAtFileEnd": true,
 	"validateLineBreaks": "LF",
-	"requireSpaceBeforeBinaryOperators": true,
-	"requireSpaceAfterBinaryOperators": true,
 	"disallowSpaceBeforeBinaryOperators": [","],
 	"requireSpacesInConditionalExpression": {
 		"afterTest": true,
@@ -18,10 +16,13 @@
 		"beforeAlternate": true
 	},
 
+	"esnext": true,
+	"disallowTrailingWhitespace": true,
+
+	"requireSpaceBeforeBinaryOperators": null,
+	"requireSpaceAfterBinaryOperators": null,
 	"validateIndentation": null,
 	"requireSpacesInFunctionExpression": null,
 	"requireSpaceBeforeBlockStatements": null,
-	"requirePaddingNewlinesInBlocks": null,
-	"esnext": true,
-	"disallowTrailingWhitespace": true
+	"requirePaddingNewlinesInBlocks": null
 }
