@@ -1,5 +1,5 @@
 #!/bin/env bash
-echo $EDITOR
+echo "$EDITOR"
 
 # ${var+x} is a parameter expansion which evaluates to the null 
 # if var is unset and substitutes the string "x" otherwise

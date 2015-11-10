@@ -1,5 +1,5 @@
 #!/bin/env bash
-echo $EDITOR
+echo "$EDITOR"
 if [[ $EDITOR1 ]]; then
     echo "EDITOR1='$EDITOR1'"
 else

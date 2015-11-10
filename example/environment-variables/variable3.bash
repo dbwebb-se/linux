@@ -1,5 +1,5 @@
 #!/bin/env bash
-echo $EDITOR
+echo "$EDITOR"
 
 #[[ -z $var ]]  # True if zero length
 if [[ -z $EDITOR1 ]]; then

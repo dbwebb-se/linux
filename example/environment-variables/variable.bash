@@ -1,3 +1,3 @@
 #!/bin/env bash
-echo $EDITOR
-echo $EDITOR1
+echo "$EDITOR"
+echo "$EDITOR1"
