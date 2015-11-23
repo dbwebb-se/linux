@@ -1,5 +1,7 @@
 Linux - linux
 ===================
+
+[![Join the chat at https://gitter.im/mosbth/linux](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/linux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/mosbth/linux.svg?branch=master)](https://travis-ci.org/mosbth/linux)
 
 Course material for linux-course, aimed at a swedish target audience as an introduction to web programming for computer science students at University level.
