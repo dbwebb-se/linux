@@ -82,7 +82,7 @@ script:
     #- uglifyjs --version
     
     # npm unit test
-    - cd $TEST_DIR && npm install && npm test
+    #- cd $TEST_DIR && npm install && npm test
 
     # Run validation & publish
     - dbwebb-validate --version
