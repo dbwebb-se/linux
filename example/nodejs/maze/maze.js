@@ -266,7 +266,7 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
 
     // Check if its not a valid path choosen
     if (current.directions[dir] === undefined) {
-        current.error = 'Direction not allowed';
+        current.text = 'Direction not allowed';
         sendResponse(res, current, 404, type);
         return;
     }
@@ -277,7 +277,7 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
 
     if (lastRoom === undefined) {
         lastRoom = temp;
-        current.error = 'Path dont exist';
+        current.text = 'Path dont exist';
         sendResponse(res, current, 404, type);
         return;
     }
