@@ -1,4 +1,5 @@
 mySite/
+├── [-rw-r--r--]  .htaccess
 ├── [-rw-r--r--]  correct.txt
 ├── [-rw-r--r--]  genie.html
 ├── [drwxr-xr-x]  img
