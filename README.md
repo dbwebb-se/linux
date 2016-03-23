@@ -44,8 +44,9 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.1x (2015-10-16)
+v1.0.1x (2016-03-23)
 
+* Adding example `nodejs/serverDecode`.
 * Adding example `nodejs/saveProcessId`.
 * Cleaning up .default-dir.
 * Adding example for `nodejs/serverWithQueryString`.
