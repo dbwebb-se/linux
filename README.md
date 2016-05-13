@@ -44,8 +44,9 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
-v1.0.1x (2016-03-23)
+v1.0.2 (2016-05-13)
 
+* Adding kmom02/lab1 for preparation.
 * Adding example `nodejs/serverDecode`.
 * Adding example `nodejs/saveProcessId`.
 * Cleaning up .default-dir.
