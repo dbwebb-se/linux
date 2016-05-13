@@ -16,7 +16,6 @@
 		"beforeAlternate": true
 	},
 
-	"esnext": true,
 	"disallowTrailingWhitespace": true,
 
 	"requireSpaceBeforeBinaryOperators": null,
