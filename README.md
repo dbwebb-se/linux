@@ -1,7 +1,7 @@
 Linux - linux
 ===================
 
-
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dbwebb-se/linux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![Build Status](https://travis-ci.org/dbwebb-se/linux.svg?branch=master)](https://travis-ci.org/dbwebb-se/linux)
 [![CircleCI](https://circleci.com/gh/dbwebb-se/linux.svg?style=svg)](https://circleci.com/gh/dbwebb-se/linux)
 
