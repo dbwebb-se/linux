@@ -1,6 +1,10 @@
 Linux - linux
 ===================
-[![Build Status](https://travis-ci.org/mosbth/linux.svg?branch=master)](https://travis-ci.org/mosbth/linux)
+
+
+[![Build Status](https://travis-ci.org/dbwebb-se/linux.svg?branch=master)](https://travis-ci.org/dbwebb-se/linux)
+[![CircleCI](https://circleci.com/gh/dbwebb-se/linux.svg?style=svg)](https://circleci.com/gh/dbwebb-se/linux)
+
 
 Course material for linux-course, aimed at a swedish target audience as an introduction to web programming for computer science students at University level.
 
@@ -21,7 +25,7 @@ This is a co-effort of several people using freely available documentation and t
 
 For contributors, see the commit history and the issues.
 
-Feel free to help builing up the repository with more content suited for training and education.
+Feel free to help building up the repository with more content suited for training and education.
 
 
 
