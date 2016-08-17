@@ -44,6 +44,11 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
+v1.1.0 (2016-08-17)
+
+* Enabled new test suite on both travis and circle.
+
+
 v1.0.2 (2016-05-13)
 
 * Adding kmom02/lab1 for preparation.
