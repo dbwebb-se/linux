@@ -1,4 +1,6 @@
 me/
+bin/
+build/
 
 # Logs
 logs
