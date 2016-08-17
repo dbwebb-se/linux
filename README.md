@@ -82,5 +82,5 @@ v1.0.0 (2015-08-17)
 
 ```
  .
-..:  Copyright (c) 2015 Mikael Roos, me@mikaelroos.se
+..:  Copyright (c) 2015 -2016 Mikael Roos, me@mikaelroos.se
 ```
