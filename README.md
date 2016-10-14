@@ -48,6 +48,11 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
+v1.1.1 (2016-10-14)
+
+* Enabled to install latest version of babel as part of course repo.
+
+
 v1.1.0 (2016-08-17)
 
 * Enabled new test suite on both travis and circle.
