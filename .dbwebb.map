@@ -8,25 +8,29 @@
 me/kmom01/install
 
 # kmom02
-me/kmom02/lab1
+me/kmom02/bash1
 me/kmom02/mysite
 me/kmom02/vhost
 
 # kmom03
-me/kmom03/lab2
+me/kmom03/bash2
+me/kmom03/commands
 me/kmom03/irc
 me/kmom03/script
 
 # kmom04
-me/kmom04/lab3
+me/kmom04/node1
 me/kmom04/javascripting
 me/kmom04/server
 
 # kmom05
+me/kmom05/node2
 me/kmom05/maze
 
 # kmom06
+me/kmom06/node3
 me/kmom06/gomuku
+me/kmom06/gomoku
 
 # kmom10
 me/kmom10/bthappen

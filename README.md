@@ -48,6 +48,11 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
+v1.2.0 (2016-12-21)
+
+* Starting upgrading to linux version 2.
+
+
 v1.1.2 (2016-12-21)
 
 * Before linux version 2.
