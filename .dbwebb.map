@@ -9,19 +9,22 @@ me/kmom01/install
 
 # kmom02
 me/kmom02/bash1
-me/kmom02/mysite
 me/kmom02/vhost
+# bort
+me/kmom02/mysite
 
 # kmom03
 me/kmom03/bash2
 me/kmom03/commands
-me/kmom03/irc
 me/kmom03/script
+# bort
+me/kmom03/irc
 
 # kmom04
 me/kmom04/node1
-me/kmom04/javascripting
 me/kmom04/server
+# bort
+me/kmom04/javascripting
 
 # kmom05
 me/kmom05/node2
@@ -29,8 +32,9 @@ me/kmom05/maze
 
 # kmom06
 me/kmom06/node3
-me/kmom06/gomuku
 me/kmom06/gomoku
+# bort
+me/kmom06/gomuku
 
 # kmom10
 me/kmom10/bthappen

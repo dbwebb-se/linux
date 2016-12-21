@@ -39,9 +39,9 @@ PATH := "$(PWD)/bin:$(PWD)/vendor/bin:$(PWD)/node_modules/.bin:$(PATH)"
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
-	@echo "Usage:"
-	@echo " make [target] ..."
-	@echo "target:"
+	@$(ECHO) "Usage:"
+	@$(ECHO) " make [target] ..."
+	@$(ECHO) "target:"
 	@egrep "^# target:" Makefile | sed 's/# target: / /g'
 
 

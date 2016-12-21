@@ -19,6 +19,10 @@ dbwebb init-me
 # Kmom02
 #
 
+# bash1
+cd me/kmom02 && dbwebb recreate bash1
+cd me/kmom02/bash1 && ./answer.bash; [[ $? = 42 ]]
+dbwebb validate bash1
 
 
 
@@ -27,6 +31,11 @@ dbwebb init-me
 # Kmom03
 #
 
+# bash2
+cd me/kmom03 && dbwebb recreate bash2
+cd me/kmom03/bash2 && ./answer.bash; [[ $? = 42 ]]
+dbwebb validate bash2
+
 
 
 # --------------------------------------------------------------------------
@@ -34,6 +43,10 @@ dbwebb init-me
 # Kmom04
 #
 
+# node1
+cd me/kmom04 && dbwebb recreate node1
+node_modules/.bin/babel-node --presets es2015 me/kmom04/node1/answer.js; [[ $? = 42 ]]
+dbwebb validate node1
 
 
 
@@ -42,6 +55,10 @@ dbwebb init-me
 # Kmom05
 #
 
+# node2
+cd me/kmom05 && dbwebb recreate node2
+node_modules/.bin/babel-node --presets es2015 me/kmom04/node1/answer.js; [[ $? = 42 ]]
+dbwebb validate node2
 
 
 
@@ -49,6 +66,11 @@ dbwebb init-me
 #
 # Kmom06
 #
+
+# node3
+cd me/kmom06 && dbwebb recreate node3
+node_modules/.bin/babel-node --presets es2015 me/kmom04/node1/answer.js; [[ $? = 42 ]]
+dbwebb validate node3
 
 
 
