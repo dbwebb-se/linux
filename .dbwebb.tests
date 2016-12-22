@@ -45,7 +45,7 @@ dbwebb validate bash2
 
 # node1
 cd me/kmom04 && dbwebb recreate node1
-node_modules/.bin/babel-node --presets es2015 me/kmom04/node1/answer.js; [[ $? = 42 ]]
+node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
 dbwebb validate node1
 
 
@@ -57,7 +57,7 @@ dbwebb validate node1
 
 # node2
 cd me/kmom05 && dbwebb recreate node2
-node_modules/.bin/babel-node --presets es2015 me/kmom04/node1/answer.js; [[ $? = 42 ]]
+node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
 dbwebb validate node2
 
 
@@ -69,7 +69,7 @@ dbwebb validate node2
 
 # node3
 cd me/kmom06 && dbwebb recreate node3
-node_modules/.bin/babel-node --presets es2015 me/kmom04/node1/answer.js; [[ $? = 42 ]]
+node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
 dbwebb validate node3
 
 
