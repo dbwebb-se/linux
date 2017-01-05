@@ -1,5 +1,7 @@
 #!/usr/bin/env babel-node
 
+"use strict";
+
 const VERSION = "1.0.0";
 
 var path = require('path');
@@ -46,7 +48,7 @@ function version() {
  *
  * @param String question to ask
  */
-function askQuestion(question){
+function askQuestion(question) {
     rl.question(question + "\n", (answer) => {
         if (answer < number) {
             askQuestion("Too low, Guess again!");

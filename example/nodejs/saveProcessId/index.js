@@ -2,6 +2,8 @@
  * Main program to run a simple server that says Hello World.
  *
  */
+"use strict";
+
 var fs = require('fs');
 import server from './server.js';
 

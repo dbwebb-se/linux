@@ -1,6 +1,7 @@
 /**
  *
  */
+"use strict";
 
 // To parse the route from the url
 var url = require('url');

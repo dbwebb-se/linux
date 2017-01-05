@@ -99,9 +99,7 @@ class GomokuBoard {
      *
      */
     isTaken(position) {
-        return (this.board[position] === 0)
-            ? false
-            : true;
+        return (this.board[position] === 0) ? false : true;
     }
 
 
@@ -133,7 +131,7 @@ class GomokuBoard {
      *
      * @return Integer as internal board position.
      */
-     getPosition(x, y) {
+    getPosition(x, y) {
         if (x < 0 || x > this.size || y < 0 || y > this.size) {
             throw new Error("Position is outside of the board.");
         }
@@ -208,9 +206,7 @@ class GomokuBoard {
      *
      */
     nextPlayer() {
-        this.player = (this.player === 1)
-            ? 2
-            : 1;
+        this.player = (this.player === 1) ? 2 : 1;
     }
 
 

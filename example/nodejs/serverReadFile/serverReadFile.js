@@ -1,6 +1,7 @@
 /**
  * HTTP server returning contents of files, read synchrnously or asynchronously.
  */
+"use strict";
 
 var http = require('http');
 

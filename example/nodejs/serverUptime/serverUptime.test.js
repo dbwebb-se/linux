@@ -1,6 +1,8 @@
 /**
  * Server uptime
  */
+"use strict";
+
 process.env.NODE_ENV = 'test';
 // Import the server "module" as "server"
 import server from '../serverUptime/serverUptime';

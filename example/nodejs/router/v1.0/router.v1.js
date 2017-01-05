@@ -16,6 +16,7 @@
  * }).listen(1337);
  *
  */
+"use strict";
 
 var url = require('url');
 
@@ -24,6 +25,18 @@ import { buildRequest } from './request';
 
 
 
+/**
+ * Removes the last slash of a string
+ * @param  String str
+ * @return String
+ */
+function trimSlashes(str) {
+    if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
+        str = str.substr(0, str.length - 1);
+    }
+
+    return str;
+}
 
 
 
@@ -211,19 +224,6 @@ class Router {
         }
     }
 
-}
-
-/**
- * Removes the last slash of a string
- * @param  String str
- * @return String
- */
-function trimSlashes(str) {
-    if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
-        str = str.substr(0, str.length - 1);
-    }
-
-    return str;
 }
 
 export default Router;

@@ -2,6 +2,7 @@
  * Execute this project by:
  * $ babel-node -- index.js
  */
+"use strict";
 
 var usage = 'Read passed parameters to the script.\n' +
             'Just simply add arguments to the script' +

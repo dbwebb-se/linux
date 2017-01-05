@@ -1,6 +1,7 @@
 /**
  * Simple HTTP server returning Hello World as plain text.
  */
+"use strict";
 
 // Require the module
 var http = require('http');

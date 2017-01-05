@@ -1,6 +1,7 @@
 /**
  * HTTP server returning uptime.
  */
+"use strict";
 
 var http = require('http');
 var child = require('child_process');

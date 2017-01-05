@@ -4,6 +4,7 @@
  * Main program to run the Gomoku server
  *
  */
+"use strict";
 
 const VERSION = "1.0.0";
 
@@ -116,23 +117,23 @@ function menu() {
 /**
  * Callbacks for game asking question.
  */
- rl.on("line", function(line) {
-     // Split incoming line with arguments into an array
-     var args = line.trim().split(" ");
-     args = args.filter(value => {
-         return value !== "";
-     });
+rl.on("line", function(line) {
+    // Split incoming line with arguments into an array
+    var args = line.trim().split(" ");
+    args = args.filter(value => {
+        return value !== "";
+    });
 
     switch (args[0]) {
         case "exit":
-             console.log("Bye!");
-             process.exit(0);
-             break;
+            console.log("Bye!");
+            process.exit(0);
+            break;
 
         case "menu":
-             menu();
-             rl.prompt();
-             break;
+            menu();
+            rl.prompt();
+            break;
 
         case "start":
             var size = args[1] || 20;
@@ -183,15 +184,15 @@ function menu() {
         default:
             console.log("Enter 'menu' to get an overview of what you can do here.");
             rl.prompt();
-     }
- });
+    }
+});
 
 
 
- rl.on("close", function() {
-     console.log("Bye!");
-     process.exit(0);
- });
+rl.on("close", function() {
+    console.log("Bye!");
+    process.exit(0);
+});
 
 
 

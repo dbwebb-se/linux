@@ -1,7 +1,10 @@
 /**
  * Main program for the a game of Gomoku.
  */
+"use strict";
+
 import GomokuBoard from "./GomokuBoard.js";
+
 
 var size = 20,
     prompt = "Gomoku$ ",
@@ -20,35 +23,15 @@ var rl = readline.createInterface({
 
 
 
-rl.on("line", function(line) {
-    switch (line.trim()) {
-        case "exit":
-            console.log("Bye!");
-            process.exit(0);
-            break;
-        default:
-            placeMarker();
-    }
-    rl.prompt();
-});
-
-
-
-rl.on("close", function() {
-  rl.write("Bye!");
-  process.exit(0);
-});
-
-
-
 /**
  * Returns a random integer between min (included) and max (included)
  * Using Math.round() will give you a non-uniform distribution!
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
  */
 function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 
 
 /**
@@ -71,6 +54,27 @@ function placeMarker() {
     console.log(">>> " + player + " places " + x + " " + y + "\n");
     console.log(gameBoard.asAscii());
 }
+
+
+
+rl.on("line", function(line) {
+    switch (line.trim()) {
+        case "exit":
+            console.log("Bye!");
+            process.exit(0);
+            break;
+        default:
+            placeMarker();
+    }
+    rl.prompt();
+});
+
+
+
+rl.on("close", function() {
+    rl.write("Bye!");
+    process.exit(0);
+});
 
 
 

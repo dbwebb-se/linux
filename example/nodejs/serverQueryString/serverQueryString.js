@@ -4,6 +4,7 @@
  *  localhost:1337/     - home.
  *  localhost:1337/*    - 404 page.
  */
+"use strict";
 
 var http = require('http');
 var url = require('url');

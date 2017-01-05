@@ -1,6 +1,7 @@
 /**
  * Server doing proper decoding of route part.
  */
+"use strict";
 
 var http = require('http');
 var url = require('url');

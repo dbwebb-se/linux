@@ -48,6 +48,13 @@ When updating the submodule, commit in its directory first, then commit the linu
 History
 -------------------
 
+v1.2.1 (2017-01-05)
+
+* Move old and unused examples to old.
+* Update example to pass validation.
+* Enforce jshint and jscs with new config files.
+
+
 v1.2.0 (2016-12-21)
 
 * Starting upgrading to linux version 2.
@@ -97,5 +104,5 @@ v1.0.0 (2015-08-17)
 
 ```
  .
-..:  Copyright (c) 2015 -2016 Mikael Roos, me@mikaelroos.se
+..:  Copyright (c) 2015 -2017 Mikael Roos, mos@dbwebb.se
 ```

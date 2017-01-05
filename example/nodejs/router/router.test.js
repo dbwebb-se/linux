@@ -1,6 +1,8 @@
 /**
  * Router tests
  */
+"use strict";
+
 process.env.NODE_ENV = 'test';
 import Router from '../router/router';
 var http = require('http');
@@ -402,7 +404,7 @@ describe('Router', () => {
     describe('The request object', () => {
 
         it('Query parameters empty', (done) => {
-           router.get('/animal', (req, res) => {
+            router.get('/animal', (req, res) => {
 
                 if (req.query instanceof Object && Object.keys(req.query).length === 0) {
                     res.end('empty');
@@ -460,9 +462,9 @@ describe('Router', () => {
         it('GET with many params', (done) => {
             var b, c, d;
             router.get('/a/:b/:c/:d', (req, res) => {
-                    b = req.params.b;
-                    c = req.params.c;
-                    d = req.params.d;
+                b = req.params.b;
+                c = req.params.c;
+                d = req.params.d;
 
                 res.end(b + c + d);
             });
@@ -500,6 +502,5 @@ describe('Router', () => {
                         });
                 });
         });
-
     });
 });

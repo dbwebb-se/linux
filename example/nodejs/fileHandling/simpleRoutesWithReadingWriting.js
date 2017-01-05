@@ -2,6 +2,7 @@
  * Here we extend the simple-routing with reading the file on a GET-request
  * and create a file with a POST-request.
  */
+"use strict";
 
 /*
  * To able to talk with the file system we require the fs-modul
@@ -109,7 +110,7 @@ http.createServer((req, res) => {
         default:
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('No route matching...');
-        break;
+            break;
 
     }
 

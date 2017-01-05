@@ -16,6 +16,7 @@
  * }).listen(1337);
  *
  */
+"use strict";
 
 var url = require('url');
 
@@ -24,6 +25,119 @@ import { buildRequest } from './request';*/
 
 
 
+/**
+ * Removes the last slash of a string
+ * @param  String str
+ * @return String
+ */
+function trimSlashes(str) {
+    if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
+        str = str.substr(0, str.length - 1);
+    }
+
+    return str;
+}
+
+
+
+/**
+ * Utility
+ */
+function buildRequest (req, res) {
+    // stupid jshint gives error on res not being used..
+    /*jshint unused:false*/
+    req = req || {};
+    req.params = {};
+    req.query = url.parse(req.url, true).query;
+    req.queryParts = url.parse(req.url, true);
+
+    req.rawBody  = '';
+    // Takes care of any data that comes frome a post-request
+    req.on('data', (chunk) => {
+        req.rawBody += chunk;
+    });
+
+    return req;
+}
+
+
+
+/**
+ * Utility
+ */
+function buildResponse(req, res) {
+    res = res || {};
+
+    /**
+     * Send a response
+     * @param  string|object body   The body you want to send
+     * @param  integer contentType Content type: text/plain, application/json
+     * @param  integer statusCode  HTTP status code
+     * @return obj
+     */
+    res.send = function send(body, contentType, statusCode) {
+        // Ensure charset is set.
+        res.charset = res.charset || 'utf-8';
+        res.statusCode = statusCode || res.statusCode || 200;
+        res.body = body;
+        res.headers = 'text/html';
+
+        // Set the content type.
+        if (contentType) {
+            this.setHeader('Content-Type', contentType);
+        } else {
+            this.setHeader('Content-Type', 'text/html');
+        }
+
+        // Switch on the type of the body.
+        switch (typeof body) {
+            case 'string':
+                if (!this.get('Content-Type')) {
+                    this.setHeader('Content-Type', 'text/html');
+                }
+                break;
+
+            case 'boolean':
+            case 'number':
+            case 'object':
+
+                if (body === null) {
+                    body = '';
+                }
+                // Stringify the body to valid JSON.
+                body = JSON.stringify(body);
+
+                break;
+        }
+
+        // Write and end..
+        res.write(body);
+        res.end();
+    };
+
+    /**
+     * Send json as response
+     * @param  object body   The body you want to send
+     * @return
+     */
+    res.json = function sendJson(body) {
+        if (!this.get('Content-Type')) {
+            this.setHeader('Content-Type', 'application/json');
+        }
+        return res.send(body, 'application/json', 200);
+    };
+
+    /**
+     * Shorthand getHeader function.
+     * @param  string field
+     * @return string
+     */
+    res.get = function(field) {
+        return this.getHeader(field);
+    };
+
+    return res;
+}
 
 
 
@@ -213,108 +327,6 @@ class Router {
 
 }
 
-/**
- * Removes the last slash of a string
- * @param  String str
- * @return String
- */
-function trimSlashes(str) {
-    if (str.length > 1 && str.indexOf('/', str.length - '/'.length) !== -1) {
-        str = str.substr(0, str.length - 1);
-    }
 
-    return str;
-}
-
-function buildResponse(req, res) {
-    res = res || {};
-
-    /**
-     * Send a response
-     * @param  string|object body   The body you want to send
-     * @param  integer contentType Content type: text/plain, application/json
-     * @param  integer statusCode  HTTP status code
-     * @return obj
-     */
-    res.send = function send(body, contentType, statusCode) {
-        // Ensure charset is set.
-        res.charset = res.charset || 'utf-8';
-        res.statusCode = statusCode || res.statusCode || 200;
-        res.body = body;
-        res.headers = 'text/html';
-
-        // Set the content type.
-        if (contentType) {
-            this.setHeader('Content-Type', contentType);
-        } else {
-            this.setHeader('Content-Type', 'text/html');
-        }
-
-        // Switch on the type of the body.
-        switch (typeof body) {
-            case 'string':
-                if (!this.get('Content-Type')) {
-                    this.setHeader('Content-Type', 'text/html');
-                }
-            break;
-
-            case 'boolean':
-            case 'number':
-            case 'object':
-
-                if (body === null) {
-                    body = '';
-                }
-                // Stringify the body to valid JSON.
-                body = JSON.stringify(body);
-
-            break;
-        }
-
-        // Write and end..
-        res.write(body);
-        res.end();
-    };
-
-    /**
-     * Send json as response
-     * @param  object body   The body you want to send
-     * @return
-     */
-    res.json = function sendJson(body) {
-        if (!this.get('Content-Type')) {
-            this.setHeader('Content-Type', 'application/json');
-        }
-        return res.send(body, 'application/json', 200);
-    };
-
-    /**
-     * Shorthand getHeader function.
-     * @param  string field
-     * @return string
-     */
-    res.get = function(field) {
-        return this.getHeader(field);
-    };
-
-    return res;
-}
-
-function buildRequest (req, res) {
-    // stupid jshint gives error on res not being used..
-    /*jshint unused:false*/
-    req = req || {};
-    req.params = {};
-    req.query = url.parse(req.url, true).query;
-    req.queryParts = url.parse(req.url, true);
-
-    req.rawBody  = '';
-    // Takes care of any data that comes frome a post-request
-    req.on('data', (chunk) => {
-        req.rawBody += chunk;
-    });
-
-    return req;
-}
 
 export default Router;

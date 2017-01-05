@@ -4,6 +4,7 @@
  * Main program to run the Gomoku server
  *
  */
+"use strict";
 
 const VERSION = "1.0.0";
 

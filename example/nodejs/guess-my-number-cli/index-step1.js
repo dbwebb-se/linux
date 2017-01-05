@@ -1,6 +1,8 @@
 /**
  * Main program for the a game of Gomoku.
  */
+"use strict";
+
 var readline = require("readline");
 
 var rl = readline.createInterface({
@@ -19,7 +21,7 @@ var number = Math.floor((Math.random() * max) + min);
  *
  * @param String question to ask
  */
-function askQuestion(question){
+function askQuestion(question) {
     rl.question(question + "\n", (answer) => {
         if (answer < number) {
             askQuestion("Too low, Guess again!");

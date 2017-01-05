@@ -1,10 +1,23 @@
 {
-  "esnext":true,
-  "undef": true,
-  "unused": true,
-  "predef": ["console", "window", "document", "require", "__dirname"],
-  "laxbreak": true,
-  "loopfunc": true,
-  "mocha": true,
-  "node": true
+    "curly": true,
+    "esversion": 6,
+    "freeze": true,
+    "futurehostile": true,
+    "latedef": true,
+    "maxcomplexity": 15,
+    "maxdepth": 7,
+    "nocomma": true,
+    "nonbsp": true,
+    "nonew": true,
+    "notypeof": true,
+    "predef": ["console", "window", "document"],
+    "undef": true,
+    "strict": true,
+    "unused": true,
+
+    "loopfunc": true,
+
+    "node": true,
+    "mocha": true
+    
 }

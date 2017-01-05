@@ -1,6 +1,7 @@
 /**
  *
  */
+"use strict";
 
 var fs = require('fs');
 
@@ -9,7 +10,7 @@ var files = fs.readdirSync(__dirname);
 
 // Loops through the array of filename and prints them
 for (var i = 0; i < files.length; i += 1) {
-	console.log(files[i]);
+    console.log(files[i]);
 }
 
 /**

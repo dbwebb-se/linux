@@ -1,6 +1,7 @@
 /**
  * Front for GomokuServer
  */
+"use strict";
 
 // The main class for the Gomoku game
 import GomokuBoard from "./GomokuBoard.js";
@@ -45,12 +46,12 @@ function sendJSONResponse(res, content, code = 200) {
 router.get("/", (req, res) => {
 
     res.writeHead(200, "Content-Type: text/plain");
-    res.write("Welcome the GomokuBoard server. This is the API of what can be done.\n\n"
-        + " /             Display this helptext.\n"
-        + " /start/:size  Start a new game with a board of :size.\n"
-        + " /view         View details on the game.\n"
-        + " /view/ascii   View the gameboard and whos next in turn.\n"
-        + " /place/:x/:y  Place a marker at choosen place.\n"
+    res.write("Welcome the GomokuBoard server. This is the API of what can be done.\n\n" +
+        " /             Display this helptext.\n" +
+        " /start/:size  Start a new game with a board of :size.\n" +
+        " /view         View details on the game.\n" +
+        " /view/ascii   View the gameboard and whos next in turn.\n" +
+        " /place/:x/:y  Place a marker at choosen place.\n"
     );
     res.end();
 });
@@ -114,12 +115,12 @@ router.get("/view", (req, res) => {
 router.get("/view/ascii", (req, res) => {
 
     res.writeHead(200, "Content-Type: text/plain");
-    res.write(gameBoard.asAscii()
-        + "\nPlayer in turn is '"
-        + gameBoard.playerInTurn()
-        + "' playing the marker "
-        + gameBoard.playerInTurnMarker()
-        + ".\n");
+    res.write(gameBoard.asAscii() +
+        "\nPlayer in turn is '" +
+        gameBoard.playerInTurn() +
+        "' playing the marker " +
+        gameBoard.playerInTurnMarker() +
+        ".\n");
     res.end();
 });
 

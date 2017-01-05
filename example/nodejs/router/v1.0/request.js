@@ -1,6 +1,7 @@
 /**
  * Response
  */
+"use strict";
 
 var url = require('url');
 

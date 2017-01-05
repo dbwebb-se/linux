@@ -1,6 +1,8 @@
 /**
  * Simple server tests....
  */
+"use strict";
+
 process.env.NODE_ENV = 'test';
 
 // Import the server "module" as "server"
@@ -30,6 +32,6 @@ describe('Simple Json Server', () => {
         request
             .get('/')
             .expect(200, '{"text":"Hello World"}', done);
-	});
+    });
 
 });

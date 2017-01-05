@@ -1,3 +1,5 @@
+"use strict";
+
 process.env.NODE_ENV = 'test';
 import maze from '../maze/maze';
 
@@ -28,7 +30,7 @@ describe('Maze', () => {
 
     describe('GET /map', () => {
         it('Return a list of avaliable map', (done) => {
-             request(app)
+            request(app)
                 .get('/map')
                 .expect(200, done);
         });
@@ -66,7 +68,7 @@ describe('Maze', () => {
                     req
                         .get('/' + gameid + '/map/i-do-not-exist')
                         .expect(404, 'Map not found', done);
-                    });
+                });
         });
 
         it('Should be able to return csv', (done) => {
@@ -82,7 +84,7 @@ describe('Maze', () => {
                         assert.equal('text/csv', result.header['content-type']);
                         done();
                     });
-                });
+            });
         });
     });
 
@@ -149,19 +151,18 @@ describe('Maze', () => {
                 .end((err, result) => {
                     gameid = JSON.parse(result.res.text).gameid;
                     req.get('/map/')
-                       .end(() => {
-                           req.get('/' + gameid + '/map/maze-of-doom.json')
-                              .expect(200)
-                              .end(() => {
-                                  req.get('/' + gameid + '/maze/')
-                                     .expect(200)
-                                     .end(() => {
-                                         req.get('/' + gameid + '/maze/0/east')
-                                            .expect(200, done);
-                                     });
-                              });
-
-                       });
+                        .end(() => {
+                            req.get('/' + gameid + '/map/maze-of-doom.json')
+                                .expect(200)
+                                .end(() => {
+                                    req.get('/' + gameid + '/maze/')
+                                        .expect(200)
+                                        .end(() => {
+                                            req.get('/' + gameid + '/maze/0/east')
+                                                .expect(200, done);
+                                        });
+                                });
+                        });
                 });
         });
 

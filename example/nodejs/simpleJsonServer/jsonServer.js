@@ -1,6 +1,7 @@
 /**
  * Simple HTTP server returing JSON to the client.
  */
+"use strict";
 
 // Require the node HTTP-module
 var http = require('http');

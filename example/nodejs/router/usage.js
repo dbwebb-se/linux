@@ -1,6 +1,7 @@
 /**
  * EXAMPLE HOW TO USE THE ROUTER
  */
+"use strict";
 
 import Router from '../router/router';
 var http = require('http');

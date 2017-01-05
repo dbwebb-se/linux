@@ -1,5 +1,7 @@
 #!/usr/bin/env babel-node
 
+"use strict";
+
 const VERSION = "1.0.0";
 
 var path = require('path');
@@ -52,17 +54,40 @@ Or enter a number to take a guess.`);
 
 
 /**
+* Take a guess.
+*
+* @param Integer answer a the number to guess.
+*/
+
+function makeGuess(answer) {
+    if (!Number.isInteger(answer)) {
+        console.log("Not a integer.");
+        return;
+    }
+
+    if (answer < number) {
+        console.log("Too low, Guess again!");
+    } else if (answer > number) {
+        console.log("Too high, Guess again!");
+    } else {
+        console.log("Well done! The answer was " + answer + "!");
+    }
+}
+
+
+
+/**
  * Callbacks for game asking question.
  */
- rl.on("line", function(line) {
-     switch (line.trim()) {
-         case "exit":
-             console.log("Bye!");
-             process.exit(0);
-             break;
-         case "hello":
-             console.log("Hello to you!");
-             break;
+rl.on("line", function(line) {
+    switch (line.trim()) {
+        case "exit":
+            console.log("Bye!");
+            process.exit(0);
+            break;
+        case "hello":
+            console.log("Hello to you!");
+            break;
         case "menu":
             menu();
             break;
@@ -78,37 +103,14 @@ Or enter a number to take a guess.`);
             break;
         default:
             makeGuess(parseInt(line, 10));
-     }
-     rl.prompt();
- });
-
- rl.on("close", function() {
-     console.log("Bye!");
-     process.exit(0);
- });
-
-
-
-/**
-* Take a guess.
-*
-* @param Integer answer a the number to guess.
-*/
-
-function makeGuess(answer){
-    if (!Number.isInteger(answer)) {
-        console.log("Not a integer.");
-        return;
     }
+    rl.prompt();
+});
 
-    if (answer < number) {
-        console.log("Too low, Guess again!");
-    } else if (answer > number) {
-        console.log("Too high, Guess again!");
-    } else {
-        console.log("Well done! The answer was " + answer + "!");
-    }
-}
+rl.on("close", function() {
+    console.log("Bye!");
+    process.exit(0);
+});
 
 
 

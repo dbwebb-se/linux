@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+"use strict";
+
+
+
 /**
  * Prints the usage of the command interface
  */

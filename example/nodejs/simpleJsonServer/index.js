@@ -2,6 +2,8 @@
  * Main program to run a simple server that says Hello World.
  *
  */
+"use strict";
+
 import server from './jsonServer.js';
 
 // Start the server to listen on a port

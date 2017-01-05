@@ -1,6 +1,7 @@
 /**
  * Examples on how to create a file and append to a file.
  */
+"use strict";
 
 var fs = require('fs');
 

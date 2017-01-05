@@ -1,6 +1,8 @@
 /**
  * Simple server tests....
  */
+"use strict";
+
 process.env.NODE_ENV = 'test';
 
 // Import the server "module" as "server"

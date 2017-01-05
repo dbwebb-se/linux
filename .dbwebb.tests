@@ -11,6 +11,19 @@ dbwebb init-me
 # Kmom01
 #
 
+#
+# install
+# https://dbwebb.se/uppgift/installera-debian-som-server
+#
+touch me/kmom01/install/log.txt
+touch me/kmom01/install/ssh.png
+
+#
+# redovisa
+# https://dbwebb.se/uppgift/skapa-en-me-sida-till-linux-kursen
+#
+cp -i example/me/* me/redovisa/
+dbwebb validate redovisa
 
 
 
