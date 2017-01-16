@@ -37,6 +37,14 @@ cd me/kmom02 && dbwebb recreate bash1
 cd me/kmom02/bash1 && ./answer.bash; [[ $? = 42 ]]
 dbwebb validate bash1
 
+#
+# vhost
+# https://dbwebb.se/uppgift/installera-debian-som-server
+#
+touch me/kmom02/vhost/log.txt
+touch me/kmom02/vhost/me.linux.se.conf
+touch me/kmom02/vhost/dump.png
+
 
 
 # --------------------------------------------------------------------------
