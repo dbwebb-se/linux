@@ -58,6 +58,18 @@ cd me/kmom03/bash2 && ./answer.bash; [[ $? = 42 ]]
 dbwebb validate bash2
 
 
+# script
+# https://dbwebb.se/uppgift/mina-forsta-bash-script
+test -d me/kmom03/script
+
+
+# commands
+# https://dbwebb.se/uppgift/ett-bash-script-med-options-command-arguments
+cp example/bash/cli-with-options/bash-cli me/kmom03/commands/commands
+chmod 755 me/kmom03/commands/commands
+
+
+
 
 # --------------------------------------------------------------------------
 #
