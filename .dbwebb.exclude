@@ -28,6 +28,7 @@
 vendor/**/.git/
 vendor/**/.gitmodules/
 vendor/**/.gitignore
+node_modules
 
 # Anywhere ignore this
 old/
