@@ -76,10 +76,21 @@ chmod 755 me/kmom03/commands/commands
 # Kmom04
 #
 
+#
 # node1
+#
 cd me/kmom04 && dbwebb recreate node1
 node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
 dbwebb validate node1
+
+
+#
+# server
+# https://dbwebb.se/uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash
+#
+cp example/nodejs/simpleServer/{index,server}.js me/kmom04/server
+cp example/bash/environment-variables-with-defaults/client.bash me/kmom04/server
+dbwebb validate server
 
 
 
