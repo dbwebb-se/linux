@@ -3,13 +3,9 @@
  */
 "use strict";
 
-var http = require('http');
-
-// To parse the route from the url
-var url = require('url');
-
-// To able to talk with the file system we require the fs-modul
-var fs = require('fs');
+var http = require("http");
+var url = require("url");
+var fs = require("fs");
 
 var server = http.createServer((req, res) => {
 
@@ -26,33 +22,33 @@ var server = http.createServer((req, res) => {
     console.log("Incoming route " + route + " from ip " + ipAddress);
 
     // Check route and proceed accordingly
-    if (route == '/file1') {
+    if (route == "/file1") {
         // Read file1.txt using synchronous method
-        filename = 'file1.txt';
-        data = fs.readFileSync(filename, 'utf8');
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        filename = "file1.txt";
+        data = fs.readFileSync(filename, "utf8");
+        res.writeHead(200, { "Content-Type": "text/plain" });
         res.end(data);
 
-    } else if (route == '/file2') {
+    } else if (route == "/file2") {
         // Read file2.txt using synchronous method
-        filename = 'file2.txt';
+        filename = "file2.txt";
 
-        fs.readFile(filename, 'utf8', (err, data) => {
+        fs.readFile(filename, "utf8", (err, data) => {
             // If readFile got an error we throw it
             if (err) {
                 // Sends to the client that the server failed
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal server error');
-                console.log('Internal server error');
+                res.writeHead(500, { "Content-Type": "text/plain" });
+                res.end("Internal server error");
+                console.log("Internal server error");
                 throw err;
             }
 
-            res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.writeHead(200, { "Content-Type": "text/plain" });
             res.end(data);
         });
 
     } else {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.writeHead(200, { "Content-Type": "text/plain" });
         res.end("Use /file1 (sync) or /file2 (async).\n");
     }
 });

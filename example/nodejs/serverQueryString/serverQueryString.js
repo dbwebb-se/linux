@@ -6,10 +6,10 @@
  */
 "use strict";
 
-var http = require('http');
-var url = require('url');
-var qs = require('querystring');
-var util = require('util');
+var http = require("http");
+var url = require("url");
+var qs = require("querystring");
+var util = require("util");
 
 
 var server = http.createServer((req, res) => {
@@ -31,29 +31,26 @@ var server = http.createServer((req, res) => {
 
     console.log("Incoming route " + route + " from ip " + ipAddress + " with querystring " + queryString);
 
-
     // Inspect the details of the object created for the query string
     console.log(util.inspect(query));
 
     // Loop through all query variables
     Object.keys(query).forEach( key => {
-        console.log(`'${key}' : '${query[key]}'`);
+        console.log(`"${key}" : "${query[key]}"`);
     });
-
-
 
     // Switch (route) on the path.
     switch (route) {
-        case '/':
+        case "/":
             // Home page route.
-            res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end('Home page\n');
+            res.writeHead(200, { "Content-Type": "text/plain" });
+            res.end("Home page\n");
         break;
 
         default:
             // Not found route.
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('404. No route matching.\n');
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end("404. No route matching.\n");
         break;
     }
 });

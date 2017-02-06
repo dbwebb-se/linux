@@ -4,11 +4,11 @@
 "use strict";
 
 // Require the node HTTP-module
-var http = require('http');
+var http = require("http");
 
 // The object that later will be sent to via the response
 var data = {
-    'text': 'Hello World'
+    "text": "Hello World"
 };
 
 var server = http.createServer((req, res) => {
@@ -17,10 +17,10 @@ var server = http.createServer((req, res) => {
 
     // Log incoming requests
     ipAddress = req.connection.remoteAddress;
-    console.log('Incoming request from ip ' + ipAddress);
+    console.log("Incoming request from ip " + ipAddress);
 
     // Write to the header with application/json as content type and 200 HTTP status code.
-    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.writeHead(200, { "Content-Type": "application/json" });
 
     // Converts the Javascript-object to a string to be sent to the client
     var jsonObj = JSON.stringify(data);

@@ -4,7 +4,7 @@
  */
 "use strict";
 
-import server from './jsonServer.js';
+import server from "./jsonServer.js";
 
 // Start the server to listen on a port
 server.listen(1337);
