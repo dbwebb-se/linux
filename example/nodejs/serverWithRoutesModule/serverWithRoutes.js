@@ -7,11 +7,12 @@
  */
 "use strict";
 
-var http = require("http");
-var url = require("url");
+const http = require("http");
+const url = require("url");
 
 // My handlers for each route is now within this module
-import routes from "./routes.js";
+//import routes from "./routes.js";
+const routes = require("./routes.js");
 
 
 var server = http.createServer((req, res) => {
@@ -44,4 +45,5 @@ var server = http.createServer((req, res) => {
 });
 
 // Export the server as a module.
-export default server;
+//export default server;
+module.exports = server;

@@ -4,7 +4,8 @@
  */
 "use strict";
 
-import server from "./serverUptime.js";
+//import server from "./serverUptime.js";
+const server = require("./serverUptime.js");
 
 // Start the server to listen on a port
 server.listen(1337);

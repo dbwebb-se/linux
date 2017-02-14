@@ -23,4 +23,5 @@ var server = http.createServer((req, res) => {
 });
 
 // Export the server as a module.
-export default server;
+//export default server;
+module.exports = server;

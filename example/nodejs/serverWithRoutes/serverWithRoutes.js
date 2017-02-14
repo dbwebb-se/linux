@@ -1,14 +1,14 @@
 /**
  * Server with routes.
  * URLS:
- *  localhost:1337/     - home.
+ *  localhost:1337/      - home.
  *  localhost:1337/about - about page.
- *  localhost:1337/*    - 404 page.
+ *  localhost:1337/*     - 404 page.
  */
 "use strict";
 
-var http = require('http');
-var url = require('url');
+var http = require("http");
+var url = require("url");
 
 
 var server = http.createServer((req, res) => {
@@ -26,25 +26,26 @@ var server = http.createServer((req, res) => {
 
     // Switch (route) on the path.
     switch (route) {
-        case '/':
+        case "/":
             // Home page route.
-            res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end('Home page\n');
+            res.writeHead(200, { "Content-Type": "text/plain" });
+            res.end("Home page\n");
         break;
 
-        case '/about':
+        case "/about":
             // About page route.
-            res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end('About\n');
+            res.writeHead(200, { "Content-Type": "text/plain" });
+            res.end("About\n");
         break;
 
         default:
             // Not found route.
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('404. No route matching.\n');
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end("404. No route matching.\n");
         break;
     }
 });
 
 // Export the server as a module.
-export default server;
+//export default server;
+module.exports = server;

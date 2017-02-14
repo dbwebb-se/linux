@@ -4,7 +4,8 @@
  */
 "use strict";
 
-import server from "./serverQueryString.js";
+//import server from "./serverQueryString.js";
+const server = require("./serverQueryString.js");
 
 // Start the server to listen on a port
 server.listen(1337);

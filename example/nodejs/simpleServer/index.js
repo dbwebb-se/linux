@@ -4,7 +4,8 @@
  */
 "use strict";
 
-import server from "./server.js";
+//import server from "./server.js";
+const server = require("./server.js");
 
 // Start the server to listen on a port
 server.listen(1337);

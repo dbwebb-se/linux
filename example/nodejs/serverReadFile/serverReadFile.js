@@ -3,9 +3,10 @@
  */
 "use strict";
 
-var http = require("http");
-var url = require("url");
-var fs = require("fs");
+const http = require("http");
+const url = require("url");
+const fs = require("fs");
+const path = require("path");
 
 var server = http.createServer((req, res) => {
 
@@ -24,14 +25,14 @@ var server = http.createServer((req, res) => {
     // Check route and proceed accordingly
     if (route == "/file1") {
         // Read file1.txt using synchronous method
-        filename = "file1.txt";
+        filename = path.join(__dirname, "file1.txt");
         data = fs.readFileSync(filename, "utf8");
         res.writeHead(200, { "Content-Type": "text/plain" });
         res.end(data);
 
     } else if (route == "/file2") {
         // Read file2.txt using synchronous method
-        filename = "file2.txt";
+        filename = path.join(__dirname, "file2.txt");
 
         fs.readFile(filename, "utf8", (err, data) => {
             // If readFile got an error we throw it
@@ -53,4 +54,5 @@ var server = http.createServer((req, res) => {
     }
 });
 
-export default server;
+//export default server;
+module.exports = server;

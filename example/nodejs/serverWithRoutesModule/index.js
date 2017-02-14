@@ -4,7 +4,8 @@
  */
 "use strict";
 
-import server from "./serverWithRoutes.js";
+//import server from "./serverWithRoutes.js";
+const server = require("./serverWithRoutes.js");
 
 // Start the server to listen on a port
 server.listen(1337);

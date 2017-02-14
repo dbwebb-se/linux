@@ -4,9 +4,9 @@
 /.solution/
 /.solutions/
 /.default/
+/.exercises/
 /bin
 /build
-/node_modules/
 /vendor/
 /circle.yml
 /package.json
@@ -21,8 +21,12 @@
 /.dbwebb.tests
 /.dbwebb.version
 /.git/
-/.gitmodules/
+/.gitmodules
+/.gitattributes
 /.gitignore
+
+# Ignore node_modules for test
+/node_modules/
 
 # Limit vendor uploads
 vendor/**/.git/

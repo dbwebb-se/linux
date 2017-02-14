@@ -27,4 +27,5 @@ var server = http.createServer((req, res) => {
     });
 });
 
-export default server;
+//export default server;
+module.exports = server;

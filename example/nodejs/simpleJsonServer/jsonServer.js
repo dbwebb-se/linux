@@ -31,4 +31,5 @@ var server = http.createServer((req, res) => {
 
 
 // Export the server.
-export default server;
+//export default server;
+module.exports = server;

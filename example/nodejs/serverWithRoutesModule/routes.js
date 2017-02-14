@@ -38,4 +38,5 @@ routes.notFound = (res) => {
 
 
 // Export as a module
-export default routes;
+//export default routes;
+module.exports = routes;
