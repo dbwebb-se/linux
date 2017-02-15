@@ -7,8 +7,12 @@
  */
 "use strict";
 
-var http = require("http");
-var url = require("url");
+const http = require("http");
+const url = require("url");
+
+// My handlers for each route is now within this module
+//import routes from "./routes.js";
+const routes = require("./routes.js");
 
 
 var server = http.createServer((req, res) => {
@@ -27,21 +31,15 @@ var server = http.createServer((req, res) => {
     // Switch (route) on the path.
     switch (route) {
         case "/":
-            // Home page route.
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.end("Home page\n");
+            routes.home(res);
         break;
 
         case "/about":
-            // About page route.
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.end("About\n");
+            routes.about(res);
         break;
 
         default:
-            // Not found route.
-            res.writeHead(404, { "Content-Type": "text/plain" });
-            res.end("404. No route matching.\n");
+            routes.notFound(res);
         break;
     }
 });
