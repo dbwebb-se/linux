@@ -100,10 +100,20 @@ dbwebb validate server
 # Kmom05
 #
 
+#
 # node2
+# https://dbwebb.se/uppgift/linux-lab4-asynkron-programmering
+#
 dbwebb recreate node2
 node me/kmom04/node1/answer.js; [[ $? = 42 ]]
 dbwebb validate node2
+
+#
+# maze
+# https://dbwebb.se/uppgift/los-mazen-med-din-mazerunner-i-bash
+#
+touch me/kmom05/maze/mazerunnder.bash
+dbwebb validate maze
 
 
 
@@ -112,10 +122,20 @@ dbwebb validate node2
 # Kmom06
 #
 
-# node3
-#dbwebb recreate node3
-#node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
-#dbwebb validate node3
+#
+# gomoku
+# https://dbwebb.se/uppgift/skapa-klienter-och-servrar-som-spelar-luffarschack-i-node-js
+#
+# client
+cp example/nodejs/gomoku/{GomokuBoard,index-random}.js me/kmom06/gomoku
+touch me/kmom06/gomoku/index-random.js
+
+# server
+cp example/nodejs/gomoku/{GomokuServer,index-server}.js me/kmom06/gomoku
+cp example/nodejs/router/router.js me/kmom06/gomoku
+
+# client to server
+cp example/nodejs/gomoku/{GomokuClient,index-client}.js me/kmom06/gomoku
 
 
 
