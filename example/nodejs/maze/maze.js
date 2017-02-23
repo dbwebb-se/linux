@@ -102,10 +102,10 @@ function sendResponse(resObj, content, code = 200, type = "json") {
  * Check that map is selected
  * @type {[type]}
  */
-function checkIfGameIsActive(gameid) {
-    if (!(games[gameid] !== undefined
-        && games[gameid].currentMap !== undefined
-        && games[gameid].currentMap != null)
+function checkIfGameIsActive(res, type, gameid) {
+    if (!(games[gameid] !== undefined &&
+        games[gameid].currentMap !== undefined &&
+        games[gameid].currentMap !== null)
     ) {
         sendResponse(res, {
             "text": "Gameid not initialized correctly.",
@@ -193,9 +193,9 @@ router.get("/:gameid/map/:map", (req, res) => {
         return;
     }
 
-    if (!(games[gameid] !== undefined
-        && games[gameid].currentMap !== undefined
-        && games[gameid].currentMap === null)
+    if (!(games[gameid] !== undefined &&
+        games[gameid].currentMap !== undefined &&
+        games[gameid].currentMap === null)
     ) {
         sendResponse(res, {
             "text": "Gameid not initalized correctly.",
@@ -225,7 +225,7 @@ router.get("/:gameid/maze", (req, res) => {
     var gameid = req.params.gameid;
     var type = req.query.type;
 
-    checkIfGameIsActive(gameid);
+    checkIfGameIsActive(res, type, gameid);
 
     games[gameid].lastRoom = games[gameid].currentMap[0];
 
@@ -244,7 +244,7 @@ router.get("/:gameid/maze/:roomId", (req, res) => {
     var type = req.query.type;
     var id = req.params.roomId;
 
-    checkIfGameIsActive(gameid);
+    checkIfGameIsActive(res, type, gameid);
 
     games[gameid].current = games[gameid].currentMap[id];
 
@@ -275,7 +275,7 @@ router.get("/:gameid/maze/:roomId/:direction", (req, res) => {
     var temp;
     var lastRoom;
 
-    checkIfGameIsActive(gameid);
+    checkIfGameIsActive(res, type, gameid);
 
     current = games[gameid].currentMap[id];
 
