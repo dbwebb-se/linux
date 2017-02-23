@@ -219,7 +219,7 @@ Walks away from the current room in selected direction.
 
 Revision history
 ------------------------------
-2017-02-23 (mos) Walkthrough and cleaned up minor issues.
-2015-07-14 (foikila) Added information about the parameters.
-2015-06-24 (foikila) Added gameid.
-2015-06-17 (foikila) First draft crafted.
+2017-02-23 (mos) Walkthrough and cleaned up minor issues.  
+2015-07-14 (foikila) Added information about the parameters.  
+2015-06-24 (foikila) Added gameid.  
+2015-06-17 (foikila) First draft crafted.  
