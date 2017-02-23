@@ -2,7 +2,8 @@
  * Main program to run the maze server
  *
  */
-import maze from './maze';
+//import maze from './maze';
+const maze = require("./maze");
 
 var port = 1337;
 

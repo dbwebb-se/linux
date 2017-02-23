@@ -18,7 +18,7 @@
  */
 "use strict";
 
-var url = require('url');
+const url = require('url');
 
 /*import { buildResponse } from './response';
 import { buildRequest } from './request';*/
@@ -329,4 +329,5 @@ class Router {
 
 
 
-export default Router;
+//export default Router;
+module.exports = Router;

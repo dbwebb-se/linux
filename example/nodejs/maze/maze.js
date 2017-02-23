@@ -1,18 +1,18 @@
 /**
- *
+ * The maze breain.
  */
 "use strict";
 
 // To parse the route from the url
-var url = require('url');
+const url = require("url");
+const fs = require("fs");
+const http = require("http");
 
 // A better router to create a handler for all routes
-import Router from '../router/router';
+const Router = require("../router/router");
+//const Router = require("./router");
 
 var router = new Router();
-
-var fs = require('fs');
-var http = require('http');
 
 var maps = [];
 var games = [];
@@ -27,37 +27,37 @@ var games = [];
  * @param  Integer       code    HTTP status code
  * @param  String        type    Content-Type of the response
  */
-function sendResponse(resObj, content, code = 200, type = 'json') {
+function sendResponse(resObj, content, code = 200, type = "json") {
     var contentType;
 
     switch (type) {
-        case 'plain':
+        case "plain":
             contentType = {
-                'Content-Type': 'text/plain'
+                "Content-Type": "text/plain"
             };
             break;
 
-        case 'html':
+        case "html":
             contentType = {
-                'Content-Type': 'text/html'
+                "Content-Type": "text/html"
             };
             break;
 
-        case 'zip':
+        case "zip":
             contentType = {
-                'Content-Type': 'application/octet-stream'
+                "Content-Type": "application/octet-stream"
             };
             break;
 
-        case 'csv':
+        case "csv":
             contentType = {
-                'Content-Type': 'text/csv'
+                "Content-Type": "text/csv"
             };
 
             var temp = [];
             var values = [];
             for (var t in content) {
-                if (t === 'directions') {
+                if (t === "directions") {
                     for (var dir in content[t]) {
                         temp.push(dir);
                         values.push(content[t][dir]);
@@ -68,24 +68,24 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
                 }
             }
 
-            content = '';
+            content = "";
             temp.forEach((t) => {
-                content += t += ',';
+                content += t += ",";
             });
 
-            content = content.replace(/,$/g, '\n');
+            content = content.replace(/,$/g, "\n");
             values.forEach((t) => {
-                content += t += ',';
+                content += t += ",";
             });
 
-            content = content.replace(/,$/g, '\n');
+            content = content.replace(/,$/g, "\n");
             break;
 
-        case 'json':
+        case "json":
             /* falls through */
         default:
             contentType = {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             };
             content = JSON.stringify(content);
             break;
@@ -99,18 +99,39 @@ function sendResponse(resObj, content, code = 200, type = 'json') {
 
 
 /**
+ * Check that map is selected
+ * @type {[type]}
+ */
+function checkIfGameIsActive(gameid) {
+    if (!(games[gameid] !== undefined
+        && games[gameid].currentMap !== undefined
+        && games[gameid].currentMap != null)
+    ) {
+        sendResponse(res, {
+            "text": "Gameid not initialized correctly.",
+            "hint": "Try initialize a new game through /."
+        }, 500, type);
+        return;
+    }
+}
+
+
+
+/**
  * Initialize the maze
  *
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
     var type = req.query.type;
     var gameid = ((String)(Math.random() * 100)).replace('.', '').substr(0, 5);
     var content = {
-        text: 'New game initialized',
+        text: "New game initialized.",
         gameid: gameid
     };
+
+    console.log("Created new game with id " + gameid);
 
     games[gameid] = {
         currentMap: null,
@@ -123,17 +144,18 @@ router.get('/', (req, res) => {
 
 
 /**
- * Retuns list of all avaliable maps
+ * Returns list of all avaliable maps
  *
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/map', (req, res) => {
-    maps = fs.readdirSync(__dirname + '/maps');
+router.get("/map", (req, res) => {
+    maps = fs.readdirSync(__dirname + "/maps");
     var type = req.query.type;
 
     // Filter away all non json-files
-    maps = maps.filter((map) => map.includes('.json'));
+    maps = maps.filter((map) => map.includes(".json"));
+    console.log(maps);
 
     sendResponse(res, maps, 200, type);
 });
@@ -146,30 +168,49 @@ router.get('/map', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/:gameid/map/:map', (req, res) => {
+router.get("/:gameid/map/:map", (req, res) => {
     var map = req.params.map;
     var gameid = req.params.gameid;
     var type = req.query.type;
 
-    if (!map.includes('.json')) {
-        map += '.json';
+    if (!map.endsWith(".json")) {
+        map += ".json";
     }
 
-    if (maps.indexOf(map) === -1)  {
-        sendResponse(res, 'Map not found', 404, 'plain');
-        games[gameid].currentMap = null;
+    if (maps.length === 0)  {
+        sendResponse(res, {
+            "text": "Maps are not initialized.",
+            "hint": "Initialize the maps through checking what maps are available through /map."
+        }, 404, type);
         return;
     }
 
-    var path = __dirname + '/maps/' + map;
-    // creates a unique game
-    games[gameid] = {};
+    if (maps.indexOf(map) === -1)  {
+        sendResponse(res, {
+            "text": "Map not found.",
+            "hint": "Check what maps are available through /map."
+        }, 404, type);
+        return;
+    }
 
-    // Reads the new map json
+    if (!(games[gameid] !== undefined
+        && games[gameid].currentMap !== undefined
+        && games[gameid].currentMap === null)
+    ) {
+        sendResponse(res, {
+            "text": "Gameid not initalized correctly.",
+            "hint": "Try initialize a new game through /."
+        }, 500, type);
+        return;
+    }
+
+    var path = __dirname + "/maps/" + map;
     games[gameid].currentMap = require(path);
+
     //console.log(games[gameid]);
+
     sendResponse(res, {
-        'text': 'New map selected.'
+        "text": "New map selected."
     }, 200, type);
 });
 
@@ -180,24 +221,11 @@ router.get('/:gameid/map/:map', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/:gameid/maze', (req, res) => {
+router.get("/:gameid/maze", (req, res) => {
     var gameid = req.params.gameid;
     var type = req.query.type;
 
-    if (games[gameid] === undefined) {
-        sendResponse(res, {
-            'text': 'A game with that gameid don\'t exist'
-        }, 500, type);
-        return;
-    }
-
-    if (games[gameid].currentMap === null) {
-        sendResponse(res, {
-            'text': 'Map not selected.',
-            'hint': 'Call /map/:map first'
-        }, 500, type);
-        return;
-    }
+    checkIfGameIsActive(gameid);
 
     games[gameid].lastRoom = games[gameid].currentMap[0];
 
@@ -211,27 +239,20 @@ router.get('/:gameid/maze', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/:gameid/maze/:roomId', (req, res) => {
+router.get("/:gameid/maze/:roomId", (req, res) => {
     var gameid = req.params.gameid;
     var type = req.query.type;
-
-    if (games[gameid] === undefined) {
-        sendResponse(res, {
-            'text': 'A game with that gameid don\'t exist'
-        }, 500, type);
-        return;
-    }
-
-    if (games[gameid].currentMap === null) {
-        sendResponse(res, 'Content not loaded', 404, type);
-        return;
-    }
     var id = req.params.roomId;
+
+    checkIfGameIsActive(gameid);
 
     games[gameid].current = games[gameid].currentMap[id];
 
     if (games[gameid].current === undefined) {
-        sendResponse(res, 'Room not found', 404, 'plain');
+        sendResponse(res, {
+            "text": "Room not found.",
+            "hint": "Check your room id."
+        }, 500, type);
         return;
     }
 
@@ -245,40 +266,31 @@ router.get('/:gameid/maze/:roomId', (req, res) => {
  * @param Object req The request
  * @param Object res The response
  */
-router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
+router.get("/:gameid/maze/:roomId/:direction", (req, res) => {
     var gameid = req.params.gameid;
     var id = req.params.roomId;
     var dir = req.params.direction;
     var type = req.query.type;
+    var current;
+    var temp;
+    var lastRoom;
 
-    if (games[gameid] === undefined) {
-        sendResponse(res, {
-            'text': 'A game with that gameid don\'t exist'
-        }, 500, type);
-        return;
-    }
+    checkIfGameIsActive(gameid);
 
-    if (games[gameid].currentMap === null) {
-        sendResponse(res, 'Content not loaded', 404, 'plain');
-        return;
-    }
+    current = games[gameid].currentMap[id];
 
-    var current = games[gameid].currentMap[id];
-
-    // Check if its not a valid path choosen
     if (current.directions[dir] === undefined) {
-        current.text = 'Direction not allowed';
+        current.text = "Direction not allowed";
         sendResponse(res, current, 404, type);
         return;
     }
 
-    var temp = games[gameid].lastRoom;
-    // Gets the room next room
-    var lastRoom = games[gameid].currentMap[current.directions[dir]];
+    temp = games[gameid].lastRoom;
+    lastRoom = games[gameid].currentMap[current.directions[dir]];
 
     if (lastRoom === undefined) {
         lastRoom = temp;
-        current.text = 'Path dont exist';
+        current.text = "Path dont exist";
         sendResponse(res, current, 404, type);
         return;
     }
@@ -287,6 +299,11 @@ router.get('/:gameid/maze/:roomId/:direction', (req, res) => {
     sendResponse(res, lastRoom, 200, type);
 });
 
+
+
+/**
+ * Create the server.
+ */
 var server = http.createServer((req, res) => {
     var ipAddress,
         route;
@@ -302,4 +319,6 @@ var server = http.createServer((req, res) => {
     router.route(req, res);
 });
 
-export default server;
+
+
+module.exports = server;
