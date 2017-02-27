@@ -27,7 +27,7 @@ Options:
  -v, --version    Display the version.
  --prompt string  Use string as prompt.
 `);
-}
+};
 
 
 
@@ -37,7 +37,7 @@ Options:
 var unknownOption = (option) => {
     console.log(`Unknown option: ${option}
 Use --help to get an overview of the command.`);
-}
+};
 
 
 
@@ -46,7 +46,7 @@ Use --help to get an overview of the command.`);
  */
 var version = () => {
     console.log(VERSION);
-}
+};
 
 
 
@@ -92,7 +92,7 @@ cli.checkOptionsArguments = () => {
         opts: opts,
         args: remaining
     };
-}
+};
 
 
 

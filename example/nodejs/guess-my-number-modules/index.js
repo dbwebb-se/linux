@@ -2,10 +2,8 @@
 
 "use strict";
 
-const path = require("path");
-const readline = require("readline");
-const cli = require("./cli")
-const menu = require("./menu")
+const cli = require("./cli");
+const menu = require("./menu");
 
 
 

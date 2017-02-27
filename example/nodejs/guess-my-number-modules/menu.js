@@ -22,10 +22,10 @@ var mainloop = (optarg) => {
     var prompt = optarg.opts.prompt || "Guess my number$ ";
 
     game.init(optarg);
-    
+
     readlineInterface.setPrompt(prompt);
     readlineInterface.prompt();
-}
+};
 
 
 
@@ -35,7 +35,7 @@ var mainloop = (optarg) => {
 var menu = () => {
     console.log(`Use any of the commands: random, hint, menu, exit.
 Or enter a number to take a guess.`);
-}
+};
 
 
 
@@ -45,7 +45,7 @@ Or enter a number to take a guess.`);
 var exitMainloop = () => {
     console.log("Bye!");
     process.exit(0);
-}
+};
 
 
 

@@ -30,7 +30,7 @@ game.init = (optarg) => {
         min = parseInt(args[0], 10);
     }
 
-    console.log(`Using numbers between ${min} - ${max}.`)
+    console.log(`Using numbers between ${min} - ${max}.`);
 
     number = Math.floor((Math.random() * (max - min)) + min);
 };
@@ -42,7 +42,7 @@ game.init = (optarg) => {
  */
 game.hint = () => {
     console.log("I am thinking of the number " + number);
-}
+};
 
 
 
@@ -52,7 +52,7 @@ game.hint = () => {
 game.random = () => {
     number = Math.floor((Math.random() * (max - min)) + min);
     console.log(`I changed the number and is now thinking an another one between ${min} - ${max}.`);
-}
+};
 
 
 
@@ -74,7 +74,7 @@ game.makeGuess = (answer) => {
     } else {
         console.log("Well done! The answer was " + answer + "!");
     }
-}
+};
 
 
 
