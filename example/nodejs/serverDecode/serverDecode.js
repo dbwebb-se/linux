@@ -3,10 +3,9 @@
  */
 "use strict";
 
-var http = require('http');
-var url = require('url');
-var qs = require('querystring');
-//var util = require('util');
+const http = require("http");
+const url = require("url");
+const qs = require("querystring");
 
 
 var server = http.createServer((req, res) => {
@@ -26,24 +25,24 @@ var server = http.createServer((req, res) => {
     query = urlParts.query;
     queryString = qs.stringify(query);
 
-    //console.log("Incoming route " + route + " from ip " + ipAddress + " with querystring " + queryString);
-    console.log("Incoming route " + route + " from ip " + ipAddress);
-
+    console.log(`Incoming route:\nPure:    ${urlParts.pathname}\nDecoded: ${route}`);
 
     // Inspect the details of the object created for the query string
     //console.log(util.inspect(query));
 
     // Loop through all query variables
     /*Object.keys(query).forEach( key => {
-        console.log(`'${key}' : '${query[key]}'`);
+        console.log(`"${key}" : "${query[key]}"`);
     });*/
 
 
 
     // Switch (route) on the path.
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Got URL ' + route + '\n');
+    res.writeHead(200, { "Content-Type": "text/plain; charset=utf8" });
+    res.end(`Got URL ${route} \n`);
 });
 
+
+
 // Export the server as a module.
-export default server;
+module.exports = server;
