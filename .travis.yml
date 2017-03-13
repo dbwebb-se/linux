@@ -21,10 +21,10 @@ git:
 
 addons:
     apt:
+        sources:
+        - debian-sid    # Grab ShellCheck from the Debian repo
         packages:
-            #- php-codesniffer
-            #- phpmd
-            #- shellcheck
+        - shellcheck
 
 
 
@@ -35,18 +35,13 @@ env:
 
 before_script:
     # Prepare for automated tests
-    - make automated-tests-prepare
-
-    #- npm install -g babel
+    - make install
 
 
 
 script:
-    # Check version and environment
-    - make automated-tests-check
-
     # Run tests
-    - make automated-tests-run
+    - make test
 
 
 
