@@ -142,7 +142,7 @@ dbwebb-install: prepare
 
 # target: dbwebb-testrepo         - Test course repo.
 .PHONY: dbwebb-testrepo
-dbwebb-testrepo: dbwebb-install
+dbwebb-testrepo:
 	@$(call HELPTEXT,$@)
 	env PATH=$(PATH) $(DBWEBB) --silent --local testrepo
 
