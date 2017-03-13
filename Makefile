@@ -50,8 +50,14 @@ help:
 # 
 
 # Add local bin path for test tools
-PATH_ORIG = $(PATH)
 PATH := "$(PWD)/bin:$(PWD)/vendor/bin:$(PWD)/node_modules/.bin:$(PATH)"
+
+# Tools
+DBWEBB   		:= bin/dbwebb
+DBWEBB_VALIDATE := bin/dbwebb-validate
+DBWEBB_INSPECT  := bin/dbwebb-inspect
+PHPCS   := bin/phpcs
+PHPMD   := bin/phpmd
 
 
 
@@ -72,6 +78,9 @@ prepare:
 .PHONY: install
 install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install npm-install composer-install
 	@$(call HELPTEXT,$@)
+	curl -Lso $(PHPCS) https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod 755 $(PHPCS)
+
+	curl -Lso $(PHPMD) http://static.phpmd.org/php/latest/phpmd.phar && chmod 755 $(PHPMD)
 
 
 
@@ -124,10 +133,10 @@ clean-all: clean
 .PHONY: dbwebb-install
 dbwebb-install: prepare
 	@$(call HELPTEXT,$@)
-	wget --quiet -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
-	chmod 755 bin/dbwebb
-	bin/dbwebb config create noinput
-	bin/dbwebb --version
+	wget --quiet -O $(DBWEBB) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
+	chmod 755 $(DBWEBB)
+	$(DBWEBB) config create noinput
+	$(DBWEBB) --version
 
 
 
@@ -135,7 +144,7 @@ dbwebb-install: prepare
 .PHONY: dbwebb-testrepo
 dbwebb-testrepo: dbwebb-install
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) bin/dbwebb --silent --local testrepo
+	env PATH=$(PATH) $(DBWEBB) --silent --local testrepo
 
 
 
@@ -147,9 +156,9 @@ dbwebb-testrepo: dbwebb-install
 .PHONY: dbwebb-validate-install
 dbwebb-validate-install: prepare
 	@$(call HELPTEXT,$@)
-	wget --quiet -O bin/dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
-	chmod 755 bin/dbwebb-validate
-	bin/dbwebb-validate --version
+	wget --quiet -O $(DBWEBB_VALIDATE) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
+	chmod 755 $(DBWEBB_VALIDATE)
+	$(DBWEBB_VALIDATE) --version
 
 
 
@@ -157,7 +166,7 @@ dbwebb-validate-install: prepare
 .PHONY: dbwebb-validate-check
 dbwebb-validate-check:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) bin/dbwebb-validate --check
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --check
 
 
 
@@ -165,7 +174,7 @@ dbwebb-validate-check:
 .PHONY: dbwebb-validate-run
 dbwebb-validate-run:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) bin/dbwebb-validate --publish --publish-to build/webroot/ example
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ example
 
 
 
@@ -173,7 +182,7 @@ dbwebb-validate-run:
 .PHONY: dbwebb-validate
 dbwebb-validate:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) bin/dbwebb-validate --publish --publish-to build/webroot/ $(what) $(arg1)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1)
 
 
 
@@ -185,9 +194,9 @@ dbwebb-validate:
 .PHONY: dbwebb-inspect-install
 dbwebb-inspect-install: prepare
 	@$(call HELPTEXT,$@)
-	wget --quiet -O bin/dbwebb-inspect https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-inspect
-	chmod 755 bin/dbwebb-inspect
-	bin/dbwebb-inspect --version
+	wget --quiet -O $(DBWEBB_INSPECT) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-inspect
+	chmod 755 $(DBWEBB_INSPECT)
+	$(DBWEBB_INSPECT) --version
 
 
 
@@ -195,7 +204,7 @@ dbwebb-inspect-install: prepare
 .PHONY: dbwebb-inspect-check
 dbwebb-inspect-check:
 	@$(call HELPTEXT,$@)
-	bin/dbwebb-inspect --version
+	$(DBWEBB_INSPECT) --version
 
 
 
@@ -203,7 +212,7 @@ dbwebb-inspect-check:
 .PHONY: dbwebb-inspect
 dbwebb-inspect:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) bin/dbwebb-inspect . $(kmom)
+	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(kmom)
 
 
 
