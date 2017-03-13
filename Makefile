@@ -78,9 +78,16 @@ prepare:
 .PHONY: install
 install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install npm-install composer-install
 	@$(call HELPTEXT,$@)
+
+	@# Disable PHP tools with arguments
 	curl -Lso $(PHPCS) https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod 755 $(PHPCS)
 
 	curl -Lso $(PHPMD) http://static.phpmd.org/php/latest/phpmd.phar && chmod 755 $(PHPMD)
+
+	@# Shellcheck 
+	@# tree (inspect) 
+	@# python through reqs and venv
+	@# Add to check on dbwebb-cli to try all parts php in path, make, composer, node, npm, python3, python, mm.
 
 
 
@@ -136,7 +143,6 @@ dbwebb-install: prepare
 	wget --quiet -O $(DBWEBB) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
 	chmod 755 $(DBWEBB)
 	$(DBWEBB) config create noinput
-	$(DBWEBB) --version
 
 
 
@@ -158,7 +164,6 @@ dbwebb-validate-install: prepare
 	@$(call HELPTEXT,$@)
 	wget --quiet -O $(DBWEBB_VALIDATE) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
 	chmod 755 $(DBWEBB_VALIDATE)
-	$(DBWEBB_VALIDATE) --version
 
 
 
@@ -196,7 +201,6 @@ dbwebb-inspect-install: prepare
 	@$(call HELPTEXT,$@)
 	wget --quiet -O $(DBWEBB_INSPECT) https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-inspect
 	chmod 755 $(DBWEBB_INSPECT)
-	$(DBWEBB_INSPECT) --version
 
 
 
