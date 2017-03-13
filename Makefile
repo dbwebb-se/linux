@@ -77,7 +77,7 @@ install: prepare dbwebb-validate-install dbwebb-inspect-install dbwebb-install n
 
 # target: check                   - Check installed utilities.
 .PHONY: check
-check: #dbwebb-validate-check
+check: dbwebb-validate-check
 	@$(call HELPTEXT,$@)
 
 
@@ -126,9 +126,8 @@ dbwebb-install: prepare
 	@$(call HELPTEXT,$@)
 	wget --quiet -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
 	chmod 755 bin/dbwebb
-	#env PATH="$(PATH)" dbwebb config create noinput && dbwebb --version
-	export PATH=$(PATH) && dbwebb config create noinput && dbwebb --version
-	export PATH=$(PATH_ORIG)
+	bin/dbwebb config create noinput
+	bin/dbwebb --version
 
 
 
@@ -136,8 +135,7 @@ dbwebb-install: prepare
 .PHONY: dbwebb-testrepo
 dbwebb-testrepo: dbwebb-install
 	@$(call HELPTEXT,$@)
-	export PATH=$(PATH) && dbwebb --silent --local testrepo
-	export PATH=$(PATH_ORIG)
+	env PATH=$(PATH) bin/dbwebb --silent --local testrepo
 
 
 
@@ -151,8 +149,7 @@ dbwebb-validate-install: prepare
 	@$(call HELPTEXT,$@)
 	wget --quiet -O bin/dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
 	chmod 755 bin/dbwebb-validate
-	export PATH=$(PATH) && dbwebb-validate --version
-	export PATH=$(PATH_ORIG)
+	bin/dbwebb-validate --version
 
 
 
@@ -160,8 +157,7 @@ dbwebb-validate-install: prepare
 .PHONY: dbwebb-validate-check
 dbwebb-validate-check:
 	@$(call HELPTEXT,$@)
-	export PATH=$(PATH) && dbwebb-validate --version && dbwebb-validate --check
-	export PATH=$(PATH_ORIG)
+	env PATH=$(PATH) bin/dbwebb-validate --check
 
 
 
@@ -169,16 +165,15 @@ dbwebb-validate-check:
 .PHONY: dbwebb-validate-run
 dbwebb-validate-run:
 	@$(call HELPTEXT,$@)
-	export PATH=$(PATH) && dbwebb-validate --publish --publish-to build/webroot/ example
-	export PATH=$(PATH_ORIG)
+	env PATH=$(PATH) bin/dbwebb-validate --publish --publish-to build/webroot/ example
 
 
 
-# target: dbwebb-validate         - Execute dbwebb validate with arg1=what.
+# target: dbwebb-validate         - Execute dbwebb validate with what=part-to-validate.
 .PHONY: dbwebb-validate
 dbwebb-validate:
 	@$(call HELPTEXT,$@)
-	bin/dbwebb-validate --publish --publish-to build/webroot/ $(arg1)
+	env PATH=$(PATH) bin/dbwebb-validate --publish --publish-to build/webroot/ $(what) $(arg1)
 
 
 
@@ -192,8 +187,7 @@ dbwebb-inspect-install: prepare
 	@$(call HELPTEXT,$@)
 	wget --quiet -O bin/dbwebb-inspect https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-inspect
 	chmod 755 bin/dbwebb-inspect
-	export PATH=$(PATH) && dbwebb-inspect --version
-	export PATH=$(PATH_ORIG)
+	bin/dbwebb-inspect --version
 
 
 
@@ -201,18 +195,15 @@ dbwebb-inspect-install: prepare
 .PHONY: dbwebb-inspect-check
 dbwebb-inspect-check:
 	@$(call HELPTEXT,$@)
-	export PATH=$(PATH) && dbwebb-inspect --version
-	export PATH=$(PATH_ORIG)
+	bin/dbwebb-inspect --version
 
 
 
-# target: dbwebb-inspect          - Run tests with dbwebb-inspect where arg kmom=kmom01 or selected kmom.
+# target: dbwebb-inspect          - Run tests with dbwebb-inspect where kmom=kmom01.
 .PHONY: dbwebb-inspect
 dbwebb-inspect:
 	@$(call HELPTEXT,$@)
-	export PATH=$(PATH) && dbwebb-inspect . $(kmom)
-	export PATH=$(PATH_ORIG)
-
+	env PATH=$(PATH) bin/dbwebb-inspect . $(kmom)
 
 
 
