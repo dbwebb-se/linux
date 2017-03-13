@@ -1,5 +1,5 @@
 test:
-    before:
+    pre:
         - make install
 
 notify:
