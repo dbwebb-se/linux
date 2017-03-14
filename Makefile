@@ -136,27 +136,24 @@ clean-all: clean
 # 
 # Shortcuts for frequent usage 
 #
-# target: validate                - Execute dbwebb validate with what=part-to-validate.
+# target: validate                - Execute dbwebb validate what=part-to-validate.
 .PHONY: validate
-validate:
+validate: dbwebb-validate
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(what) $(arg1)
 
 
 
-# target: publish                 - Execute dbwebb publish with what=part-to-validate.
+# target: publish                 - Execute dbwebb publish what=part-to-validate.
 .PHONY: publish
-publish:
+publish: dbwebb-publish
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1)
 
 
 
-# target: inspect                 - Run tests with dbwebb-inspect where kmom=kmom01.
+# target: inspect                 - Execute dbwebb inspect what=kmom01.
 .PHONY: inspect
-inspect:
+inspect: dbwebb-inspect
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(kmom)
 
 
 
@@ -211,11 +208,11 @@ dbwebb-validate-run:
 
 
 
-# target: dbwebb-validate         - Execute dbwebb validate with what=part-to-validate.
+# target: dbwebb-validate         - Execute dbwebb validate what=part-to-validate.
 .PHONY: dbwebb-validate
 dbwebb-validate:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(what) $(arg1)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(what) $(arg1) $(kmom)
 
 
 
@@ -227,11 +224,11 @@ dbwebb-publish-run:
 
 
 
-# target: dbwebb-publish          - Execute dbwebb publish with what=part-to-validate-publish.
+# target: dbwebb-publish          - Execute dbwebb publish what=part-to-validate-publish.
 .PHONY: dbwebb-publish
 dbwebb-publish:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1) $(kmom)
 
 
 
@@ -256,11 +253,11 @@ dbwebb-inspect-check:
 
 
 
-# target: dbwebb-inspect          - Run tests with dbwebb-inspect where kmom=kmom01.
+# target: dbwebb-inspect          - Execute dbwebb inspect what=kmom01.
 .PHONY: dbwebb-inspect
 dbwebb-inspect:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(kmom)
+	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(what) $(arg1) $(kmom)
 
 
 
