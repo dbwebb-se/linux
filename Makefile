@@ -69,8 +69,8 @@ PHPMD   := bin/phpmd
 .PHONY: prepare
 prepare:
 	@$(call HELPTEXT,$@)
-	install -d build
-	install -d bin/pip
+	[ -d build ]   || install -d build
+	[ -d bin/pip ] || install -d bin/pip
 
 
 
@@ -100,7 +100,7 @@ check: dbwebb-validate-check
 
 # target: test                    - Install test tools & run tests.
 .PHONY: test
-test: check dbwebb-validate-run dbwebb-testrepo
+test: check dbwebb-publish-run dbwebb-testrepo
 	@$(call HELPTEXT,$@)
 
 
@@ -134,6 +134,34 @@ clean-all: clean
 
 # ----------------------------------------------------------------------------
 # 
+# Shortcuts for frequent usage 
+#
+# target: validate                - Execute dbwebb validate with what=part-to-validate.
+.PHONY: validate
+validate:
+	@$(call HELPTEXT,$@)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(what) $(arg1)
+
+
+
+# target: publish                 - Execute dbwebb publish with what=part-to-validate.
+.PHONY: publish
+publish:
+	@$(call HELPTEXT,$@)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1)
+
+
+
+# target: inspect                 - Run tests with dbwebb-inspect where kmom=kmom01.
+.PHONY: inspect
+inspect:
+	@$(call HELPTEXT,$@)
+	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(kmom)
+
+
+
+# ----------------------------------------------------------------------------
+# 
 # dbwebb cli 
 #
 # target: dbwebb-install          - Download and install dbwebb-cli.
@@ -156,7 +184,7 @@ dbwebb-testrepo:
 
 # ----------------------------------------------------------------------------
 # 
-# dbwebb validate 
+# dbwebb validate & publish
 #
 # target: dbwebb-validate-install - Download and install dbwebb-validate.
 .PHONY: dbwebb-validate-install
@@ -175,17 +203,33 @@ dbwebb-validate-check:
 
 
 
-# target: dbwebb-validate-run     - Run tests with dbwebb-validate.
+# target: dbwebb-validate-run     - Run tests on /example with dbwebb-validate.
 .PHONY: dbwebb-validate-run
 dbwebb-validate-run:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ example
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) example
 
 
 
 # target: dbwebb-validate         - Execute dbwebb validate with what=part-to-validate.
 .PHONY: dbwebb-validate
 dbwebb-validate:
+	@$(call HELPTEXT,$@)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) $(what) $(arg1)
+
+
+
+# target: dbwebb-publish-run      - Run tests on /example with dbwebb-publish.
+.PHONY: dbwebb-publish-run
+dbwebb-publish-run:
+	@$(call HELPTEXT,$@)
+	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ example
+
+
+
+# target: dbwebb-publish          - Execute dbwebb publish with what=part-to-validate-publish.
+.PHONY: dbwebb-publish
+dbwebb-publish:
 	@$(call HELPTEXT,$@)
 	env PATH=$(PATH) $(DBWEBB_VALIDATE) --publish --publish-to build/webroot/ $(what) $(arg1)
 
