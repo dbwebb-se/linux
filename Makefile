@@ -40,9 +40,9 @@ CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
-	@ECHO "Usage:"
-	@ECHO " make [target] ..."
-	@ECHO "target:"
+	@$(ECHO) "Usage:"
+	@$(ECHO) " make [target] ..."
+	@$(ECHO) "target:"
 	@egrep '^# target:' $(THIS_MAKEFILE) | sed 's/# target: / /g'
 
 
@@ -54,6 +54,7 @@ help:
 
 # Add local bin path for test tools
 PATH := "$(PWD)/bin:$(PWD)/vendor/bin:$(PWD)/node_modules/.bin:$(PATH)"
+SHELL := env PATH=$(PATH) $SHELL
 
 # Tools
 DBWEBB   		:= bin/dbwebb
