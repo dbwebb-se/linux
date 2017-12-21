@@ -102,7 +102,7 @@ check: dbwebb-validate-check
 
 
 
-# target: test                    - Install test tools & run tests.
+# target: test                    - Install test tools and run tests.
 .PHONY: test
 test: check dbwebb-publish-example dbwebb-testrepo
 	@$(call HELPTEXT,$@)
