@@ -22,7 +22,7 @@ touch me/kmom01/install/ssh.png
 # redovisa
 # https://dbwebb.se/uppgift/skapa-en-me-sida-till-linux-kursen
 #
-cp -i example/me/* me/redovisa/
+cp -ri example/redovisa me
 dbwebb validate redovisa
 
 
