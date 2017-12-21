@@ -16,7 +16,6 @@ const routes = require("./routes.js");
 
 
 var server = http.createServer((req, res) => {
-
     var ipAddress,
         route;
 
@@ -32,15 +31,15 @@ var server = http.createServer((req, res) => {
     switch (route) {
         case "/":
             routes.home(res);
-        break;
+            break;
 
         case "/about":
             routes.about(res);
-        break;
+            break;
 
         default:
             routes.notFound(res);
-        break;
+            break;
     }
 });
 

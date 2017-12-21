@@ -56,6 +56,7 @@ function sendResponse(resObj, content, code = 200, type = "json") {
 
             var temp = [];
             var values = [];
+
             for (var t in content) {
                 if (t === "directions") {
                     for (var dir in content[t]) {
@@ -205,6 +206,7 @@ router.get("/:gameid/map/:map", (req, res) => {
     }
 
     var path = __dirname + "/maps/" + map;
+
     games[gameid].currentMap = require(path);
 
     //console.log(games[gameid]);

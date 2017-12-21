@@ -3,9 +3,6 @@
  *
  */
 class GomokuBoard {
-
-
-
     /**
      * Constructor.
      *

@@ -9,10 +9,16 @@ var fs = require('fs');
 
 // Create a file
 // Note that this overwrites the existing file
-fs.writeFileSync(__dirname + '/myNiceNewFile.txt', 'Hey now,\n\nThis is a new file that I have created with nodejs!');
+fs.writeFileSync(
+    __dirname + '/myNiceNewFile.txt',
+    'Hey now,\n\nThis is a new file that I have created with nodejs!'
+);
 
 // If you want to add text to the file you need you call the appendFile-function
-fs.appendFileSync(__dirname + '/myNiceNewFile.txt', '\n\nThis data is now appended');
+fs.appendFileSync(
+    __dirname + '/myNiceNewFile.txt',
+    '\n\nThis data is now appended'
+);
 
 // If you like to create directories you can use the mkdir-function
 fs.mkdirSync(__dirname + '/newDir');

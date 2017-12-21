@@ -120,6 +120,7 @@ function menu() {
 rl.on("line", function(line) {
     // Split incoming line with arguments into an array
     var args = line.trim().split(" ");
+
     args = args.filter(value => {
         return value !== "";
     });
@@ -139,26 +140,26 @@ rl.on("line", function(line) {
             var size = args[1] || 20;
 
             gomoku.start(size)
-            .then(value => {
-                console.log(value);
-                rl.prompt();
-            })
-            .catch(err => {
-                console.log("FAILED: Could not start the game.\nDetails: " + err);
-                rl.prompt();
-            });
+                .then(value => {
+                    console.log(value);
+                    rl.prompt();
+                })
+                .catch(err => {
+                    console.log("FAILED: Could not start the game.\nDetails: " + err);
+                    rl.prompt();
+                });
             break;
 
         case "view":
             gomoku.view()
-            .then(value => {
-                console.log(value);
-                rl.prompt();
-            })
-            .catch(err => {
-                console.log("FAILED: Could not view the game.\nDetails: " + err);
-                rl.prompt();
-            });
+                .then(value => {
+                    console.log(value);
+                    rl.prompt();
+                })
+                .catch(err => {
+                    console.log("FAILED: Could not view the game.\nDetails: " + err);
+                    rl.prompt();
+                });
             break;
 
         case "place":
@@ -166,14 +167,14 @@ rl.on("line", function(line) {
             var y = args[2];
 
             gomoku.place(x, y)
-            .then(value => {
-                console.log(value);
-                rl.prompt();
-            })
-            .catch(err => {
-                console.log("FAILED: Could not place the marker.\nDetails: " + err);
-                rl.prompt();
-            });
+                .then(value => {
+                    console.log(value);
+                    rl.prompt();
+                })
+                .catch(err => {
+                    console.log("FAILED: Could not place the marker.\nDetails: " + err);
+                    rl.prompt();
+                });
             break;
 
         case "url":

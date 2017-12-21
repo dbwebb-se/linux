@@ -9,7 +9,6 @@ const fs = require("fs");
 const path = require("path");
 
 var server = http.createServer((req, res) => {
-
     var ipAddress,
         route,
         filename,
@@ -29,7 +28,6 @@ var server = http.createServer((req, res) => {
         data = fs.readFileSync(filename, "utf8");
         res.writeHead(200, { "Content-Type": "text/plain" });
         res.end(data);
-
     } else if (route == "/file2") {
         // Read file2.txt using synchronous method
         filename = path.join(__dirname, "file2.txt");
@@ -47,7 +45,6 @@ var server = http.createServer((req, res) => {
             res.writeHead(200, { "Content-Type": "text/plain" });
             res.end(data);
         });
-
     } else {
         res.writeHead(200, { "Content-Type": "text/plain" });
         res.end("Use /file1 (sync) or /file2 (async).\n");

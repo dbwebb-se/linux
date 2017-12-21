@@ -36,6 +36,7 @@ http.createServer((req, res) => {
             if (req.method == 'POST') { // Post request. Client want to create new data
                 // The full body send from the client
                 var rawBody = '';
+
                 // Reads the data from client
                 req.on('data', (chunk) => {
                     rawBody += chunk;
@@ -57,7 +58,11 @@ http.createServer((req, res) => {
                     res.write('<html><head><title>File saved</title></head><body>');
                     res.write('<h1>Data saved!</h1>');
                     res.write('<p>To view the saved data open "data.json"</p>');
-                    res.write('<p>Or just click <a href="/">here</a> (This sends a GET-request to the browser and gives you the file that you just saved!)</p> ');
+                    res.write(
+                        '<p>Or just click <a href="/">here</a>'
+                        + ' (This sends a GET-request to the browser and gives'
+                        + ' you the file that you just saved!)</p> '
+                    );
                     res.write('</body></html>');
                     res.end();
                 });
@@ -68,7 +73,8 @@ http.createServer((req, res) => {
                     // Reads the myData.json file and saves it in data
                     var data = fs.readFileSync('myData.json', 'utf8');
 
-                    // Note that we don't have to stringify it since the file is a string already and NOT an object
+                    // Note that we don't have to stringify it since the file
+                    // is a string already and NOT an object
                     res.end(data);
                 } catch (e) {
                     // Filed didn't exist yet. Let's tell the client
@@ -111,7 +117,5 @@ http.createServer((req, res) => {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('No route matching...');
             break;
-
     }
-
 }).listen(1337);

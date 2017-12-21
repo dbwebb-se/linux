@@ -116,6 +116,7 @@ rl.on("close", function() {
 
 // Walkthrough all arguments checking for options.
 var remaining = [];
+
 args.forEach((arg) => {
     switch (arg) {
         case '-h':

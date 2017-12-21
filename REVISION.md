@@ -4,6 +4,7 @@ Linux - linux
 v2.0.0 (2017-12-21)
 -------------------
 
+* Fixed validation with new config files.
 * Upgraded to dbwebb-cli v2.
 
 

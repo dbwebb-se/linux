@@ -8,7 +8,6 @@ var http = require("http");
 
 // Use the createServer function to create the simple server
 var server = http.createServer((req, res) => {
-
     var ipAddress;
 
     // Log incoming requests

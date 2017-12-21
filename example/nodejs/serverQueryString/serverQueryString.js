@@ -13,7 +13,6 @@ var util = require("util");
 
 
 var server = http.createServer((req, res) => {
-
     var ipAddress,
         urlParts,
         route,
@@ -29,7 +28,14 @@ var server = http.createServer((req, res) => {
     query = urlParts.query;
     queryString = qs.stringify(query);
 
-    console.log("Incoming route " + route + " from ip " + ipAddress + " with querystring " + queryString);
+    console.log(
+        "Incoming route "
+        + route
+        + " from ip "
+        + ipAddress
+        + " with querystring "
+        + queryString
+    );
 
     // Inspect the details of the object created for the query string
     console.log(util.inspect(query));
@@ -45,13 +51,13 @@ var server = http.createServer((req, res) => {
             // Home page route.
             res.writeHead(200, { "Content-Type": "text/plain" });
             res.end("Home page\n");
-        break;
+            break;
 
         default:
             // Not found route.
             res.writeHead(404, { "Content-Type": "text/plain" });
             res.end("404. No route matching.\n");
-        break;
+            break;
     }
 });
 

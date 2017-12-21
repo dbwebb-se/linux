@@ -33,7 +33,7 @@ export function buildResponse(req, res) {
                 if (!this.get('Content-Type')) {
                     this.setHeader('Content-Type', 'text/html');
                 }
-            break;
+                break;
 
             case 'boolean':
             case 'number':
@@ -45,7 +45,7 @@ export function buildResponse(req, res) {
                 // Stringify the body to valid JSON.
                 body = JSON.stringify(body);
 
-            break;
+                break;
         }
 
         // Write and end..

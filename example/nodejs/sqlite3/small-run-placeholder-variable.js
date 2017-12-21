@@ -11,6 +11,7 @@ db.serialize(() => {
     //db.run("UPDATE lorem SET info=? WHERE rowid=?;", ["Mumintrollet was here", 7]);
     var mumin = "Mumintrollet was here, and again";
     var id = 7;
+
     db.run("UPDATE lorem SET info=? WHERE rowid=?;", [mumin, id]);
 
     db.each("SELECT rowid AS id, info FROM lorem", (err, row) => {

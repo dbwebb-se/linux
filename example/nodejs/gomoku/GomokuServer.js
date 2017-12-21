@@ -44,7 +44,6 @@ function sendJSONResponse(res, content, code = 200) {
  * @param Object res The response
  */
 router.get("/", (req, res) => {
-
     res.writeHead(200, "Content-Type: text/plain");
     res.write("Welcome the GomokuBoard server. This is the API of what can be done.\n\n" +
         " /             Display this helptext.\n" +
@@ -65,12 +64,12 @@ router.get("/", (req, res) => {
  * @param Object res The response
  */
 router.get("/start/:size", (req, res) => {
-
     // get the value of the parameter :size
     var size = req.params.size;
 
     // Init the Gomoku board
     var message = "The board is initialized.";
+
     try {
         gameBoard.start(size);
     } catch (e) {
@@ -95,7 +94,6 @@ router.get("/start/:size", (req, res) => {
  * @param Object res The response
  */
 router.get("/view", (req, res) => {
-
     sendJSONResponse(res, {
         "boardSize": gameBoard.getSize(),
         "nextPlayer": gameBoard.playerInTurn(),
@@ -113,7 +111,6 @@ router.get("/view", (req, res) => {
  * @param Object res The response
  */
 router.get("/view/ascii", (req, res) => {
-
     res.writeHead(200, "Content-Type: text/plain");
     res.write(gameBoard.asAscii() +
         "\nPlayer in turn is '" +
@@ -133,13 +130,13 @@ router.get("/view/ascii", (req, res) => {
  * @param Object res The response
  */
 router.get("/place/:x/:y", (req, res) => {
-
     // get the value of the parameter :x and :y
     var x = Number.parseInt(req.params.x);
     var y = Number.parseInt(req.params.y);
 
     // Place the marker
     var message = "Ok.";
+
     try {
         gameBoard.place(x, y);
     } catch (e) {

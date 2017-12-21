@@ -1,5 +1,7 @@
 "use strict";
 
+/*eslint-disable */
+
 process.env.NODE_ENV = 'test';
 import maze from '../maze/maze';
 

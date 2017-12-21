@@ -12,7 +12,6 @@ var data = {
 };
 
 var server = http.createServer((req, res) => {
-
     var ipAddress;
 
     // Log incoming requests

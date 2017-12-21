@@ -26,6 +26,7 @@ router.get('/maze/:map', (req, res) => {
 router.get('/animal/id', (req, res) => {
     //console.log('PARAMS: ', req.params);
     var id = req.params.id;
+
     console.log('/animal/:id');
     res.end('Animal: ' + id + ' - 1 param');
 });
@@ -34,11 +35,13 @@ router.get('/animal/:id/:name', (req, res) => {
     console.log('PARAMS', req.params);
     var id = req.params.id;
     var name = req.params.name;
+
     res.end('Animal: ' + id + ' ' + name + " - 2 params");
 });
 
 router.get('/', (req, res) => {
     var queryParam = req.query.q;
+
     res.end('Hello World: ' +  queryParam);
 });
 
@@ -61,6 +64,7 @@ router.get('/json', (req, res) => {
         x: 1,
         y: 2
     };
+
     res.end(JSON.stringify(obj));
 });
 
@@ -85,7 +89,6 @@ router.group('/api', function() {
 
     // /api/v1/
     router.group('/v1', function() {
-
         // /api/v1/
         router.get('/', function(req, res) {
             res.send('/api/v1/');

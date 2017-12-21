@@ -15,9 +15,6 @@ var http = require("http");
  *
  */
 class GomokuClient {
-
-
-
     /**
      * Constructor.
      *

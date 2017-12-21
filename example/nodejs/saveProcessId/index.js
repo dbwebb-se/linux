@@ -15,6 +15,7 @@ server.listen(1337);
 
 // Write pid to file
 var pidFile = path.join(__dirname, "pid");
+
 fs.writeFile(pidFile, process.pid, function(err) {
     if (err) {
         return console.log(err);

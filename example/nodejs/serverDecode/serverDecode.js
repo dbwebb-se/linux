@@ -5,25 +5,24 @@
 
 const http = require("http");
 const url = require("url");
-const qs = require("querystring");
+//const qs = require("querystring");
 
 
 var server = http.createServer((req, res) => {
-
-    var ipAddress,
-        urlParts,
-        route,
-        query,
-        queryString;
+    //var ipAddress;
+    var urlParts;
+    var route;
+    //var query;
+    //var queryString;
 
     // Log incoming requests
-    ipAddress = req.connection.remoteAddress;
+    //ipAddress = req.connection.remoteAddress;
 
     // Check what route is requested
     urlParts = url.parse(req.url, true);
     route = decodeURI(urlParts.pathname);
-    query = urlParts.query;
-    queryString = qs.stringify(query);
+    //query = urlParts.query;
+    //queryString = qs.stringify(query);
 
     console.log(`Incoming route:\nPure:    ${urlParts.pathname}\nDecoded: ${route}`);
 

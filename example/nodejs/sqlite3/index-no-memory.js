@@ -9,10 +9,12 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("db.sqlite");
 
 db.serialize(() => {
+    var stmt;
+
     db.run("DROP TABLE IF EXISTS lorem");
     db.run("CREATE TABLE lorem (info TEXT)");
+    stmt = db.prepare("INSERT INTO lorem VALUES (?)");
 
-    var stmt = db.prepare("INSERT INTO lorem VALUES (?)");
     for (var i = 0; i < 10; i++) {
         stmt.run("Ipsum " + i);
     }
