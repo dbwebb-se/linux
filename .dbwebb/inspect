@@ -1,0 +1,126 @@
+#
+# Inspect, tools to inspect a kmom.
+#
+# Usage: dbwebb inspect kmom01
+#
+# Sequence executed:
+# linux(), linuxkmom01(), linuxlast()
+#
+
+
+#
+# Test linux general
+#
+linux()
+{
+    inspectIntro
+}
+
+
+
+#
+# Test general, last in sequence
+#
+linuxlast()
+{
+    inspectMe "me/redovisa"
+}
+
+
+
+#
+# Check details on the repo
+#
+function linuxrepo()
+{
+    local repo="$1"
+    local target="me/$repo"
+    
+    headerForTest "-- Repo $repo" "-- ${DBW_WWW}$DBW_COURSE/$target" 
+    openFilesInEditor "$target"
+    printUrl "" "$target"  
+
+    isGitRepo "$target"
+    hasGitTagBetween "$EXEC_DIR/$repo" "$2" "$3" > /dev/null
+
+    inspectCommand "" "$EXEC_DIR/$repo" "git remote -v" ""
+    inspectCommand "" "$EXEC_DIR/$repo" "git tag" ""
+    inspectCommand "" "$EXEC_DIR/$repo" "git status" ""
+    inspectCommand "" "$EXEC_DIR/$repo" "git log -n 20 --pretty=format:\"%h_%ad_:_%s%d_[%an]\" --graph --date=short" ""
+    #inspectCommand "" "$EXEC_DIR/$repo" "git stash" ""
+    #inspectCommand "" "$EXEC_DIR/$repo" "git checkout -b #inspect $tag" ""
+
+    # All repos does not include make test
+    # Make test need test environment
+    #inspectCommand "Makefile" "$EXEC_DIR/$repo" "make install test" ""
+}
+
+
+
+#
+# Test linux kmom01
+#
+linuxkmom01()
+{
+    linuxrepo "redovisa" "1.0.0" "2.0.0"
+}
+
+
+
+#
+# Test linux kmom02
+#
+linuxkmom02()
+{
+    linuxrepo "redovisa" "2.0.0" "3.0.0"
+}
+
+
+
+#
+# Test linux kmom03
+#
+linuxkmom03()
+{
+    linuxrepo "redovisa" "3.0.0" "4.0.0"
+}
+
+
+
+#
+# Test linux kmom04
+#
+linuxkmom04()
+{
+    linuxrepo "redovisa" "4.0.0" "5.0.0"
+}
+
+
+
+#
+# Test linux kmom
+#
+linuxkmom05()
+{
+    linuxrepo "redovisa" "5.0.0" "6.0.0"
+}
+
+
+
+#
+# Test linux kmom
+#
+linuxkmom06()
+{
+    linuxrepo "redovisa" "6.0.0" "7.0.0"
+}
+
+
+
+#
+# Test linux kmom
+#
+linuxkmom10()
+{
+    linuxrepo "redovisa" "10.0.0" "11.0.0"
+}

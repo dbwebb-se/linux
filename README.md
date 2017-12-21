@@ -8,13 +8,9 @@ Linux - linux
 
 Course material for linux-course, aimed at a swedish target audience as an introduction to web programming for computer science students at University level.
 
-Relased as part of a University course presented at:
+Relased as part of a University course: https://dbwebb.se/kurser/linux
 
-* http://dbwebb.se/linux
-
-The usage of this repo is also documented here (in swedish):
-
-* http://dbwebb.se/dbwebb-cli
+The course repo is managed by a [dbwebb command line utility](https://dbwebb.se/dbwebb-cli).
 
 
 
@@ -26,22 +22,6 @@ This is a co-effort of several people using freely available documentation and t
 For contributors, see the commit history and the issues.
 
 Feel free to help building up the repository with more content suited for training and education.
-
-
-
-For teachers
--------------------
-
-To get the solutions, one need extra privileges.
-
-Useful aliases.
-
-```bash
-# Once cloned, get the submodule.
-alias gsu='git submodule update --init --recursive'
-```
-
-When updating the submodule, commit in its directory first, then commit the linux-repo.
 
 
 
