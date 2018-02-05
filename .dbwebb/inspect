@@ -23,104 +23,237 @@ linux()
 #
 linuxlast()
 {
-    inspectMe "me/redovisa"
+    inspectMe "me/redovisa" "me.html" "redovisning.html" "" "redovisa"
 }
 
 
 
 #
-# Check details on the repo
+# Test script exercise
 #
-function linuxrepo()
+linuxExerciseScript()
 {
-    local repo="$1"
-    local target="me/$repo"
+    local target="me/$KMOM/$1"
     
-    headerForTest "-- Repo $repo" "-- ${DBW_WWW}$DBW_COURSE/$target" 
-    openFilesInEditor "$target"
-    printUrl "" "$target"  
+    inspectCommand "hello.bash" "$THEDIR/$target" "bash hello.bash"
+    viewFileContent "hello.bash" "$target"
 
-    isGitRepo "$target"
-    hasGitTagBetween "$EXEC_DIR/$repo" "$2" "$3" > /dev/null
+    inspectCommand "argument.bash" "$THEDIR/$target" "bash argument.bash make me proud"
+    viewFileContent "argument.bash" "$target"
 
-    inspectCommand "" "$EXEC_DIR/$repo" "git remote -v" ""
-    inspectCommand "" "$EXEC_DIR/$repo" "git tag" ""
-    inspectCommand "" "$EXEC_DIR/$repo" "git status" ""
-    inspectCommand "" "$EXEC_DIR/$repo" "git log -n 20 --pretty=format:\"%h_%ad_:_%s%d_[%an]\" --graph --date=short" ""
-    #inspectCommand "" "$EXEC_DIR/$repo" "git stash" ""
-    #inspectCommand "" "$EXEC_DIR/$repo" "git checkout -b #inspect $tag" ""
+    inspectCommand "if_1.bash" "$THEDIR/$target" "bash if_1.bash 7"
+    inspectCommand "if_1.bash" "$THEDIR/$target" "bash if_1.bash 5"
+    inspectCommand "if_1.bash" "$THEDIR/$target" "bash if_1.bash 3"
+    viewFileContent "if_1.bash" "$target"
 
-    # All repos does not include make test
-    # Make test need test environment
-    #inspectCommand "Makefile" "$EXEC_DIR/$repo" "make install test" ""
+    inspectCommand "if_2.bash" "$THEDIR/$target" "bash if_2.bash 7"
+    inspectCommand "if_2.bash" "$THEDIR/$target" "bash if_2.bash 5"
+    inspectCommand "if_2.bash" "$THEDIR/$target" "bash if_2.bash 3"
+    viewFileContent "if_2.bash" "$target"
+
+    inspectCommand "argument_2.bash" "$THEDIR/$target" "bash argument_2.bash d"
+    inspectCommand "argument_2.bash" "$THEDIR/$target" "bash argument_2.bash n"
+    inspectCommand "argument_2.bash" "$THEDIR/$target" "bash argument_2.bash a second-argument"
+    viewFileContent "argument_2.bash" "$target"
+
+    inspectCommand "forloop.bash" "$THEDIR/$target" "bash forloop.bash"
+    viewFileContent "forloop.bash" "$target"
+
+    inspectCommand "myFunction.bash" "$THEDIR/$target" "bash myFunction.bash"
+    viewFileContent "myFunction.bash" "$target"
 }
 
 
 
 #
-# Test linux kmom01
+# Create and run bash-script
 #
-linuxkmom01()
+linuxExerciseCommands()
 {
-    linuxrepo "redovisa" "1.0.0" "2.0.0"
+    local target="me/$KMOM/$1"
+    local where="$EXEC_DIR/$KMOM/$1"
+    local main="commands"
+
+    # Options
+    opts="--help"
+    args=""
+    inspectCommand "$main" "$where" "./$main $opts $args" "$opts $args"
+
+    opts="--version"
+    args=""
+    inspectCommand "$main" "$where" "./$main $opts $args" "$opts $args"
+
+    # Run it
+    opts=""
+    args="reverse Obi-Wan Kenobi"
+    inspectCommand "$main" "$where" "./$main $opts $args" "$opts $args"
+
+    opts=""
+    args="factors 5 6 16"
+    inspectCommand "$main" "$where" "./$main $opts $args" "$opts $args"
 }
 
 
 
 #
-# Test linux kmom02
-#
-linuxkmom02()
+# View files in irc exercise
+# OBSOLETE v1
+linuxExerciseIrc()
 {
-    linuxrepo "redovisa" "2.0.0" "3.0.0"
+    local target="me/$KMOM/$1"
+    
+    pushd "$THEDIR/$target"
+    for file in ?.txt; do
+        viewFileContent "$file" "$target"
+    done
+    popd
 }
 
 
 
 #
-# Test linux kmom03
+# Test kmom01
 #
-linuxkmom03()
+function linuxkmom01()
 {
-    linuxrepo "redovisa" "3.0.0" "4.0.0"
+    inspectExercise "install" "uppgift/installera-debian-som-server" "log.txt" "" "ssh.png"
 }
 
 
 
 #
-# Test linux kmom04
+# Test kmom02
 #
-linuxkmom04()
+function linuxkmom02()
 {
-    linuxrepo "redovisa" "4.0.0" "5.0.0"
+    if [ "$USE_VERSION" = "1" ]; then
+        inspectExercise "mysite" "uppgift/strukturera-filer-kataloger-och-rattigheter-i-en-webbplats" "log.txt" "mysite.linux.se.conf" "dump.png"
+
+        inspectExercise "vhost" "uppgift/skapa-en-webbplats-pa-en-apache-virtual-host" "log.txt" "me.linux.se.conf" "dump.png"
+
+        return
+    fi
+
+    inspectLab "uppgift/linux-lab-1-introduktion-till-bash" "bash1" "answer.bash" "./answer.bash"
+
+    inspectExercise "vhost" "uppgift/skapa-en-webbplats-pa-en-apache-virtual-host" "log.txt" "me.linux.se.conf" "dump.png"
 }
 
 
 
 #
-# Test linux kmom
+# Test kmom03
 #
-linuxkmom05()
+function linuxkmom03()
 {
-    linuxrepo "redovisa" "5.0.0" "6.0.0"
+    if [ "$USE_VERSION" = "1" ]; then
+        inspectExercise "irc" "uppgift/hitta-saker-i-en-loggfil-med-unix-kommandon" "log.txt" "solutions.bash" "" "" "solutions.bash" "bash solutions.bash"
+
+        linuxExerciseIrc "irc"
+        
+        inspectExercise "script" "uppgift/mina-forsta-bash-script"
+        linuxExerciseScript "script"
+
+        return
+    fi
+
+    inspectLab "uppgift/linux-lab-2-sok-i-en-logg-fil" "bash2" "answer.bash" "./answer.bash"
+
+    inspectExercise "script" "uppgift/mina-forsta-bash-script"
+    linuxExerciseScript "script"
+
+    inspectExercise "commands" "uppgift/ett-bash-script-med-options-command-arguments"
+    linuxExerciseCommands "commands"
 }
 
 
 
 #
-# Test linux kmom
+# Test kmom04
 #
-linuxkmom06()
+function linuxkmom04()
 {
-    linuxrepo "redovisa" "6.0.0" "7.0.0"
+    local target=
+
+    if [ "$USE_VERSION" = "1" ]; then
+        inspectExercise "javascripting" "uppgift/utfor-nodeschool-workshopen-javascripting" "" "" "" "" "" ""
+
+        inspectExercise "server" "uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash" "index.js" "server.js" "" "" "" "" "" "" " (del 1 servern)"
+
+        inspectExercise "server" "uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash" "client.bash" "" "" "" "" "" "" "" " (del 2 klienten)"
+
+        return
+    fi
+
+    inspectLab "uppgift/linux-lab3-introduktion-till-nodejs" "node1" "answer.js" "babel-node answer.js"
+
+
+
+    # Prepare
+    inspectExerciseHeader "server" "uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash" "$KMOM/server"
+
+    # Start the server
+    target="$KMOM/server"
+    runServer "index.js" "$EXEC_DIR/$target" "babel-node index.js"
+
+    # Execute the client
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash hello"
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash html"
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash status"
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash sum 2 3 4"
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash filter 2 3 42 99"
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash 404"
+    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash all"
+
+    # Close it up
+    killServer "$EXEC_DIR/$target"
 }
 
 
 
 #
-# Test linux kmom
+# Test kmom
 #
-linuxkmom10()
+function linuxkmom05()
 {
-    linuxrepo "redovisa" "10.0.0" "11.0.0"
+    inspectLab "uppgift/linux-lab4-asynkron-programmering" "node2" "answer.js" "node answer.js"
+
+    # 2018 should start up 
+    inspectExerciseHeader "maze" "uppgift/los-mazen-med-din-mazerunner-i-bash" "$KMOM/maze"
+    #target="example/nodejs/maze"
+    target="$EXEC_DIR/$KMOM/maze"
+    runServer "index.js" "$target" "node index.js" "" "ignorePidFile"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner init"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner maps"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner select maze-of-doom"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner enter"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go east"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go east"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go south"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go south"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go south"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go west"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner go west"
+    inspectCommand "mazerunner" "$EXEC_DIR/$KMOM/maze" "./mazerunner loop"
+    killServer "$target" "ignorePidFile"
+}
+
+
+
+#
+# Test kmom
+#
+function linuxkmom06()
+{
+    inspectExerciseHeader "gomoku" "uppgift/skapa-klienter-och-servrar-som-spelar-luffarschack-i-node-js" "$KMOM/gomoku"
+}
+
+
+
+#
+# Test kmom
+#
+function linuxkmom10()
+{
+    test
 }

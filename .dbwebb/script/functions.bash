@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
 #
+# Error message and exit script.
+# @arg1 string the message to display.
+#
+die()
+{
+    echo "$1";
+    exit 1
+}
+
+
+
+#
 # Read input from user supporting a default value for reponse.
 # @arg1 string the message to display.
 # @arg2 string the default value.
