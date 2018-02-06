@@ -1,11 +1,11 @@
-#!/usr/bin/env make -f
-#
-# Makefile for course repos
-#
+#!/usr/bin/env make
+# 
+# Course repo, to work with a dbwebb course.
+# See organisation on GitHub: https://github.com/dbwebb-se
 
 # ---------------------------------------------------------------------------
 #
-# General setup
+# General stuff, reusable for all Makefiles.
 #
 
 # Detect OS
@@ -40,6 +40,7 @@ CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
+	@sed '/^$$/Q' $(THIS_MAKEFILE) | tail +3 | sed 's/#\s*//g'
 	@$(ECHO) "Usage:"
 	@$(ECHO) " make [target] ..."
 	@$(ECHO) "target:"
