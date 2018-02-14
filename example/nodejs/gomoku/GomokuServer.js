@@ -4,7 +4,9 @@
 "use strict";
 
 // The main class for the Gomoku game
-import GomokuBoard from "./GomokuBoard.js";
+// import GomokuBoard from "./GomokuBoard.js";
+var GomokuBoard = require("./GomokuBoard.js");
+
 var gameBoard = new GomokuBoard();
 
 
@@ -173,4 +175,5 @@ var server = http.createServer((req, res) => {
     router.route(req, res);
 });
 
-export default server;
+// export default server;
+module.exports = server;

@@ -17,7 +17,9 @@ var arg;
 
 
 // Get the server with defaults
-import GomokuClient from "./GomokuClient.js";
+// import GomokuClient from "./GomokuClient.js";
+var GomokuClient = require("./GomokuClient.js");
+
 
 var gomoku = new GomokuClient();
 var server = "http://localhost:1337";

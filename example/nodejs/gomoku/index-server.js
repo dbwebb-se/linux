@@ -17,7 +17,9 @@ var arg;
 
 
 // Get the server with defaults
-import server from "./GomokuServer.js";
+// import server from "./GomokuServer.js";
+var server = require("./GomokuServer.js");
+
 
 var port = 1337;
 

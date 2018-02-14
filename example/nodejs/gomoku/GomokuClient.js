@@ -3,7 +3,9 @@
  */
 
 // The main class for the Gomoku game
-import GomokuBoard from "./GomokuBoard.js";
+// import GomokuBoard from "./GomokuBoard.js";
+var GomokuBoard = require("./GomokuBoard.js");
+
 
 // Import the http server as base
 var http = require("http");
@@ -108,4 +110,5 @@ class GomokuClient {
     }
 }
 
-export default GomokuClient;
+// export default GomokuClient;
+module.exports = GomokuClient;

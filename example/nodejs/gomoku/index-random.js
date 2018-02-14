@@ -3,7 +3,9 @@
  */
 "use strict";
 
-import GomokuBoard from "./GomokuBoard.js";
+// import GomokuBoard from "./GomokuBoard.js";
+var GomokuBoard = require("./GomokuBoard.js");
+
 
 
 var size = 20,

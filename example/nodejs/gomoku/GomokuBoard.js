@@ -240,4 +240,5 @@ class GomokuBoard {
     }
 }
 
-export default GomokuBoard;
+// export default GomokuBoard;
+module.exports = GomokuBoard;
