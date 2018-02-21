@@ -3,60 +3,67 @@
  */
 "use strict";
 
+const https = require('https');
 
+module.exports = {
+    httpGetNoPromise: httpGetNoPromise,
+    httpGetAsPromise: httpGetAsPromise
+}
 
-/**
- * Make a HTTP GET request, wrapped in a Promise.
- *
- * @param  String url to connect to.
- *
- * @return Promise
- *
- */
-httpGetAsCallback(url) {
-    return new Promise((resolve, reject) => {
-        http.get(url, (res) => {
-            var data = "";
+function httpGetNoPromise(url, callback) {
+    https.get(url, (res) => {
+        var data = "";
 
-            res.on('data', (chunk) => {
-                data += chunk;
-            }).on('end', () => {
-                if (res.statusCode === 200) {
-                    resolve(data);
-                } else {
-                    reject(data);
-                }
-            }).on('error', (e) => {
-                reject("Got error: " + e.message);
-            });
+        // Got the headers from the initial request
+        console.log("\n>>> GOT HTTP HEADERS")
+        console.log('statusCode:', res.statusCode);
+        console.log('headers:', res.headers);
+
+        res.on('data', (chunk) => {
+            console.log("\n>>> GOT A CHUNK")
+            data += chunk;
+        });
+
+        res.on('end', () => {
+            if (res.statusCode === 200) {
+                console.log("\n>>> GOT 200 READY")
+                callback(data);
+            }
+        });
+
+        res.on('error', (e) => {
+            console.log("ERROR" + e);
         });
     });
 }
 
 
 
-/**
- * Make a HTTP GET request, wrapped in a Promise.
- *
- * @param  String url to connect to.
- *
- * @return Promise
- *
- */
-httpGetAsPromise(url) {
+function httpGetAsPromise(url) {
     return new Promise((resolve, reject) => {
-        http.get(url, (res) => {
+        https.get(url, (res) => {
             var data = "";
 
+            // Got the headers from the initial request
+            console.log("\n>>> GOT HTTP HEADERS")
+            console.log('statusCode:', res.statusCode);
+            console.log('headers:', res.headers);
+
             res.on('data', (chunk) => {
+                console.log("\n>>> GOT A CHUNK")
                 data += chunk;
-            }).on('end', () => {
+            });
+
+            res.on('end', () => {
                 if (res.statusCode === 200) {
+                    console.log("\n>>> GOT 200 READY")
                     resolve(data);
                 } else {
                     reject(data);
                 }
-            }).on('error', (e) => {
+            });
+
+            res.on('error', (e) => {
                 reject("Got error: " + e.message);
             });
         });
