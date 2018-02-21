@@ -10,7 +10,7 @@ const url = "https://dbwebb.se/humans.txt";
 
 https.httpGetNoPromise(url, (data) => {
     console.log(">>> NORMAL EXECUTION CONTINUES A1");
-    //console.log(data);
+    // console.log(data);
 
     https.httpGetNoPromise(url, (data) => {
         console.log(">>> NORMAL EXECUTION CONTINUES A2");
