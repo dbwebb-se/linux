@@ -22,16 +22,16 @@ https.httpGetNoPromise(url, (data) => {
 
 
 https.httpGetAsPromise(url)
-.then(data => {
-    console.log(">>> NORMAL EXECUTION CONTINUES B1");
-    //console.log(data);
+    .then(data => {
+        console.log(">>> NORMAL EXECUTION CONTINUES B1");
+        //console.log(data);
 
-    return https.httpGetAsPromise(url);
-})
-.then(data => {
-    console.log(">>> NORMAL EXECUTION CONTINUES B2");
-    //console.log(data);
-})
-.catch(err => {
-    console.log("FAILED:" + err);
-});
+        return https.httpGetAsPromise(url);
+    })
+    .then(data => {
+        console.log(">>> NORMAL EXECUTION CONTINUES B2");
+        //console.log(data);
+    })
+    .catch(err => {
+        console.log("FAILED:" + err);
+    });

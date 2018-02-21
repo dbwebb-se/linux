@@ -9,18 +9,18 @@ function httpGetAsPromise(url) {
             var data = "";
 
             // Got the headers from the initial request
-            console.log("\n>>> GOT HTTP HEADERS")
+            console.log("\n>>> GOT HTTP HEADERS");
             console.log('statusCode:', res.statusCode);
             console.log('headers:', res.headers);
 
             res.on('data', (chunk) => {
-                console.log("\n>>> GOT A CHUNK")
+                console.log("\n>>> GOT A CHUNK");
                 data += chunk;
             });
 
             res.on('end', () => {
                 if (res.statusCode === 200) {
-                    console.log("\n>>> GOT 200 READY")
+                    console.log("\n>>> GOT 200 READY");
                     resolve(data);
                 } else {
                     reject(data);
@@ -42,10 +42,10 @@ function httpGetAsPromise(url) {
 
 
 httpGetAsPromise('https://dbwebb.se/')
-.then(data => {
-    console.log(">>> NORMAL EXECUTION CONTINUES");
-    //console.log(data);
-})
-.catch(err => {
-    console.log("FAILED:" + err);
-});
+    .then(data => {
+        console.log(">>> NORMAL EXECUTION CONTINUES");
+        //console.log(data);
+    })
+    .catch(err => {
+        console.log("FAILED:" + err);
+    });
