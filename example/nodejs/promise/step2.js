@@ -31,7 +31,7 @@ function httpGetNoPromise(url, callback) {
 }
 
 
-httpGetNoPromise('https://dbwebb.se/', (data) => {
+httpGetNoPromise('https://dbwebb.se/humans.txt', (data) => {
     console.log(">>> NORMAL EXECUTION CONTINUES");
-    //console.log(data);
+    console.log(data);
 });

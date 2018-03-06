@@ -10,11 +10,11 @@ const url = "https://dbwebb.se/humans.txt";
 
 https.httpGetNoPromise(url, (data) => {
     console.log(">>> NORMAL EXECUTION CONTINUES A1");
-    // console.log(data);
+    console.log(data);
 
     https.httpGetNoPromise(url, (data) => {
         console.log(">>> NORMAL EXECUTION CONTINUES A2");
-        //console.log(data);
+        console.log(data);
     });
 });
 
@@ -24,13 +24,13 @@ https.httpGetNoPromise(url, (data) => {
 https.httpGetAsPromise(url)
     .then(data => {
         console.log(">>> NORMAL EXECUTION CONTINUES B1");
-        //console.log(data);
+        console.log(data);
 
         return https.httpGetAsPromise(url);
     })
     .then(data => {
         console.log(">>> NORMAL EXECUTION CONTINUES B2");
-        //console.log(data);
+        console.log(data);
     })
     .catch(err => {
         console.log("FAILED:" + err);

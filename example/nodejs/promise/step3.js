@@ -41,10 +41,10 @@ function httpGetAsPromise(url) {
 // });
 
 
-httpGetAsPromise('https://dbwebb.se/')
+httpGetAsPromise('https://dbwebb.se/humans.txt')
     .then(data => {
         console.log(">>> NORMAL EXECUTION CONTINUES");
-        //console.log(data);
+        console.log(data);
     })
     .catch(err => {
         console.log("FAILED:" + err);
