@@ -14,5 +14,8 @@
     "jsonlint": "^1.6.2",
     "stylelint": "^8.2.0",
     "uglify-es": "^3.1.6"
+  },
+  "dependencies": {
+    "clean-css-cli": "^4.1.11"
   }
 }
