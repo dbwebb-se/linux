@@ -34,7 +34,7 @@ linuxlast()
 linuxExerciseScript()
 {
     local target="me/$KMOM/$1"
-    
+
     inspectCommand "hello.bash" "$THEDIR/$target" "bash hello.bash"
     viewFileContent "hello.bash" "$target"
 
@@ -74,6 +74,10 @@ linuxExerciseCommands()
     local where="$EXEC_DIR/$KMOM/$1"
     local main="commands"
 
+    if [ ! -f "$main" ]; then
+        main="commands.bash"
+    fi
+
     # Options
     opts="--help"
     args=""
@@ -101,7 +105,7 @@ linuxExerciseCommands()
 linuxExerciseIrc()
 {
     local target="me/$KMOM/$1"
-    
+
     pushd "$THEDIR/$target"
     for file in ?.txt; do
         viewFileContent "$file" "$target"
@@ -150,7 +154,7 @@ function linuxkmom03()
         inspectExercise "irc" "uppgift/hitta-saker-i-en-loggfil-med-unix-kommandon" "log.txt" "solutions.bash" "" "" "solutions.bash" "bash solutions.bash"
 
         linuxExerciseIrc "irc"
-        
+
         inspectExercise "script" "uppgift/mina-forsta-bash-script"
         linuxExerciseScript "script"
 
@@ -218,7 +222,7 @@ function linuxkmom05()
 {
     inspectLab "uppgift/linux-lab4-asynkron-programmering" "node2" "answer.js" "node answer.js"
 
-    # 2018 should start up 
+    # 2018 should start up
     inspectExerciseHeader "maze" "uppgift/los-mazen-med-din-mazerunner-i-bash" "$KMOM/maze"
     #target="example/nodejs/maze"
     target="$EXEC_DIR/$KMOM/maze"
