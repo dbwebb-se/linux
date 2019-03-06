@@ -177,17 +177,7 @@ function linuxkmom03()
 #
 function linuxkmom04()
 {
-    local target=
-
-    if [ "$USE_VERSION" = "1" ]; then
-        inspectExercise "javascripting" "uppgift/utfor-nodeschool-workshopen-javascripting" "" "" "" "" "" ""
-
-        inspectExercise "server" "uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash" "index.js" "server.js" "" "" "" "" "" "" " (del 1 servern)"
-
-        inspectExercise "server" "uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash" "client.bash" "" "" "" "" "" "" "" " (del 2 klienten)"
-
-        return
-    fi
+    local target="me/$KMOM/$1"
 
     inspectLab "uppgift/linux-lab3-introduktion-till-nodejs" "node1" "answer.js" "node answer.js"
 
