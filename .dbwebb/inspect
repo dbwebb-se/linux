@@ -189,7 +189,7 @@ function linuxkmom04()
         return
     fi
 
-    inspectLab "uppgift/linux-lab3-introduktion-till-nodejs" "node1" "answer.js" "babel-node answer.js"
+    inspectLab "uppgift/linux-lab3-introduktion-till-nodejs" "node1" "answer.js" "node answer.js"
 
 
 
@@ -197,20 +197,23 @@ function linuxkmom04()
     inspectExerciseHeader "server" "uppgift/skapa-en-restful-http-server-med-node-js-och-klient-i-bash" "$KMOM/server"
 
     # Start the server
-    target="$KMOM/server"
-    runServer "index.js" "$EXEC_DIR/$target" "babel-node index.js"
+    if ! [ "$HOST" = "seekers" ] || ! [ "$HOST" = "sweet" ]
+    then
+        target="$KMOM/server"
+        runServer "index.js" "$EXEC_DIR/$target" "node index.js"
 
-    # Execute the client
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash hello"
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash html"
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash status"
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash sum 2 3 4"
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash filter 2 3 42 99"
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash 404"
-    inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash all"
+        # Execute the client
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash hello"
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash html"
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash status"
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash sum 2 3 4"
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash filter 2 3 42 99"
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash 404"
+        inspectCommand "client.bash" "$EXEC_DIR/$target" "bash client.bash all"
 
-    # Close it up
-    killServer "$EXEC_DIR/$target"
+        # Close it up
+        killServer "$EXEC_DIR/$target"
+    fi
 }
 
 
